@@ -44,6 +44,15 @@ $dark:                            #444 !default;
 .src-btn .activated {
   border: none; }
 
+.font-regular {
+  font-weight: 400; }
+
+.font-semi {
+  font-weight: 500; }
+
+.color-light {
+  color: #fff; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

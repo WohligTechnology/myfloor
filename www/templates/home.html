@@ -1,9 +1,22 @@
 <ion-view view-title="Euro Floor">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
-      </ion-item>
+
+        <ion-slide-box on-slide-changed="slideHasChanged($index)">
+          <ion-slide ng-repeat="item in slider track by $index">
+            <div class="box-slider">
+            <img ng-src="{{item}}" alt="" class="full-image">
+            <div class="slider-text">
+              <h4 class="color-light">OUR EXPERTISE FOR</h4>
+              <h3 class="color-light">FLOORING DESIGN</h3>
+              <hr>
+            </div>
+
+            </div>
+          </ion-slide>
+
+        </ion-slide-box>
+
     </ion-list>
   </ion-content>
 </ion-view>
