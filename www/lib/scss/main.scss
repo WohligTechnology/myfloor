@@ -5,8 +5,47 @@ $calm: #11c1f3 !default;
 $balanced: #33cd5f !default;
 $energized: #ffc900 !default;
 $assertive: #e05d5d !default;
-$royal: #886aea !default;
+$royal: #352c6c !default;
 $dark: #303e54 !default;
 $base: #778aa6 !default;
 $font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
 $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../fonts/SourceSansPro-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../fonts/SourceSansPro-Semibold.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../fonts/SourceSansPro-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../fonts/SourceSansPro-Regular.ttf");
+}
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+.src-btn {
+  .button-light {
+    float: right;
+    z-index: 99;
+    background: transparent !important;
+    color: $light !important;
+    font-size: 24px;
+  }
+  .activated {
+    border: none;
+  }
+}
