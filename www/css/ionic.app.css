@@ -313,8 +313,15 @@ p.double-quote:before, p.double-quote:after {
   margin: 0px !important; }
 
 .scroll-hide {
-  overflow-x: hidden !important;
   background-color: #352C6D; }
+  .scroll-hide ::-webkit-scrollbar {
+    width: 0px !important; }
+  .scroll-hide ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px; }
+  .scroll-hide ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); }
   .scroll-hide a {
     font-size: 9px !important;
     border-radius: 20px;
@@ -335,6 +342,17 @@ p.double-quote:before, p.double-quote:after {
 
 .tabbed-slidebox .slider-slide {
   background-color: #F3F3F3 !important; }
+
+.tabbed-slidebox .tsb-ic-wrp {
+  background-color: #352C6D !important; }
+
+.prodcut-detail {
+  margin: 15px; }
+
+.discription {
+  margin: 15px; }
+  .discription p {
+    margin: 5px 0px; }
 
 /*!
   Ionicons, v2.0.1
