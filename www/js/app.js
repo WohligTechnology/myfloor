@@ -4,7 +4,8 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
+// var app = angular.module('slidebox', ['ionic', 'tabSlideBox']);
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -58,6 +59,42 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+    .state('app.product', {
+      url: '/product',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/product.html',
+          controller: 'ProductCtrl'
+        }
+      }
+    })
+    .state('app.product-detail', {
+      url: '/product-detail',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/product-detail.html',
+          controller: 'ProductDetailCtrl'
+        }
+      }
+    })
+    .state('app.about-us', {
+      url: '/about-us',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/about-us.html',
+          controller: 'AboutUsCtrl'
+        }
+      }
+    })
+    .state('app.contact-us', {
+      url: '/contact-us',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/contact-us.html',
+          controller: 'ContactUsCtrl'
+        }
+      }
+    })
 
   .state('app.single', {
     url: '/playlists/:playlistId',
@@ -69,5 +106,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/home');
 });

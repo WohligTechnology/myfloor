@@ -1,0 +1,117 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'ionic@1.7.16',
+1 verbose cli   '.box-slider',
+1 verbose cli   '{' ]
+2 info using npm@3.8.6
+3 info using node@v5.12.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData ionic@1.7.16
+8 silly fetchPackageMetaData .box-slider
+9 silly fetchPackageMetaData {
+10 silly fetchNamedPackageData ionic
+11 silly mapToRegistry name ionic
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry data Result {
+14 silly mapToRegistry   raw: 'ionic',
+14 silly mapToRegistry   scope: null,
+14 silly mapToRegistry   name: 'ionic',
+14 silly mapToRegistry   rawSpec: '',
+14 silly mapToRegistry   spec: 'latest',
+14 silly mapToRegistry   type: 'tag' }
+15 silly mapToRegistry uri https://registry.npmjs.org/ionic
+16 silly fetchOtherPackageData .box-slider
+17 silly cache add args [ '.box-slider', null ]
+18 verbose cache add spec .box-slider
+19 silly fetchOtherPackageData {
+20 silly cache add args [ '{', null ]
+21 verbose cache add spec {
+22 silly cache add parsed spec Result {
+22 silly cache add   raw: '.box-slider',
+22 silly cache add   scope: null,
+22 silly cache add   name: null,
+22 silly cache add   rawSpec: '.box-slider',
+22 silly cache add   spec: '/home/ganesh/myfloor/.box-slider',
+22 silly cache add   type: 'local' }
+23 silly cache add parsed spec Result {
+23 silly cache add   raw: '{',
+23 silly cache add   scope: null,
+23 silly cache add   name: null,
+23 silly cache add   rawSpec: '{',
+23 silly cache add   spec: '/home/ganesh/myfloor/{',
+23 silly cache add   type: 'local' }
+24 error addLocal Could not install /home/ganesh/myfloor/.box-slider
+25 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open '/home/ganesh/myfloor/.box-slider'
+25 silly fetchPackageMetaData     at Error (native)
+25 silly fetchPackageMetaData  error for .box-slider { [Error: ENOENT: no such file or directory, open '/home/ganesh/myfloor/.box-slider']
+25 silly fetchPackageMetaData   errno: -2,
+25 silly fetchPackageMetaData   code: 'ENOENT',
+25 silly fetchPackageMetaData   syscall: 'open',
+25 silly fetchPackageMetaData   path: '/home/ganesh/myfloor/.box-slider' }
+26 error addLocal Could not install /home/ganesh/myfloor/{
+27 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open '/home/ganesh/myfloor/{'
+27 silly fetchPackageMetaData     at Error (native)
+27 silly fetchPackageMetaData  error for { { [Error: ENOENT: no such file or directory, open '/home/ganesh/myfloor/{']
+27 silly fetchPackageMetaData   errno: -2,
+27 silly fetchPackageMetaData   code: 'ENOENT',
+27 silly fetchPackageMetaData   syscall: 'open',
+27 silly fetchPackageMetaData   path: '/home/ganesh/myfloor/{' }
+28 verbose request uri https://registry.npmjs.org/ionic
+29 verbose request no auth needed
+30 info attempt registry request try #1 at 4:54:04 PM
+31 verbose request id ca8c8c5dd0ad1352
+32 verbose etag "3CP9JWOY400X1Q8UMQ36959BN"
+33 http request GET https://registry.npmjs.org/ionic
+34 http 304 https://registry.npmjs.org/ionic
+35 verbose headers { date: 'Wed, 26 Oct 2016 11:24:06 GMT',
+35 verbose headers   via: '1.1 varnish',
+35 verbose headers   'cache-control': 'max-age=300',
+35 verbose headers   etag: '"3CP9JWOY400X1Q8UMQ36959BN"',
+35 verbose headers   age: '15',
+35 verbose headers   connection: 'keep-alive',
+35 verbose headers   'x-served-by': 'cache-sin6923-SIN',
+35 verbose headers   'x-cache': 'HIT',
+35 verbose headers   'x-cache-hits': '1',
+35 verbose headers   'x-timer': 'S1477481046.139042,VS0,VE0',
+35 verbose headers   vary: 'Accept-Encoding' }
+36 silly get cb [ 304,
+36 silly get   { date: 'Wed, 26 Oct 2016 11:24:06 GMT',
+36 silly get     via: '1.1 varnish',
+36 silly get     'cache-control': 'max-age=300',
+36 silly get     etag: '"3CP9JWOY400X1Q8UMQ36959BN"',
+36 silly get     age: '15',
+36 silly get     connection: 'keep-alive',
+36 silly get     'x-served-by': 'cache-sin6923-SIN',
+36 silly get     'x-cache': 'HIT',
+36 silly get     'x-cache-hits': '1',
+36 silly get     'x-timer': 'S1477481046.139042,VS0,VE0',
+36 silly get     vary: 'Accept-Encoding' } ]
+37 verbose etag https://registry.npmjs.org/ionic from cache
+38 verbose get saving ionic to /home/ganesh/.npm/registry.npmjs.org/ionic/.cache.json
+39 verbose correctMkdir /home/ganesh/.npm correctMkdir not in flight; initializing
+40 silly rollbackFailedOptional Starting
+41 silly rollbackFailedOptional Finishing
+42 silly runTopLevelLifecycles Starting
+43 silly runTopLevelLifecycles Finishing
+44 silly install printInstalled
+45 verbose stack Error: ENOENT: no such file or directory, open '/home/ganesh/myfloor/.box-slider'
+45 verbose stack     at Error (native)
+46 verbose cwd /home/ganesh/myfloor
+47 error Linux 4.2.0-16-generic
+48 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "ionic@1.7.16" ".box-slider" "{"
+49 error node v5.12.0
+50 error npm  v3.8.6
+51 error path /home/ganesh/myfloor/.box-slider
+52 error code ENOENT
+53 error errno -2
+54 error syscall open
+55 error enoent ENOENT: no such file or directory, open '/home/ganesh/myfloor/.box-slider'
+56 error enoent ENOENT: no such file or directory, open '/home/ganesh/myfloor/.box-slider'
+56 error enoent This is most likely not a problem with npm itself
+56 error enoent and is related to npm not being able to find a file.
+57 verbose exit [ -2, true ]

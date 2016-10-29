@@ -1,22 +1,81 @@
-<ion-view view-title="Euro Floor">
-  <ion-content>
-    <ion-list>
+<ion-view view-title="PRODUCT DETAIL">
+  <ion-content class="background">
 
-        <ion-slide-box on-slide-changed="slideHasChanged($index)">
-          <ion-slide ng-repeat="item in slider track by $index">
-            <div class="box-slider">
-            <img ng-src="{{item}}" alt="" class="full-image">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">
+          <ion-slide ng-repeat="item in slider track by $index" >
+            <div class="">
+            <img ng-src="{{item}}" alt="" class="full-image ">
             <div class="slider-text">
-              <h4 class="color-light">OUR EXPERTISE FOR</h4>
-              <h3 class="color-light">FLOORING DESIGN</h3>
-              <hr>
-            </div>
+                <div class="title-img">
+                    <h5 class="color-light">OUR EXPERTISE FOR</h5>
+                    <h4 class="color-light">FLOORING DESIGN</h4>
+                    <hr class="line">
+                    <button class="button button-outline button-positive product-button">
+                      OUR PRODUCT
+                    </button>
+                 </div>
 
+            </div>
             </div>
           </ion-slide>
-
         </ion-slide-box>
 
-    </ion-list>
+        <div class="">
+
+
+            <div class="">
+                <label for="" class="new-product new">NEW PRODUCT
+                <hr></label>
+                <div class="">
+                    <div class="row">
+                        <div class="col col-50">
+                            <div class="card newproduct-card">
+                                <img src="img/new1.jpg" alt="" class=" full-image" />
+                                <h3>Empress AC4</h3>
+                            </div>
+                        </div>
+                        <div class="col col-50">
+                            <div class="card newproduct-card">
+                                <img src="img/2.jpg" alt="" class=" full-image" />
+                                <h3>EKO Parket</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <div class="card newproduct-card">
+                                <img src="img/3.jpg" alt="" class=" full-image" />
+                                <h3>Solid Wood</h3>
+                            </div>
+                        </div>
+                        <div class="col col-50">
+                            <div class="card newproduct-card">
+                                <img src="img/4.jpg" alt="" class=" full-image" />
+                                <h3>Exterior Decking</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <label for="" class="new-product">ALL PRODUCT
+                <hr></label>
+                <div class="all-product" ng-repeat="all in allproduct">
+                    <img ng-src="{{all.image}}" alt="" class="full-image" />
+                    <div class="title ">
+                        <div class="title-text">
+                            <h3 class="color-light title1">{{all.title1}}</h3>
+                            <h3 class="color-light title2">{{all.title2}}</h3>
+                            <!-- <hr class="line"> -->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
   </ion-content>
 </ion-view>

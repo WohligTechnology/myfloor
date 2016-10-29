@@ -1,0 +1,16 @@
+<ion-view view-title="EURO FLOOR">
+  <ion-content class="background">
+
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">
+          <ion-slide ng-repeat="item in slider track by $index" >
+            <div class="">
+            <img ng-src="{{item}}" alt="" class="full-image ">
+            <div class="slider-text">
+
+
+            </div>
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+    </ion-content>
+  </ion-view>
