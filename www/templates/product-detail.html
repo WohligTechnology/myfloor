@@ -4,7 +4,7 @@
         <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">
           <ion-slide ng-repeat="item in slider track by $index" >
             <div class="">
-            <img ng-src="{{item}}" alt="" class="full-image ">
+            <img ng-src="{{item}}" alt="" class="full-image " ui-sref="login">
             <div class="slider-text">
 
 
@@ -13,7 +13,7 @@
           </ion-slide>
         </ion-slide-box>
         <div class="">
-            <h4> Product Name</h4>
+            <h4 ui-sref="app.login"> Product Name</h4>
             <div class="item">
                 <div>
                     <div class="border-detail">
