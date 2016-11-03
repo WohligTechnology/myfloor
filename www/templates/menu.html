@@ -18,24 +18,22 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
-    </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
-        </ion-item>
-        <ion-item menu-close href="#/app/home">
+        <ion-item class="" ui-sref-active="actives"  menu-close href="#/app/home">
+          <i class="icon ln-home3 menu-icon"></i>
           Home
         </ion-item>
-        <ion-item menu-close href="#/app/product">
+        <ion-item class="" ui-sref-active="actives" ui-sref-active="actives"  menu-close href="#/app/product">
+          <i class="icon ln-cart-full menu-icon"></i>
           Product
         </ion-item>
-        <ion-item menu-close href="#/app/contact-us">
+        <ion-item class="" ui-sref-active="actives"  menu-close href="#/app/contact-us">
+          <i class="icon ln-phone2 menu-icon"></i>
           Contact Us
         </ion-item>
-        <ion-item menu-close href="#/app/about-us">
+        <ion-item class="" ui-sref-active="actives"  menu-close href="#/app/about-us">
+          <i class="icon ln-user menu-icon"></i>
           About Us
         </ion-item>
       </ion-list>
