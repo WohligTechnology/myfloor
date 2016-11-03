@@ -370,19 +370,12 @@ p.double-quote:before {
   .menu .item {
     background: transparent;
     border: none; }
-    +
-.menu .item:hover, .menu .item:actives {
-      background-color: #231e48; }
   .menu .ion-complex,
   .menu .item-content {
     background: none !important;
     border: none;
     color: white;
     padding: 15px 20px 15px 20px !important; }
-    .menu .ion-complex:hover, .menu .ion-complex:actives,
-    .menu .item-content:hover,
-    .menu .item-content:actives {
-      background-color: #231e48; }
 
 .actives .item-content, .actives .ion-complex {
   background: #231e48; }

@@ -488,10 +488,7 @@ p.double-quote:before {
   // background-color: white !important;
   .item{
     background: transparent;
-    border: none;+
-    // &:hover, &:actives{
-    //   background-color:#231e48;
-    // }
+    border: none;
   }
 
   .ion-complex,
@@ -501,9 +498,6 @@ p.double-quote:before {
     color: white;
     // color:  #352c6c;
     padding: 15px 20px 15px 20px !important;
-    // &:hover, &:actives{
-    //   background-color:#231e48;
-    // }
   }
 }
 
