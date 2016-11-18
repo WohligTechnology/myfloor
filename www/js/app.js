@@ -77,6 +77,15 @@ angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
         }
       }
     })
+    .state('app.collection-detail', {
+      url: '/collection-detail',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/collection-detail.html',
+          controller: 'CollectionDetailCtrl'
+        }
+      }
+    })
     .state('app.about-us', {
       url: '/about-us',
       views: {

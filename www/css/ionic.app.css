@@ -131,7 +131,20 @@ $dark:                            #444 !default;
     color: #34445E;
     font-size: 14px;
     text-align: left; }
-
+  .newproduct-card h4 {
+    margin: 5px;
+    color: #a0a5ad;
+    font-size: 12px;
+    text-align: left; }
+    .unique{
+      margin: 20px;
+}
+.p-unique{
+    font-size: 20px;
+    text-align: justify;
+    margin-top: 20px;
+    line-height: 1.5;
+}
 .editable {
   width: 100%;
   display: block;

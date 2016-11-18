@@ -47,6 +47,9 @@ $scope.allproduct=[
       'img/123.jpg'
     ];
 })
+.controller('CollectionDetailCtrl', function($scope,$ionicSlideBoxDelegate) {
+  
+})
 .controller('ContactUsCtrl', function($scope,$ionicSlideBoxDelegate) {
 
 })
