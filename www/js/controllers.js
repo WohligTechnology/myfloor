@@ -12,23 +12,37 @@ $scope.slider=[
 ];
 $scope.allproduct=[
     {
-    title1: "Engineered",
-    title2: "Flooring",
+    title1: "Chalet",
+
     image: "img/123.jpg"
 },
     {
-    title1: "Exterior",
-    title2: "Decking",
+    title1: "Vintage Loft",
     image: "img/124.jpg"
 },
     {
-    title1: "Laminate ",
-    title2: "Range",
+    title1: "Saltbox",
     image: "img/12.jpg"
 },
     {
-    title1: "Laminate ",
-    title2: "Range",
+    title1: "Gallery",
+    image: "img/12.jpg"
+},
+    {
+    title1: "Brick & Board",
+    image: "img/12.jpg"
+},
+    {
+    title1: "Storehouse Plank",
+    image: "img/12.jpg"
+},
+    {
+    title1: "Eighteen Seventy-Five",
+    image: "img/23.jpg"
+
+},
+    {
+    title1: "Ponderosa",
     image: "img/23.jpg"
 }
 
@@ -48,7 +62,7 @@ $scope.allproduct=[
     ];
 })
 .controller('CollectionDetailCtrl', function($scope,$ionicSlideBoxDelegate) {
-  
+
 })
 .controller('ContactUsCtrl', function($scope,$ionicSlideBoxDelegate) {
 

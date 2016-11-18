@@ -305,9 +305,11 @@ p.double-quote:before {
 
 .all-product .title .title-text .title1 {
   font-weight: 300;
-  margin-left: -24%;
+  margin-left: 20%;
   display: block;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  width: 50%;
+}
 
 .all-product .title .title-text .title2 {
   text-align: right;
