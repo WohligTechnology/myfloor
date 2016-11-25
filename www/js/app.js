@@ -50,6 +50,16 @@ angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
         }
       }
     })
+  .state('app.product-category', {
+      url: '/product-category',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/product-category.html',
+          controller: 'ProductCategoryCtrl'
+
+        }
+      }
+    })
     .state('app.home', {
       url: '/home',
       views: {

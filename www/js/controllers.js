@@ -3,6 +3,9 @@ angular.module('starter.controllers', ['ionic','tabSlideBox'])
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
 })
+.controller('ProductCategoryCtrl', function($scope, $ionicModal, $timeout) {
+
+})
 
 .controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate) {
 $scope.slider=[
