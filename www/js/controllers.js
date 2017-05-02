@@ -1,85 +1,109 @@
-angular.module('starter.controllers', ['starter.services','ionic','tabSlideBox'])
+angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
-})
-.controller('ProductCategoryCtrl', function($scope, $ionicModal, $timeout) {
+  })
+  .controller('ProductCategoryCtrl', function ($scope, $ionicModal, $timeout) {
 
-})
+  })
 
-.controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate,MyServices) {
+  .controller('HomeCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
 
-  MyServices.getAllHomeData({}, function (data) {
-           if (data.value) {
-               $scope.homeSlider = data.data.HomeSlider;
-               $scope.landingBanner = data.data.LandingBanner;
-               // console.log($scope.homeSlider, $scope.landingBanner);
-           } else {
+    MyServices.getAllHomeData({}, function (data) {
+      if (data.value) {
+        $scope.homeSlider = data.data.HomeSlider;
+        $scope.landingBanner = data.data.LandingBanner;
+        // console.log($scope.homeSlider, $scope.landingBanner);
+      } else {
 
-           }
-       })
-$scope.slider=[
-  'img/15.jpg',
-  'img/23.jpg',
-  'img/123.jpg'
-];
-$scope.allproduct=[
-    {
-    title1: "Chalet",
-
-    image: "img/123.jpg"
-},
-    {
-    title1: "Vintage Loft",
-    image: "img/124.jpg"
-},
-    {
-    title1: "Saltbox",
-    image: "img/12.jpg"
-},
-    {
-    title1: "Gallery",
-    image: "img/12.jpg"
-},
-    {
-    title1: "Brick & Board",
-    image: "img/12.jpg"
-},
-    {
-    title1: "Storehouse Plank",
-    image: "img/12.jpg"
-},
-    {
-    title1: "Eighteen Seventy-Five",
-    image: "img/23.jpg"
-
-},
-    {
-    title1: "Ponderosa",
-    image: "img/23.jpg"
-}
-
-]
-})
-.controller('AboutUsCtrl', function($scope,$ionicSlideBoxDelegate) {
-
-})
-.controller('ProductCtrl', function($scope,$ionicSlideBoxDelegate) {
-
-})
-.controller('ProductDetailCtrl', function($scope,$ionicSlideBoxDelegate) {
-    $scope.slider=[
+      }
+    })
+    $scope.slider = [
       'img/15.jpg',
       'img/23.jpg',
       'img/123.jpg'
     ];
-})
-.controller('CollectionDetailCtrl', function($scope,$ionicSlideBoxDelegate) {
+    $scope.allproduct = [{
+        title1: "Chalet",
 
-})
-.controller('ContactUsCtrl', function($scope,$ionicSlideBoxDelegate) {
+        image: "img/123.jpg"
+      },
+      {
+        title1: "Vintage Loft",
+        image: "img/124.jpg"
+      },
+      {
+        title1: "Saltbox",
+        image: "img/12.jpg"
+      },
+      {
+        title1: "Gallery",
+        image: "img/12.jpg"
+      },
+      {
+        title1: "Brick & Board",
+        image: "img/12.jpg"
+      },
+      {
+        title1: "Storehouse Plank",
+        image: "img/12.jpg"
+      },
+      {
+        title1: "Eighteen Seventy-Five",
+        image: "img/23.jpg"
 
-})
+      },
+      {
+        title1: "Ponderosa",
+        image: "img/23.jpg"
+      }
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+    ]
+  })
+  .controller('AboutUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
+
+    //API call to get about us info
+    MyServices.getAboutUs({
+      _id: "58ef52312f7ea8299eb53c90"
+    }, function (response) {
+      if (response.value) {
+        $scope.aboutUs = response.data.content;
+        console.log(" $scope.aboutUs", $scope.aboutUs);
+      } else {
+
+      }
+    });
+
+  })
+  .controller('ProductCtrl', function ($scope, $ionicSlideBoxDelegate) {
+
+  })
+  .controller('ProductDetailCtrl', function ($scope, $ionicSlideBoxDelegate) {
+    $scope.slider = [
+      'img/15.jpg',
+      'img/23.jpg',
+      'img/123.jpg'
+    ];
+  })
+  .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate) {
+
+  })
+  .controller('ContactUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
+    $scope.formData = {};
+
+    //API call to submit contact us data.
+    $scope.submitForm = function (data) {
+      console.log(data);
+      MyServices.saveConatct(data, function (response) {
+        if (response.value) {
+          $state.reload();
+          console.log("response.data", response.data);
+          //   toastr.success("We will get back to you shortly.", "We have your query!");
+        }
+      })
+      // $scope.formSubmitted = true;
+    }
+
+  })
+
+  .controller('PlaylistCtrl', function ($scope, $stateParams) {});
