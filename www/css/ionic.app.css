@@ -380,6 +380,10 @@ p.double-quote:before {
 .actives .item-content, .actives .ion-complex {
   background: #231e48; }
 
+.full-banner {
+  height: 100%;
+  width: 100%; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -10179,16 +10183,3 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
-.cat{
-  display: inline-block;
-  color: black;
-
-}
-.cat-head{
-  display: inline-block;
-  color: black;
-  width: 20%;
-}
-.cat-div{
-  text-align: left;
-}

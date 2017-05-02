@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ionic','tabSlideBox'])
+angular.module('starter.controllers', ['starter.services','ionic','tabSlideBox'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -7,7 +7,17 @@ angular.module('starter.controllers', ['ionic','tabSlideBox'])
 
 })
 
-.controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate) {
+.controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate,MyServices) {
+
+  MyServices.getAllHomeData({}, function (data) {
+           if (data.value) {
+               $scope.homeSlider = data.data.HomeSlider;
+               $scope.landingBanner = data.data.LandingBanner;
+               // console.log($scope.homeSlider, $scope.landingBanner);
+           } else {
+
+           }
+       })
 $scope.slider=[
   'img/15.jpg',
   'img/23.jpg',

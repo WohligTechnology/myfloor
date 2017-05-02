@@ -1,8 +1,34 @@
-<ion-view view-title="HOME">
+<ion-view view-title="WELCOME">
   <ion-content class="background">
 
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">
-          <ion-slide ng-repeat="item in slider track by $index" >
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider" does-continue="true">
+          <div class="home-banner" id="scrollArea">
+
+                <ion-slide ng-repeat="hs in homeSlider track by $index" >
+                  <div class="full-banner">
+                      <div class="full-banner" style="background-image: url({{(hs.image|uploadpath)}});"></div>
+                      <div class="banner-name">{{hs.name}}</div>
+                  </div>
+                </ion-slide>
+                <div class="banner-desc text-center">
+                    <div class="banner-logo center-block">
+                        <img src="img/logo.png" class="img-responsive" alt="EWL-Logo">
+                    </div>
+                    <div class="banner-text">
+                        <h2 class="text-uppercase">Complete wooden flooring solutions</h2>
+                        <h3 class="text-uppercase">Explore wide range of wooden floorings</h3>
+                    </div>
+
+                    <div class="banner-btn center-block" ng-click="goToElement('stop')">
+                        <button class="btn rounded-prpl-btn text-uppercase">get started</button>
+                        <div class="banner-dwn-arrow">
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          <!-- <ion-slide ng-repeat="item in slider track by $index" >
             <div class="">
             <img ng-src="{{item}}" alt="" class="full-image ">
             <div class="slider-text">
@@ -17,7 +43,8 @@
 
             </div>
             </div>
-          </ion-slide>
+          </ion-slide> -->
+
         </ion-slide-box>
 
         <div class="">
