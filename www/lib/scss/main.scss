@@ -8,27 +8,39 @@ $assertive: #e05d5d !default;
 $royal: #352c6c !default;
 $dark: #303e54 !default;
 $base: #778aa6 !default;
-$font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
-$font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+$font-family-sans-serif: "Source Sans Pro",
+"Helvetica Neue",
+"Roboto",
+"Segoe UI",
+sans-serif !default;
+$font-family-light-sans-serif: "Source Sans Pro",
+"HelveticaNeue-Light",
+"Roboto-Light",
+"Segoe UI-Light",
+sans-serif-light !default;
 @font-face {
   font-family: 'Source Sans Pro';
   src: url("../fonts/SourceSansPro-Bold.ttf");
   font-weight: 700;
 }
+
 @font-face {
   font-family: 'Source Sans Pro';
   src: url("../fonts/SourceSansPro-Semibold.ttf");
   font-weight: 500;
 }
+
 @font-face {
   font-family: 'Source Sans Pro';
   src: url("../fonts/SourceSansPro-Light.ttf");
   font-weight: 300;
 }
+
 @font-face {
   font-family: 'Source Sans Pro';
   src: url("../fonts/SourceSansPro-Regular.ttf");
 }
+
 @mixin placeholder {
   $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
   @each $placeholder in $placeholders {
@@ -46,7 +58,6 @@ $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto
     color: $light !important;
     font-size: 24px;
   }
-
   .activated {
     border: none;
   }
@@ -69,12 +80,10 @@ $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto
     .slider-pager-page.active {
       color: white;
     }
-
     .slider-pager-page {
       color: #b6b6b6;
     }
   }
-
   .slider {
     overflow: visible;
   }
@@ -87,7 +96,7 @@ $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto
 .slider-text {
   position: absolute;
   top: 0;
-  background: rgba(0, 0, 0,-0.38);
+  background: rgba(0, 0, 0, -0.38);
   height: 97%;
   width: 100%;
   padding-top: 7%;
@@ -96,19 +105,16 @@ $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto
 
 .title-img {
   width: 55%;
-
   h4 {
     line-height: 5px;
     margin-left: 19px;
     font-size: 17px;
     font-weight: 700;
   }
-
   h5 {
     line-height: 16px;
     font-size: 14px;
   }
-
   .line {
     margin-left: 60px;
     width: 95px;
@@ -138,7 +144,6 @@ $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto
   display: block;
   margin-top: 25px;
   margin-bottom: 25px;
-
   hr {
     width: 18%;
     background-color: #352C6D;
@@ -159,7 +164,6 @@ $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto
   padding: 5px !important;
   margin: 5px !important;
   box-shadow: none;
-
   h3 {
     margin: 5px;
     color: #34445E;
@@ -193,16 +197,13 @@ $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto
   .tab-nav.tabs {
     top: 0;
     height: 45px;
-    background-color: #fff;
-    // border-bottom: 1px solid white;
+    background-color: #fff; // border-bottom: 1px solid white;
   }
-
   .tab-item {
     color: black;
     max-width: 100%;
     font-size: 16px;
   }
-
   .tab-item.activated,
   .tab-item.active,
   .tab-item.tab-item-active {
@@ -226,7 +227,6 @@ $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto
   margin-top: 20px !important;
   min-height: 30px !important;
   line-height: 0px!important;
-
   .button.button-positive.button-outline.activated,
   .button.button-positive.button-outline.active {
     background-color: #352C6D!important;
@@ -245,25 +245,20 @@ $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto
 .border-detail {
   //border-bottom: 1px solid #ddd;
   padding: 5px;
-
   h5 {
     display: inline;
     color: #888;
   }
-
   .title {
     color: #352C6D;
     width: 30%;
     display: inline-block;
   }
-
   .detail {
     color: #888;
-    width: 70%;
-    // margin-left: 12px;
+    width: 70%; // margin-left: 12px;
     display: inline-block;
     padding-bottom: 3px;
-
     a {
       color: #888;
     }
@@ -272,11 +267,9 @@ $font-family-light-sans-serif: "Source Sans Pro", "HelveticaNeue-Light", "Roboto
 
 .contact {
   margin-top: 60px;
-
   label {
     border: none;
     border-bottom: 1px solid #ddd;
-
     span {
       color: #352C6D;
       font-size: 14px;
@@ -291,7 +284,6 @@ p.double-quote:before {
 
 .about-margin {
   margin: 15px;
-
   h4 {
     margin-top: 5px;
     margin-bottom: 10px;
@@ -300,7 +292,6 @@ p.double-quote:before {
 
 .customer {
   margin: 15px 30px 40px;
-
   p {
     color: white;
   }
@@ -309,7 +300,6 @@ p.double-quote:before {
 .customer-color {
   background-color: #cecece;
   margin-bottom: 10px;
-
   h4 {
     padding-top: 20px;
     color: white;
@@ -319,16 +309,13 @@ p.double-quote:before {
 .aboutslider.slider {
   .slider-pager {
     bottom: 15px;
-
     .slider-pager-page.active {
       color: white;
     }
-
     .slider-pager-page {
       color: grey;
     }
   }
-
   .slider {
     overflow: visible;
   }
@@ -361,7 +348,7 @@ p.double-quote:before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 
@@ -373,20 +360,20 @@ p.double-quote:before {
   position: absolute;
   width: 100%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   top: 50%;
   z-index: 2;
 }
 
-.all-product .title .title-text {
-  text-align: center;
-}
+// .all-product .title .title-text {
+//   text-align: center;
+// }
 
 .all-product .title .title-text .title1 {
   font-weight: 300;
-  margin-left: -24%;
-  display: block;
-  margin-bottom: 0;
+    margin-left: 15%;
+    // padding-bottom: 10px;
+    display: block;
 }
 
 .all-product .title .title-text .title2 {
@@ -416,21 +403,17 @@ p.double-quote:before {
 .scroll-hide {
   // overflow-x: hidden!important;
   background-color: #352C6D;
-
-  ::-webkit-scrollbar {
+   ::-webkit-scrollbar {
     width: 0 !important;
   }
-
-  ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
   }
-
-  ::-webkit-scrollbar-thumb {
+   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   }
-
   a {
     font-size: 9px!important;
     border-radius: 20px;
@@ -463,17 +446,16 @@ p.double-quote:before {
 
 .prodcut-detail {
   margin: 15px;
-
   .detils {}
 }
 
 .discription {
   margin: 15px;
-
   p {
     margin: 5px 0;
   }
 }
+
 //sagar css
 .margin-15 {
   margin: 15px;
@@ -484,31 +466,79 @@ p.double-quote:before {
 }
 
 .menu {
-  background:linear-gradient(to bottom , #352c6c, #9b92d3) !important;
-  // background-color: white !important;
-  .item{
+  background: linear-gradient(to bottom, #352c6c, #9b92d3) !important; // background-color: white !important;
+  .item {
     background: transparent;
     border: none;
   }
-
   .ion-complex,
   .item-content {
     background: none !important;
     border: none;
-    color: white;
-    // color:  #352c6c;
+    color: white; // color:  #352c6c;
     padding: 15px 20px 15px 20px !important;
   }
 }
 
-
-.actives{
-  .item-content, .ion-complex{
-      background:#231e48;
+.actives {
+  .item-content,
+  .ion-complex {
+    background: #231e48;
   }
 }
 
-.full-banner{
-  height: 100%;
+.full-banner {
+  height: 100vh;
   width: 100%;
+}
+
+.white-text {
+  color: #fff;
+}
+
+.banner-desc {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  padding: 0 26px;
+}
+
+.title {
+  border-bottom: 6px double #d5ae72;
+  font-weight: 700;
+  h1 {
+    font-size: 26px;
+  }
+}
+
+.what-we-do {
+  .content .title .head1 {
+    color: #4e4c75;
+  }
+  .tmp-process_content {
+    background: #676588;
+    &.content .title {
+      margin-bottom: 10px;
+      .head1 {
+        color: #fff;
+      }
+      .head2 {
+        color: #b5b5b5;
+      }
+    }
+  }
+  .content {
+    padding: 30px 15%;
+    position: relative;
+  }
+  .head1 {
+    margin-bottom: 0;
+  }
+  .head2 {
+    margin: 0;
+  }
+  .img-holder {
+    position: relative;
+    width: 120px;
+  }
 }
