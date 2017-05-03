@@ -8,7 +8,11 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
   })
 
   .controller('HomeCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
-
+    $scope.homeoptions = {
+      loop: true,
+      effect: 'fade',
+      speed: 500,
+    }
     MyServices.getAllHomeData({}, function (data) {
       if (data.value) {
         $scope.homeSlider = data.data.HomeSlider;
@@ -18,11 +22,11 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
       }
     })
-    $scope.slider = [
-      'img/15.jpg',
-      'img/23.jpg',
-      'img/123.jpg'
-    ];
+    // $scope.slider = [
+    //   'img/15.jpg',
+    //   'img/23.jpg',
+    //   'img/123.jpg'
+    // ];
     $scope.allproduct = [{
         title1: "Chalet",
 

@@ -3,41 +3,44 @@
 
     <!--<ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">-->
     <!--<div class="home-banner" id="scrollArea">-->
-    <ion-slide-box show-pager="true">
-      <ion-slide ng-repeat="hs in homeSlider track by $index">
+    <ion-slides class="homesliders" >
+      <ion-slide-page ng-repeat="hs in homeSlider track by $index" options="homeoptions">
         <div class="full-banner">
-          <div class="full-banner" style="background-image: url({{(hs.image|uploadpath)}});"></div>
+          <!-- <div class="full-banner" style="background-image: url({{(hs.image|uploadpath)}});"></div> -->
+            <div class="homeslide">
+              <img ng-src="{{hs.image|uploadpath}}" alt="">
+            </div>
           <div class="banner-name">{{hs.name}}</div>
         </div>
-      </ion-slide>
-    </ion-slide-box>
+      </ion-slide-page>
+    </ion-slides>
     <div class="banner-desc text-center">
       <div class="banner-logo center-block">
         <img src="img/logo.png" class="full-image" alt="EWL-Logo">
       </div>
       <div class="banner-text">
-        <h2 class="text-uppercase">Complete wooden flooring solutions</h2>
-        <h3 class="text-uppercase">Explore wide range of wooden floorings</h3>
+        <h4 class="text-uppercase">Complete wooden flooring solutions</h4>
+        <h5 class="text-uppercase">Explore wide range of wooden floorings</h5>
       </div>
 
       <div class="banner-btn center-block" ng-click="goToElement('stop')">
-        <button class="btn rounded-prpl-btn text-uppercase">get started</button>
+        <button class="btn rounded-prpl-btn text-uppercase get-started">get started</button>
         <div class="banner-dwn-arrow">
           <i class="fa fa-chevron-right" aria-hidden="true"></i>
         </div>
       </div>
     </div>
 
-    <ion-slide-box on-slide-changed="slideChanged(index)">
-      <ion-slide ng-repeat="lb in landingBanner track by $index">
+    <ion-slides class="homeSubsliders" on-slide-changed="slideChanged(index)">
+      <ion-slide-page ng-repeat="lb in landingBanner track by $index">
         <div class="">
           <img ng-src="{{(lb.image|uploadpath)}}" class="full-image">
           <div class="links">
             <h3 class="head1 text-uppercase">Welcome to <br> Euro Wooden Flooring Pvt. Ltd.</h3>
           </div>
         </div>
-      </ion-slide>
-    </ion-slide-box>
+      </ion-slide-page>
+    </ion-slides>
     <div class="what-we-do">
       <div class="content tmp-process_content">
         <div class="img-holder">
