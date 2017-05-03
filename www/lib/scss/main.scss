@@ -3,7 +3,7 @@ $stable: #f8f8f8 !default;
 $positive: #2489ea !default;
 $calm: #11c1f3 !default;
 $balanced: #33cd5f !default;
-$energized: #ffc900 !default;
+$energized: #676588 !default;
 $assertive: #e05d5d !default;
 $royal: #352c6c !default;
 $dark: #303e54 !default;
@@ -504,7 +504,6 @@ p.double-quote:before {
 }
 
 .title {
-  border-bottom: 6px double #d5ae72;
   font-weight: 700;
   h1 {
     font-size: 26px;
@@ -513,10 +512,10 @@ p.double-quote:before {
 
 .what-we-do {
   .content .title .head1 {
-    color: #4e4c75;
+    color: $energized;
   }
   .tmp-process_content {
-    background: #676588;
+    background: $energized;
     &.content .title {
       margin-bottom: 10px;
       .head1 {
@@ -540,5 +539,8 @@ p.double-quote:before {
   .img-holder {
     position: relative;
     width: 120px;
+  }
+  .title {
+  border-bottom: 6px double #d5ae72;
   }
 }
