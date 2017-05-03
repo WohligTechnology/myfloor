@@ -22,6 +22,41 @@ angular.module('starter.services', [])
           // data: formData
         }).success(callback);
       },
+      getAllCollection: function (formData, callback) {
+        $http({
+          url: adminurl + 'Collection/getAllCollection',
+          method: 'POST',
+          // data: formData
+        }).success(callback);
+      },
+      getCollProduct: function (data, callback) {
+
+        $http({
+          url: adminurl + 'Product/getCollProduct',
+          method: 'POST',
+          data: data
+        }).success(callback);
+      },
+      getOneProductDetail: function (data, callback) {
+        var data={
+          productId:data
+        }
+        $http({
+          url: adminurl + 'Product/getOneProductDetail',
+          method: 'POST',
+          data: data
+        }).success(callback);
+      },
+      getOne: function (id, callback) {
+        var formData={
+          _id:id
+        }
+        $http({
+          url: adminurl + 'Collection/getOne',
+          method: 'POST',
+          data: formData
+        }).success(callback);
+      },
 
       //Get about us data
       getAboutUs: function (formData, callback) {

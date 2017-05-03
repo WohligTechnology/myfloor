@@ -1,8 +1,22 @@
-<ion-view view-title="Our COLLECTION">
+<ion-view view-title="COLLECTION">
   <ion-content class="background">
-<div class="what-we-have text-center"><p>Let us help you find the perfect<br>floor for your home.</p></div>
-<!--
-    <tab-slide-box tab="0">
+<div class="  headcollect"><p>Let us help you find the perfect<br>floor for your home.</p></div>
+<div class="card newproduct-card" ui-sref="app.product-detail({title:all.name,id:all._id})" ng-repeat="all in getcollection">
+  <img ng-src="{{all.image|uploadpath}}" alt="" class=" full-image" />
+  <div class="cat-div">
+    <!-- <h3 class="cat-head">Name :</h3> -->
+    <h3 class="cat">{{all.name}}</h3>
+  </div>
+  <!-- <div class="cat-div">
+    <h3 class="cat-head">Dim :</h3>
+    <h3 class="cat">HDF 8mm x 1215mm x 195mm</h3>
+  </div>
+  <div class="cat-div">
+    <h3 class="cat-head">Grade :</h3>
+    <h3 class="cat">Ac3</h3>
+  </div> -->
+</div>
+    <!-- <tab-slide-box tab="0">
       <div class="tsb-icons">
         <div class="tsb-ic-wrp">
           <ion-scroll direction="x" class="tsb-hscroll scroll-view ionic-scroll scroll-hide">
@@ -685,7 +699,7 @@
           </ion-content>
         </ion-slide>
       </ion-slide-box>
-    </tab-slide-box>-->
+    </tab-slide-box> -->
 
   </ion-content>
 

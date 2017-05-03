@@ -129,8 +129,8 @@ $dark:                            #444 !default;
   .newproduct-card h3 {
     margin: 5px;
     color: #34445E;
-    font-size: 14px;
-    text-align: left; }
+    font-size: 20px;
+    text-align: center; }
 
 .editable {
   width: 100%;
@@ -386,7 +386,9 @@ p.double-quote:before {
 
 .banner-desc {
   position: absolute;
-  top: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   padding: 0 26px;
   z-index: 9; }
@@ -446,14 +448,24 @@ p.double-quote:before {
 
 .banner-text {
   color: white;
-  width: 70%;
   margin: 0 auto; }
   .banner-text h4 {
     color: white;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-size: 28px; }
   .banner-text h5 {
     color: white;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-size: 16px; }
+
+.get-started {
+  background-color: #676588;
+  color: #fff;
+  border-radius: 32px !important;
+  font-size: 12px;
+  padding: 9px 15px;
+  border: none;
+  margin: 15px; }
 
 .homeSubsliders {
   height: 188px; }
@@ -462,6 +474,65 @@ p.double-quote:before {
     height: auto;
     max-width: 100%;
     max-height: 100%; }
+
+.headcollect {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+  font-style: italic;
+  font-weight: 400;
+  background: #4e4c75;
+  line-height: 25px; }
+
+.singleproduct {
+  padding: 20px;
+  color: #fff;
+  font-weight: 400;
+  background: #4e4c75; }
+  .singleproduct h3 {
+    color: white;
+    text-transform: uppercase; }
+  .singleproduct h4 {
+    color: white; }
+  .singleproduct .proimg {
+    height: auto;
+    width: 100%;
+    border-radius: 7px; }
+    .singleproduct .proimg img {
+      height: 100%;
+      width: 100%; }
+
+.banner-logo {
+  width: 80%;
+  display: block;
+  margin: 0 auto; }
+  .banner-logo img {
+    height: 100%;
+    width: 100%; }
+
+.btmbar {
+  position: absolute !important;
+  bottom: 0;
+  width: 100%;
+  z-index: 9; }
+
+.hastabs {
+  top: 130px !important; }
+
+.texturetab .tab-nav.tabs {
+  bottom: 0;
+  top: auto; }
+
+.texturetab .tab-item {
+  background: #352C6D;
+  color: white !important; }
+
+.texturetab .tab-item.tab-item-active {
+  font-size: 20px !important; }
+
+.toptexture {
+  height: 130px; }
 
 /*!
   Ionicons, v2.0.1

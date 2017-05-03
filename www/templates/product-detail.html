@@ -1,7 +1,31 @@
-<ion-view view-title="PRODUCT DETAIL">
+<ion-view view-title="{{title}}">
   <ion-content class="background">
+    <div class="singleproduct">
+      <div class="proimg">
+        <img ng-src="{{getone.image|uploadpath}}" alt="">
+      </div>
+      <h3>{{getone.name}}</h3>
+      <p ng-bind-html="getone.details"></p>
+    </div>
+    <div class="card newproduct-card" ng-repeat="all in getcoll" ui-sref="app.collection-detail({productId:all._id})">
+      <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" />
+      <div class="cat-div">
+        <!-- <h3 class="cat-head">Name :</h3> -->
+        <h3 class="cat">{{all.name}}</h3>
+      </div>
+      <!-- <div class="cat-div">
+        <h3 class="cat-head">Dim :</h3>
+        <h3 class="cat">HDF 8mm x 1215mm x 195mm</h3>
+      </div>
+      <div class="cat-div">
+        <h3 class="cat-head">Grade :</h3>
+        <h3 class="cat">Ac3</h3>
+      </div> -->
+    </div>
+    <ion-infinite-scroll ng-if="!stop" on-infinite="loadMore()" distance="5%" >
+                 </ion-infinite-scroll>
 
-    <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">
+    <!-- <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">
       <ion-slide ng-repeat="item in slider track by $index">
         <div class="">
           <img ng-src="{{item}}" alt="" class="full-image " ui-sref="login">
@@ -11,8 +35,8 @@
           </div>
         </div>
       </ion-slide>
-    </ion-slide-box>
-    <div class="">
+    </ion-slide-box> -->
+    <!-- <div class="">
       <h4 ui-sref="app.login" class="margin-15"> Product Name</h4>
       <div class="margin-15">
         <div class="item">
@@ -72,6 +96,6 @@
           in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </div>
-    </div>
+    </div> -->
   </ion-content>
 </ion-view>
