@@ -164,14 +164,25 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       'img/123.jpg'
     ];
   })
-  .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $stateParams) {
+  .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $stateParams, $filter) {
     $scope.productId = $stateParams.productId;
     MyServices.getOneProductDetail($scope.productId, function (data) {
       if (data.value) {
         $scope.getoneproduct = data.data;
         console.log($scope.getoneproduct);
       }
-    })
+    });
+    $scope.share = function () {
+      var image = $filter("uploadpath")($scope.getoneproduct.swatchImage);
+      console.log(image);
+      $cordovaSocialSharing
+        .share('', '', image, '') // Share via native share sheet
+        .then(function (result) {
+          // Success!
+        }, function (err) {
+          // An error occured. Show a message to the user
+        });
+    };
   })
   .controller('ContactUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
     $scope.formData = {};

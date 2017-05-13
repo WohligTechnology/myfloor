@@ -10141,7 +10141,7 @@ p.double-quote:before {
   padding: 0 10px 0 0 !important; }
 
 .menu {
-  background: linear-gradient(to bottom, #352c6c, #9b92d3) !important; }
+  background-color: #676588; }
   .menu .item {
     background: transparent;
     border: none; }
