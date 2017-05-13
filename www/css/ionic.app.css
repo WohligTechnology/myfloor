@@ -378,8 +378,7 @@ p.double-quote:before {
   background: #231e48; }
 
 .full-banner {
-  height: 100vh;
-  width: 100%; }
+  height: 100vh; }
 
 .white-text {
   color: #fff; }
@@ -429,16 +428,17 @@ p.double-quote:before {
 
 .homeslide {
   height: 100%;
-  width: 100%; }
+  width: auto;
+  background-size: cover;
+  background-position: center; }
   .homeslide img {
     height: 100%;
-    width: 100%; }
+    width: auto; }
 
 .homesliders .swiper-slide img {
-  width: 100%;
+  width: auto;
   height: 100%;
-  max-width: 100%;
-  max-height: 100%; }
+  max-width: none; }
 
 .homesliders .swiper-container.swiper-pagination.swiper-pagination-bullet {
   background: white !important; }
@@ -486,14 +486,13 @@ p.double-quote:before {
   line-height: 25px; }
 
 .singleproduct {
-  padding: 20px;
   color: #fff;
   font-weight: 400;
   background: #4e4c75; }
-  .singleproduct h3 {
+  .singleproduct h4 {
     color: white;
     text-transform: uppercase; }
-  .singleproduct h4 {
+  .singleproduct h5 {
     color: white; }
   .singleproduct .proimg {
     height: auto;
@@ -518,21 +517,37 @@ p.double-quote:before {
   z-index: 9; }
 
 .hastabs {
-  top: 130px !important; }
+  top: 174px !important; }
 
 .texturetab .tab-nav.tabs {
   bottom: 0;
   top: auto; }
 
 .texturetab .tab-item {
-  background: #352C6D;
+  background: #352C6D !important;
   color: white !important; }
 
 .texturetab .tab-item.tab-item-active {
   font-size: 20px !important; }
 
 .toptexture {
-  height: 130px; }
+  height: 70px;
+  bottom: 0;
+  position: absolute;
+  width: 100%; }
+
+.texturehead {
+  background: rgba(171, 171, 171, 0.3);
+  color: #424242;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px; }
+
+.btmtexture {
+  bottom: 70px !important; }
+
+.mabt-5 {
+  margin-bottom: -5px; }
 
 /*!
   Ionicons, v2.0.1

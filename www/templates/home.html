@@ -3,14 +3,24 @@
 
     <!--<ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">-->
     <!--<div class="home-banner" id="scrollArea">-->
-    <ion-slides class="homesliders" >
-      <ion-slide-page ng-repeat="hs in homeSlider track by $index">
+    <!-- <flex-slider flex-slide="hs in homeSlider track by $index" prev-text="" next-text="" min-items="3" slideshow-speed="2000">
+           <li>
+               <div class="full-banner">
+                   <div class="full-banner" style="background-image: url({{(hs.image|uploadpath)}});"></div>
+               </div>
+
+           </li>
+       </flex-slider> -->
+
+    <ion-slides class="homesliders" options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" autoplay="2000" style="width:">
+      <ion-slide-page ng-repeat="hs in homeSlider.data track by $index">
         <div class="full-banner">
-          <!-- <div class="full-banner" style="background-image: url({{(hs.image|uploadpath)}});"></div> -->
-            <div class="homeslide">
+            <!-- <div class="homeslide">
               <img ng-src="{{hs.image|uploadpath}}" alt="">
-            </div>
-          <div class="banner-name">{{hs.name}}</div>
+            </div> -->
+            <div class="homeslide" style="background-image: url({{(hs.image|uploadpath)}});"></div>
+
+          <!-- <div class="banner-name">{{hs.name}}</div> -->
         </div>
       </ion-slide-page>
     </ion-slides>

@@ -1,5 +1,4 @@
 <ion-view view-title="COLLECTION">
-<ion-content class="background">
 
 
   <!-- <tab-slide-box tab="0">
@@ -14,12 +13,22 @@
 
         </div>
     </div> -->
-                    <div class="singleproduct text-center toptexture">
-                        <h3>{{getoneproduct.name}}</h3>
-                        <h4>{{getoneproduct.size}}</h4>
+    <ion-content class=" btmtexture ">
+      <div class="texturehead" ng-if="getoneproduct.swatchImage">Texture</div>
+      <div class="mabt-5">
+        <img ng-src="{{getoneproduct.swatchImage|uploadpath}}" alt=""  class="full-image"/>
+      </div>
+      <div class="texturehead" ng-if="getoneproduct.texturerAndSceneImage">Scene</div>
+      <div class="mabt-5">
+        <img ng-src="{{getoneproduct.texturerAndSceneImage|uploadpath}}" alt=""  class="full-image"/>
+      </div>
+    </ion-content>
+  <div class="singleproduct text-center toptexture " ng-if="getoneproduct.name">
+      <h4>{{getoneproduct.name}}</h4>
+      <h5>{{getoneproduct.size}}</h5>
 
-                    </div>
-                    <ion-tabs class="tab-button tab-header has-header texturetab">
+  </div>
+  <!-- <ion-tabs class="tab-button tab-header has-header texturetab">
     <ion-tab title="Texture" class="">
         <ion-content class="has-tabs-top hastabs tabs-content">
           <div class="">
@@ -35,7 +44,7 @@
           </div>
         </ion-content>
         </ion-tab>
-        </ion-tabs>
+        </ion-tabs> -->
 
                     <!-- <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
                         <ion-slide>
@@ -59,6 +68,5 @@
                         </ion-slide>
                       </ion-slide-box>
               </tab-slide-box> -->
-  </ion-content >
 
   </ion-view>
