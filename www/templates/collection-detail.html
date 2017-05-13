@@ -1,72 +1,16 @@
 <ion-view view-title="COLLECTION">
-
-
-  <!-- <tab-slide-box tab="0">
-    <div class="tsb-icons btmbar">
-        <div class="tsb-ic-wrp">
-            <ion-scroll direction="x" class="tsb-hscroll scroll-view ionic-scroll scroll-hide"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
-
-                <a href="javascript:;" >Texture</a>
-                <a href="javascript:;" >Scene</a>
-
-  <div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 0px, 0px) scaleX(1); width: 428px; transform-origin: left center 0px;"></div></div></ion-scroll>
-
-        </div>
-    </div> -->
-    <ion-content class=" btmtexture ">
-      <div class="texturehead" ng-if="getoneproduct.swatchImage">Texture</div>
-      <div class="mabt-5">
-        <img ng-src="{{getoneproduct.swatchImage|uploadpath}}" alt=""  class="full-image"/>
-      </div>
-      <div class="texturehead" ng-if="getoneproduct.texturerAndSceneImage">Scene</div>
-      <div class="mabt-5">
-        <img ng-src="{{getoneproduct.texturerAndSceneImage|uploadpath}}" alt=""  class="full-image"/>
-      </div>
-    </ion-content>
-  <div class="singleproduct text-center toptexture " ng-if="getoneproduct.name">
+  <ion-content>
+    <div class="singleproduct text-center toptexture" ng-if="getoneproduct.name">
       <h4>{{getoneproduct.name}}</h4>
       <h5>{{getoneproduct.size}}</h5>
-
-  </div>
-  <!-- <ion-tabs class="tab-button tab-header has-header texturetab">
-    <ion-tab title="Texture" class="">
-        <ion-content class="has-tabs-top hastabs tabs-content">
-          <div class="">
-            <img ng-src="{{getoneproduct.swatchImage|uploadpath}}" alt=""  class="full-image"/>
-          </div>
-        </ion-content>
-        </ion-tab>
-    <ion-tab title="Scene" class="">
-        <ion-content class="has-tabs-top hastabs tabs-content">
-          <div class="">
-            <img ng-src="{{getoneproduct.texturerAndSceneImage|uploadpath}}" alt=""  class="full-image"/>
-
-          </div>
-        </ion-content>
-        </ion-tab>
-        </ion-tabs> -->
-
-                    <!-- <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
-                        <ion-slide>
-                            <ion-content>
-                                <div class="">
-                                    <div class="">
-                                      <img ng-src="{{getoneproduct.swatchImage|uploadpath}}" alt=""  class="full-image"/>
-                                    </div>
-                                </div>
-                            </ion-content>
-                        </ion-slide>
-                        <ion-slide>
-                            <ion-content>
-                                <div class="">
-                                    <div class="">
-                                      <img ng-src="{{getoneproduct.texturerAndSceneImage|uploadpath}}" alt=""  class="full-image"/>
-
-                                    </div>
-                                </div>
-                            </ion-content>
-                        </ion-slide>
-                      </ion-slide-box>
-              </tab-slide-box> -->
-
-  </ion-view>
+    </div>
+    <div class="texturehead" ng-if="getoneproduct.swatchImage">Texture</div>
+    <div class="mabt-5">
+      <img ng-src="{{getoneproduct.swatchImage|uploadpath}}" class="full-image" />
+    </div>
+    <div class="texturehead" ng-if="getoneproduct.texturerAndSceneImage">Scene</div>
+    <div class="mabt-5">
+      <img ng-src="{{getoneproduct.texturerAndSceneImage|uploadpath}}" class="full-image" />
+    </div>
+  </ion-content>
+</ion-view>

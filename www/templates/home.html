@@ -1,56 +1,32 @@
 <ion-view view-title="WELCOME">
   <ion-content class="background">
 
-    <!--<ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">-->
-    <!--<div class="home-banner" id="scrollArea">-->
-    <!-- <flex-slider flex-slide="hs in homeSlider track by $index" prev-text="" next-text="" min-items="3" slideshow-speed="2000">
-           <li>
-               <div class="full-banner">
-                   <div class="full-banner" style="background-image: url({{(hs.image|uploadpath)}});"></div>
-               </div>
 
-           </li>
-       </flex-slider> -->
-
-    <ion-slides class="homesliders" options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" autoplay="2000" style="width:">
-      <ion-slide-page ng-repeat="hs in homeSlider.data track by $index">
-        <div class="full-banner">
-            <!-- <div class="homeslide">
-              <img ng-src="{{hs.image|uploadpath}}" alt="">
-            </div> -->
-            <div class="homeslide" style="background-image: url({{(hs.image|uploadpath)}});"></div>
-
-          <!-- <div class="banner-name">{{hs.name}}</div> -->
+    <div class="relative">
+      <ion-slides class="homeSubsliders" options="homeSlider.sliderOptions" on-slide-changed="slideChanged(index)" slider="homeSlider.sliderDelegate"
+        autoplay="5000">
+        <ion-slide-page ng-repeat="hs in homeSlider.data track by $index">
+          <img ng-src="{{(hs.image|uploadpath)}}" class="full-image">
+          <div class="banner-name">{{hs.name}}</div>
+        </ion-slide-page>
+      </ion-slides>
+      <div class="banner-desc text-center">
+        <div class="banner-logo center-block">
+          <img src="img/logo.png" class="full-image" alt="EWL-Logo">
         </div>
-      </ion-slide-page>
-    </ion-slides>
-    <div class="banner-desc text-center">
-      <div class="banner-logo center-block">
-        <img src="img/logo.png" class="full-image" alt="EWL-Logo">
-      </div>
-      <div class="banner-text">
-        <h4 class="text-uppercase">Complete wooden flooring solutions</h4>
-        <!-- <h5 class="text-uppercase">Explore wide range of wooden floorings</h5> -->
-      </div>
-
-      <!-- <div class="banner-btn center-block" ng-click="goToElement('stop')">
-        <button class="btn rounded-prpl-btn text-uppercase get-started">GET STARTED</button>
-        <div class="banner-dwn-arrow">
-          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        <div class="banner-text">
+          <h4 class="text-uppercase">Complete wooden flooring solutions</h4>
         </div>
-      </div> -->
+      </div>
     </div>
 
-    <!-- <ion-slides class="homeSubsliders" on-slide-changed="slideChanged(index)">
+    <ion-slides class="homeSubsliders" options="homeSlider.sliderOptions" on-slide-changed="slideChanged(index)">
       <ion-slide-page ng-repeat="lb in landingBanner track by $index">
-        <div class="">
-          <img ng-src="{{(lb.image|uploadpath)}}" class="full-image">
-          <div class="links">
-            <h3 class="head1 text-uppercase">Welcome to <br> Euro Wooden Flooring Pvt. Ltd.</h3>
-          </div>
-        </div>
+        <img ng-src="{{(lb.image|uploadpath)}}" class="full-image">
+        <div class="banner-name">{{lb.name}}</div>
       </ion-slide-page>
-    </ion-slides> -->
+    </ion-slides>
+
     <div class="what-we-do">
       <div class="content tmp-process_content">
         <div class="img-holder">
@@ -125,8 +101,8 @@
               <h1 class="head2">PRODUCT</h1>
             </div>
           </div>
-          </div>
-          </div>
+        </div>
+      </div>
       <!-- <label for="" class="new-product">OUR PRODUCT
                 <hr></label> -->
       <div class="all-product" ng-repeat="all in getcollection" ui-sref="app.product-detail({title:all.name,id:all._id})">
