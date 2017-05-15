@@ -274,17 +274,21 @@ $scope.video={};
     });
     $scope.share = function () {
       var image = $filter("uploadpath")($scope.getoneproduct.swatchImage);
+      // var image1 = $filter("uploadpath")($scope.getoneproduct.texturerAndSceneImage);
+      console.log($scope.getoneproduct.swatchImage,image);
+
       var subject = $scope.getoneproduct.name;
-      var message = $scope.getoneproduct.size;
+      var message = "name: " +$scope.getoneproduct.name +"\n"+"size :"+ $scope.getoneproduct.size;
       console.log(image);
       $cordovaSocialSharing
-        .share(subject, message, image, '') // Share via native share sheet
+        .share(message, '', image, '') // Share via native share sheet
         .then(function (result) {
           // Success!
         }, function (err) {
           // An error occured. Show a message to the user
         });
     };
+
   })
   .controller('ContactUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
     $scope.formData = {};
