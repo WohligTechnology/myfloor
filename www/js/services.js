@@ -66,6 +66,20 @@ angular.module('starter.services', [])
           data: formData
         }).success(callback);
       },
+      getAllDownload: function (formData, callback) {
+        $http({
+          url: adminurl + 'document/getAllDownload',
+          method: 'POST',
+          data: formData
+        }).success(callback);
+      },
+      getAllVideo: function (formData, callback) {
+        $http({
+          url: adminurl + 'media/getAllVideo',
+          method: 'POST',
+          data: formData
+        }).success(callback);
+      },
 
       //To save contact us data
       saveConatct: function (formData, callback) {

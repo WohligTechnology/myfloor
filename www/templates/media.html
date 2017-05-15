@@ -1,0 +1,35 @@
+<ion-view view-title="Media">
+  <ion-content>
+
+    <ion-tabs class=" tab-button">
+      <ion-tab title="Videos">
+        <ion-content class=" downtabstop">
+          <div class="downimg" ng-repeat="video in getAllVideo" ng-click="showVideo(video.videoUrl);">
+            <div class="video" ng-style="{'background-image':'url(http://img.youtube.com/vi/{{video.videoUrl}}/hqdefault.jpg)'}"></div>
+            <i class="ion ion-social-youtube-outline"></i>
+            <h4 class="">{{video.name}}</h4>
+
+          </div>
+          <ion-infinite-scroll ng-if="!stop" on-infinite="loadMore(1)" distance="5%">
+          </ion-infinite-scroll>
+        </ion-content>
+      </ion-tab>
+      <ion-tab title="Downlods">
+        <ion-content class="tab-content downtabstop">
+          <div class="downimg" ng-repeat="download in getAllDownload" ng-click="openPDF(download.content);">
+            <img ng-src="{{download.image | uploadpath}}" alt="">
+            <h4 class="">{{download.name}}</h4>
+
+          </div>
+          <ion-infinite-scroll ng-if="!stop" on-infinite="loadMore(2)" distance="5%">
+          </ion-infinite-scroll>
+
+
+        </ion-content>
+
+      </ion-tab>
+    </ion-tabs>
+
+  </ion-content>
+
+</ion-view>

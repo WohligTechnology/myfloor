@@ -1,10 +1,110 @@
-angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox'])
+angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox','ngCordova'])
 
   .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
   })
   .controller('ProductCategoryCtrl', function ($scope, $ionicModal, $timeout) {
 
+  })
+  .controller('MediaCtrl', function ($scope, $ionicModal, $timeout, MyServices,$filter) {
+    $scope.getdown={};
+    $scope.getdown.skip=0;
+    $scope.getvideo={};
+    $scope.getvideo.skip=0;
+    MyServices.getAllDownload($scope.getdown, function (data) {
+      if (data.value) {
+        $scope.getAllDownload = data.data;
+        // console.log($scope.homeSlider, $scope.landingBanner);
+      } else {
+
+      }
+    });
+    MyServices.getAllVideo($scope.getvideo, function (data) {
+      if (data.value) {
+        $scope.getAllVideo = data.data;
+        // console.log($scope.homeSlider, $scope.landingBanner);
+      } else {
+
+      }
+    });
+
+    	var init = function () {
+    		return $ionicModal.fromTemplateUrl('templates/videomodal.html', {
+    			scope: $scope,
+    			animation: 'slide-in-up'
+    		}).then(function (modal) {
+    			$scope.modal = modal;
+
+    		});
+    	};
+
+      var options = "location=no,toolbar=yes";
+      var target = "_blank";
+      var url = "";
+
+      $scope.openPDF = function(link) {
+        // url = $filter('serverimage')(link);
+        $scope.pdfURL = $filter('uploadpath')(link);
+            $scope.finalURL = 'http://docs.google.com/gview?url=' + $scope.pdfURL + '&embedded=true';
+            var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+
+      };
+$scope.video={};
+    	$scope.showVideo = function (url) {
+    		console.log(url);
+    		init().then(function () {
+    			$scope.modal.show();
+    		});
+    		$scope.video.url = url + "?autoplay=1";
+    	};
+
+
+    	$scope.closeVideo = function () {
+    		$scope.modal.remove()
+    			.then(function () {
+    				$scope.modal = null;
+    			});
+    	};
+
+    $scope.loadMore = function (tab) {
+      if (tab=='1') {
+        console.log("inside loadMore");
+        $scope.getvideo.skip = $scope.getvideo.skip + 10;
+        console.log($scope.getvideo.skip);
+        MyServices.getAllVideo($scope.getvideo, function (data) {
+          if (data.value) {
+            if (data.data.message == "No record found") {
+              $scope.stop = true;
+            } else {
+              $scope.getAllVideo = $scope.getAllVideo.concat(data.data);
+              console.log($scope.getAllVideo);
+            }
+
+          }
+
+        })
+      }else{
+        console.log("inside loadMore");
+        $scope.getdown.skip = $scope.getdown.skip + 10;
+        console.log($scope.getdown.skip);
+        MyServices.getAllDownload($scope.getdown, function (data) {
+          if (data.value) {
+            if (data.data.message == "No record found") {
+              $scope.stop = true;
+            } else {
+              $scope.getAllDownload = $scope.getAllDownload.concat(data.data);
+              console.log($scope.getAllDownload);
+            }
+
+          }
+
+        })
+      }
+
+
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+
+    }
   })
 
   .controller('HomeCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
@@ -164,7 +264,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       'img/123.jpg'
     ];
   })
-  .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $stateParams, $filter) {
+  .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, $cordovaSocialSharing,MyServices, $stateParams, $filter) {
     $scope.productId = $stateParams.productId;
     MyServices.getOneProductDetail($scope.productId, function (data) {
       if (data.value) {
@@ -174,9 +274,11 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     });
     $scope.share = function () {
       var image = $filter("uploadpath")($scope.getoneproduct.swatchImage);
+      var subject = $scope.getoneproduct.name;
+      var message = $scope.getoneproduct.size;
       console.log(image);
       $cordovaSocialSharing
-        .share('', '', image, '') // Share via native share sheet
+        .share(subject, message, image, '') // Share via native share sheet
         .then(function (result) {
           // Success!
         }, function (err) {

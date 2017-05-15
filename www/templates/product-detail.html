@@ -6,6 +6,9 @@
       </div>
       <h3>{{getone.name}}</h3>
       <p ng-bind-html="getone.details"></p>
+      <div class="englogo" ng-if="getone.name == 'Engineered'">
+        <img src="img/logo.png" alt="">
+      </div>
     </div>
     <div class="card newproduct-card" ng-repeat="all in getcoll" ui-sref="app.collection-detail({productId:all._id})">
       <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" />

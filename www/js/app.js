@@ -114,6 +114,15 @@ angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
         }
       }
     })
+    .state('app.media', {
+      url: '/media',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/media.html',
+          controller: 'MediaCtrl'
+        }
+      }
+    })
 
   // .state('app.single', {
   //   url: '/playlists/:playlistId',
@@ -127,7 +136,23 @@ angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 })
-
+.directive('youtube', function ($sce) {
+	return {
+		restrict: 'A',
+		scope: {
+			code: '='
+		},
+		replace: true,
+		template: '<iframe id="popup-youtube-player" style="overflow:hidden;height:100%;width:100%" width="100%" height="100%" src="{{url}}" frameborder="0" allowscriptaccess="always"></iframe>',
+		link: function (scope) {
+			scope.$watch('code', function (newVal) {
+				if (newVal) {
+					scope.url = $sce.trustAsResourceUrl("http://www.youtube.com/embed/" + newVal);
+				}
+			});
+		}
+	};
+})
 .filter('uploadpath', function() {
         return function(input, width, height, style) {
             var other = "";
