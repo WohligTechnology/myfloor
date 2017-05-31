@@ -10196,7 +10196,8 @@ p.double-quote:before {
 .what-we-do .img-holder {
   position: relative;
   display: inline-block;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  width: 135px; }
 
 .what-we-do .title {
   border-bottom: 6px double #d5ae72; }

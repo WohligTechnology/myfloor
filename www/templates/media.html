@@ -14,7 +14,7 @@
           </ion-infinite-scroll>
         </ion-content>
       </ion-tab>
-      <ion-tab title="Downlods">
+      <ion-tab title="Downloads">
         <ion-content class="tab-content downtabstop">
           <div class="downimg" ng-repeat="download in getAllDownload" ng-click="openPDF(download.content);">
             <img ng-src="{{download.image | uploadpath}}" alt="">
