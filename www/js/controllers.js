@@ -193,6 +193,29 @@ $scope.video={};
       }
 
     ]
+//mission
+      MyServices.getAboutUs({
+     _id: "593fd4f92bae30327e260222"
+    }, function (response) {
+      if (response.value) {
+        $scope.mission = response.data.content;
+        console.log(" $scope.mission", $scope.mission);
+      } else {
+
+      }
+    });
+
+    //vission
+        MyServices.getAboutUs({
+      _id: "593fd4fe2bae30327e260223"
+    }, function (response) {
+      if (response.value) {
+        $scope.vission = response.data.content;
+        console.log(" $scope.vission", $scope.vission);
+      } else {
+
+      }
+    });
   })
   .controller('AboutUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
 
