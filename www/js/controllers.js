@@ -290,7 +290,7 @@ $scope.video={};
     };
 
   })
-  .controller('ContactUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
+  .controller('ContactUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $state ) {
     $scope.formData = {};
 
     //API call to submit contact us data.
@@ -299,9 +299,11 @@ $scope.video={};
       MyServices.saveConatct(data, function (response) {
         if (response.value) {
           $state.reload();
+            $scope.formData = {};
           console.log("response.data", response.data);
           //   toastr.success("We will get back to you shortly.", "We have your query!");
         }
+          $scope.formData = {};
       })
       // $scope.formSubmitted = true;
     }
