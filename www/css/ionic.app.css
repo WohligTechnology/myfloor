@@ -9844,6 +9844,9 @@ a.button {
 .box-slider {
   position: relative; }
 
+.bold {
+  font-weight: 700; }
+
 .slider-text {
   position: absolute;
   top: 0;
@@ -10395,3 +10398,7 @@ p.double-quote:before {
 
 .share:before {
   font-size: 24px !important; }
+
+.disclaimer {
+  font-size: 12px;
+  font-style: initial; }

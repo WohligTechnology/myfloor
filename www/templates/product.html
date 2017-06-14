@@ -1,7 +1,8 @@
 <ion-view view-title="COLLECTION">
   <ion-content class="background">
     <div class="headcollect">
-      <p>Let us help you find the perfect<br>floor for your home.</p>
+      <p>Let us help you find the perfect<br>wooden floor for your home.</p>
+      <span class="disclaimer">Product image colour may vary from the actual product.</span>
     </div>
     <div class="card newproduct-card" ui-sref="app.product-detail({title:all.name,id:all._id})" ng-repeat="all in getcollection">
       <img ng-src="{{all.image|uploadpath}}" alt="" class=" full-image" />

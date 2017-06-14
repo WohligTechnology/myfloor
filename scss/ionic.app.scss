@@ -82,6 +82,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
   position: relative;
 }
 
+.bold{
+  font-weight: 700;
+}
 .slider-text {
   position: absolute;
   top: 0;
@@ -828,3 +831,10 @@ p.double-quote:before {
     font-size: 24px!important;
   }
 }
+
+//ruchi
+.disclaimer{
+font-size: 12px;
+    font-style: initial;
+}
+

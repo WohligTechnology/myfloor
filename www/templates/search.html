@@ -1,5 +1,27 @@
 <ion-view view-title="Search">
   <ion-content>
-    <h1>Search</h1>
+    <h3>Search</h3>
+   <input type="text" class="form-control" ng-model="searchText" ng-change="search(searchText)" name="keyword"
+                       placeholder="Search...">
+                   <div class="search-suggest" ng-if="searchText != '' && isText == true">
+                       <ul class="list-unstyled">
+                           <li class="ct-name"><span>Product</span></li>
+                           <li class="search-item" ng-click="getMySP($index)" ng-repeat="item in productArray" ng-if="productArray.length > 0">
+                               <p class="text-wrapper">{{item.name}}</p>
+                           </li>
+                           <li class="search-item" ng-if="productArray.length == 0">
+                               <p class="text-wrapper">No match found</p>
+                           </li>
+                       </ul>
+                       <ul class="list-unstyled">
+                           <li class="ct-name"><span>Collection</span></li>
+                           <li class="search-item" ng-click="getSPByLocation($index,1)" ng-repeat="item in collectionArray" ng-if="collectionArray.length > 0">
+                               <p class="text-wrapper">{{item.name}}</p>
+                           </li>
+                           <li class="search-item" ng-if="collectionArray.length == 0">
+                               <p class="text-wrapper">No match found</p>
+                           </li>
+                       </ul>
+                   </div>
   </ion-content>
 </ion-view>

@@ -217,6 +217,32 @@ $scope.video={};
       }
     });
   })
+
+  .controller('SearchCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
+  $scope.search = function (value) {
+           console.log("value", value);
+           $scope.isText = true;
+           $scope.productArray = [];
+           $scope.collectionArray = [];
+           if (value.searchText != "") {
+               MyServices.searchData({
+                   searchText: value
+               }, function (data) {
+                   if (data.value) {
+                       $scope.productArray = data.data.product;
+                       $scope.collectionArray = data.data.collection;
+                   } else {
+                       $scope.productArray = [];
+                       $scope.collectionArray = [];
+                   }
+               })
+           }
+       }
+  })
+
+
+
+
   .controller('AboutUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
 
     //API call to get about us info
