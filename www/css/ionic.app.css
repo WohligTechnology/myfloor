@@ -10402,3 +10402,12 @@ p.double-quote:before {
 .disclaimer {
   font-size: 12px;
   font-style: initial; }
+
+.searching {
+  padding: 20px; }
+  .searching input {
+    border-bottom: 1px solid;
+    width: 100%; }
+  .searching .ct-name {
+    color: #27204f;
+    font-size: 16px; }

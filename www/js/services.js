@@ -37,9 +37,28 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
+
+      //get one collection detail
+      getOneCollection: function (formData, callback) {
+        $http({
+          url: adminurl + 'Collection/getOne',
+          method: 'POST',
+          data: formData
+        }).success(callback);
+      },
+
+      //get all products of collection
+      getAllCollectionProducts: function (formData, callback) {
+        $http({
+          url: adminurl + 'Product/getCollProduct',
+          method: 'POST',
+          data: formData
+        }).success(callback);
+      },
+
       getOneProductDetail: function (data, callback) {
-        var data={
-          productId:data
+        var data = {
+          productId: data
         }
         $http({
           url: adminurl + 'Product/getOneProductDetail',
@@ -48,8 +67,8 @@ angular.module('starter.services', [])
         }).success(callback);
       },
       getOne: function (id, callback) {
-        var formData={
-          _id:id
+        var formData = {
+          _id: id
         }
         $http({
           url: adminurl + 'Collection/getOne',
@@ -85,6 +104,13 @@ angular.module('starter.services', [])
       saveConatct: function (formData, callback) {
         $http({
           url: adminurl + 'ContactUs/save',
+          method: 'POST',
+          data: formData
+        }).success(callback);
+      },
+      searchData: function (formData, callback) {
+        $http({
+          url: adminurl + 'product/searchProductByName',
           method: 'POST',
           data: formData
         }).success(callback);

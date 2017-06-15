@@ -3,15 +3,18 @@
   src: url("../fonts/Lato-Bold.ttf");
   font-weight: 700;
 }
+
 @font-face {
   font-family: 'Lato';
   src: url("../fonts/Lato-Light.ttf");
   font-weight: 300;
 }
+
 @font-face {
   font-family: 'Lato';
   src: url("../fonts/Lato-Regular.ttf");
 }
+
 $light: #fff !default;
 $stable: #f8f8f8 !default;
 $positive: #2489ea !default;
@@ -22,8 +25,16 @@ $assertive: #e05d5d !default;
 $royal: #352c6c !default;
 $dark: #303e54 !default;
 $base: #778aa6 !default;
-$font-family-sans-serif: "Lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
-$font-family-light-sans-serif: "Lato", "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default; // The path for our ionicons font files, relative to the built CSS in www/css
+$font-family-sans-serif: "Lato",
+"Helvetica Neue",
+"Roboto",
+"Segoe UI",
+sans-serif !default;
+$font-family-light-sans-serif: "Lato",
+"HelveticaNeue-Light",
+"Roboto-Light",
+"Segoe UI-Light",
+sans-serif-light !default; // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 @import "www/lib/scss/main.scss";
 @import "www/lib/ionic/scss/ionic";
@@ -44,7 +55,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
     color: $light !important;
     font-size: 24px;
   }
-
   .activated {
     border: none;
   }
@@ -67,12 +77,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
     .slider-pager-page.active {
       color: white;
     }
-
     .slider-pager-page {
       color: #b6b6b6;
     }
   }
-
   .slider {
     overflow: visible;
   }
@@ -82,9 +90,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
   position: relative;
 }
 
-.bold{
+.bold {
   font-weight: 700;
 }
+
 .slider-text {
   position: absolute;
   top: 0;
@@ -97,19 +106,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 
 .title-img {
   width: 55%;
-
   h4 {
     line-height: 5px;
     margin-left: 19px;
     font-size: 17px;
     font-weight: 700;
   }
-
   h5 {
     line-height: 16px;
     font-size: 14px;
   }
-
   .line {
     margin-left: 60px;
     width: 95px;
@@ -139,7 +145,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
   display: block;
   margin-top: 25px;
   margin-bottom: 25px;
-
   hr {
     width: 18%;
     background-color: #352C6D;
@@ -160,7 +165,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
   padding: 5px !important;
   margin: 5px !important;
   box-shadow: none;
-
   h3 {
     margin: 5px;
     color: #34445E;
@@ -196,13 +200,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
     height: 45px;
     background-color: #fff; // border-bottom: 1px solid white;
   }
-
   .tab-item {
     color: black;
     max-width: 100%;
     font-size: 16px;
   }
-
   .tab-item.activated,
   .tab-item.active,
   .tab-item.tab-item-active {
@@ -226,7 +228,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
   margin-top: 20px !important;
   min-height: 30px !important;
   line-height: 0px!important;
-
   .button.button-positive.button-outline.activated,
   .button.button-positive.button-outline.active {
     background-color: #352C6D!important;
@@ -245,24 +246,20 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 .border-detail {
   //border-bottom: 1px solid #ddd;
   padding: 5px;
-
   h5 {
     display: inline;
     color: #888;
   }
-
   .title {
     color: #352C6D;
     width: 30%;
     display: inline-block;
   }
-
   .detail {
     color: #888;
     width: 70%; // margin-left: 12px;
     display: inline-block;
     padding-bottom: 3px;
-
     a {
       color: #888;
     }
@@ -271,11 +268,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 
 .contact {
   margin-top: 60px;
-
   label {
     border: none;
     border-bottom: 1px solid #ddd;
-
     span {
       color: #352C6D;
       font-size: 14px;
@@ -290,7 +285,6 @@ p.double-quote:before {
 
 .about-margin {
   margin: 15px;
-
   h4 {
     margin-top: 5px;
     margin-bottom: 10px;
@@ -299,7 +293,6 @@ p.double-quote:before {
 
 .customer {
   margin: 15px 30px 40px;
-
   p {
     color: white;
   }
@@ -308,7 +301,6 @@ p.double-quote:before {
 .customer-color {
   background-color: #cecece;
   margin-bottom: 10px;
-
   h4 {
     padding-top: 20px;
     color: white;
@@ -318,16 +310,13 @@ p.double-quote:before {
 .aboutslider.slider {
   .slider-pager {
     bottom: 15px;
-
     .slider-pager-page.active {
       color: white;
     }
-
     .slider-pager-page {
       color: grey;
     }
   }
-
   .slider {
     overflow: visible;
   }
@@ -376,10 +365,10 @@ p.double-quote:before {
   top: 50%;
   z-index: 2;
 }
+
 // .all-product .title .title-text {
 //   text-align: center;
 // }
-
 .all-product .title .title-text .title1 {
   font-weight: 300;
   margin-left: 15%; // padding-bottom: 10px;
@@ -413,21 +402,17 @@ p.double-quote:before {
 .scroll-hide {
   // overflow-x: hidden!important;
   background-color: #352C6D;
-
-  ::-webkit-scrollbar {
+   ::-webkit-scrollbar {
     width: 0 !important;
   }
-
-  ::-webkit-scrollbar-track {
+   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
   }
-
-  ::-webkit-scrollbar-thumb {
+   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   }
-
   a {
     font-size: 9px!important;
     border-radius: 20px;
@@ -460,19 +445,17 @@ p.double-quote:before {
 
 .prodcut-detail {
   margin: 15px;
-
   .detils {}
 }
 
 .discription {
   margin: 15px;
-
   p {
     margin: 5px 0;
   }
 }
-//sagar css
 
+//sagar css
 .margin-15 {
   margin: 15px;
 }
@@ -483,12 +466,10 @@ p.double-quote:before {
 
 .menu {
   background-color: #676588;
-
   .item {
     background: transparent;
     border: none;
   }
-
   .ion-complex,
   .item-content {
     background: none !important;
@@ -521,7 +502,6 @@ p.double-quote:before {
 
 .title {
   font-weight: 700;
-
   h1 {
     font-size: 26px;
   }
@@ -531,41 +511,33 @@ p.double-quote:before {
   .content .title .head1 {
     color: $energized;
   }
-
   .tmp-process_content {
     background: $energized;
-
     &.content .title {
       .head1 {
         color: #fff;
       }
-
       .head2 {
         color: #b5b5b5;
       }
     }
   }
-
   .content {
     padding: 30px 15%;
     position: relative;
   }
-
   .head1 {
     margin-bottom: 0;
   }
-
   .head2 {
     margin: 0;
   }
-
   .img-holder {
     position: relative;
     display: inline-block;
     margin-bottom: 10px;
-        width: 135px;
+    width: 135px;
   }
-
   .title {
     border-bottom: 6px double #d5ae72;
   }
@@ -576,7 +548,6 @@ p.double-quote:before {
   width: auto;
   background-size: cover;
   background-position: center;
-
   img {
     height: 100%;
     width: auto;
@@ -590,13 +561,11 @@ p.double-quote:before {
 .banner-text {
   color: white;
   margin: 20px auto;
-
   h4 {
     color: #55342a;
     text-transform: uppercase;
     font-size: 22px;
   }
-
   h5 {
     color: white;
     text-transform: uppercase;
@@ -630,21 +599,17 @@ p.double-quote:before {
   font-weight: 400;
   background: #4e4c75;
   padding: 10px;
-
   h3 {
     color: white;
     text-transform: uppercase;
   }
-
   h5 {
     color: white;
   }
-
   .proimg {
     height: auto;
     width: 100%;
     border-radius: 7px;
-
     img {
       height: 100%;
       width: 100%;
@@ -661,7 +626,6 @@ p.double-quote:before {
   width: 100%;
   display: block;
   margin: 0 auto;
-
   img {
     height: 100%;
     width: 100%;
@@ -684,12 +648,10 @@ p.double-quote:before {
     bottom: 0;
     top: auto;
   }
-
   .tab-item {
     background: #352C6D!important;
     color: white!important;
   }
-
   .tab-item.tab-item-active {
     font-size: 20px!important;
   }
@@ -697,8 +659,7 @@ p.double-quote:before {
 
 .toptexture {
   width: 100%;
-
-  > * {
+  >* {
     color: white;
   }
 }
@@ -721,15 +682,12 @@ p.double-quote:before {
 
 .homeSubsliders {
   height: auto;
-
   .swiper-container {
     height: auto;
   }
-
   .swiper-wrapper {
     position: static;
   }
-
   .swiper-slide img {
     width: 100%;
     height: auto;
@@ -752,7 +710,6 @@ p.double-quote:before {
 .englogo {
   height: auto;
   width: 40%;
-
   img {
     height: auto;
     width: 100%;
@@ -768,73 +725,84 @@ p.double-quote:before {
   width: 90%;
   margin: 20px;
   position: relative;
-
   .video {
     width: 100%;
     height: 200px;
     background-position: center center;
     background-size: cover;
   }
-
   img {
     width: 100%;
   }
-
   i {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     font-size: 36px;
     color: white;
   }
-
   h4 {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: rgba(255,255,255,.44);
+    background-color: rgba(255, 255, 255, .44);
     padding: 10px;
     margin: 0;
     font-size: 16px;
   }
 }
+
 .video-overlay {
-    background-color: black;
+  background-color: black;
 }
+
 .full-height .scroll {
-    min-height: 100%;
+  min-height: 100%;
 }
 
 .at-center {
-    position: absolute;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  img {
     width: 100%;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    img{
-      width: 100%;
-    }
+  }
 }
-.homeImage{
+
+.homeImage {
   width: 100%;
   // height: 100vh;
-  img{
+  img {
     // height: 100%;
     width: 100%;
   }
 }
-.share{
-  &:before{
+
+.share {
+  &:before {
     font-size: 24px!important;
   }
 }
 
 //ruchi
-.disclaimer{
-font-size: 12px;
-    font-style: initial;
+.disclaimer {
+  font-size: 12px;
+  font-style: initial;
 }
 
+.searching {
+  padding: 20px;
+  input {
+    border-bottom: 1px solid;
+    width: 100%;
+  }
+  .ct-name {
+    color: #27204f;
+    font-size: 16px;
+  }
+}
