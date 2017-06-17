@@ -9984,7 +9984,7 @@ a.button {
     display: inline-block; }
   .border-detail .detail {
     color: #888;
-    width: 70%;
+    width: 100%;
     display: inline-block;
     padding-bottom: 3px; }
     .border-detail .detail a {

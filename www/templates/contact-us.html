@@ -23,7 +23,7 @@
                   Mobile :
                 </h5>
                 <h5 class="detail bold">
-                  +91-9880589241
+                  <a href="tel:+919880589241">+91-9880589241</a>
                 </h5>
               </div>
               <div class="border-detail">
@@ -31,7 +31,7 @@
                   Phone :
                 </h5>
                 <h5 class="detail bold">
-                  080 – 33126364
+                  <a href="tel:08033126364">080 – 33126364</a>
                 </h5>
               </div>
               <div class="border-detail">
@@ -82,21 +82,21 @@
                         <input type="email" name="email" ng-model="formData.email" placeholder="Your Email" required>
                       </label>
                 </div>
-                   <!--<div ng-class="{'form-invalid': formName.email.$invalid && formName.email.$touched}">
-                    <label class="item item-input item-stacked-label">
-                         <span class="input-label">Your Phone</span> 
-              <input type="text" name="phone" ng-model="formData.phone" placeholder="Your Phone">
+                <div ng-class="{'form-invalid': formName.telephone.$invalid && formName.telephone.$touched}">
+                  <label class="item item-input item-stacked-label">
+                         <!--<span class="input-label">Your telephone</span> -->
+              <input type="text" name="telephone" ng-model="formData.telephone" placeholder="Mobile  No." required>
               </label>
-                </div>-->
+                </div>
                 <div ng-class="{'form-invalid': formName.message.$invalid && formName.message.$touched}">
                   <!--<label class="item item-input item-stacked-label">
-                        <!-- <span class="input-label">Your Phone</span> --
-              <input type="text" ng-model="formData.name" placeholder="Your Phone">
+                        <!-- <span class="input-label">Your telephone</span> --
+              <input type="text" ng-model="formData.name" placeholder="Your telephone">
               </label>-->
                   <label class="item item-input item-stacked-label">
                         <!-- <span class="input-label">Your Message</span> -->
                         <!--<div contenteditable="true" class="editable" placeholder="Your Message"  ng-model="formData.message" class="registration-select"></div>-->
-                        <input type="text" name="message"ng-model="formData.message" placeholder="Your Message" required>
+                        <textarea  name="message"ng-model="formData.message" placeholder="Your Message" required> </textarea>
                       </label>
                 </div>
               </div>
