@@ -1,11 +1,7 @@
+var initMap = function () {};
 angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox', 'ngCordova'])
-
-  .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
-
-  })
-  .controller('ProductCategoryCtrl', function ($scope, $ionicModal, $timeout) {
-
-  })
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {})
+  .controller('ProductCategoryCtrl', function ($scope, $ionicModal, $timeout) {})
   .controller('MediaCtrl', function ($scope, $ionicModal, $timeout, MyServices, $filter) {
     $scope.getdown = {};
     $scope.getdown.skip = 0;
@@ -165,32 +161,32 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     //   'img/123.jpg'
     // ];
     $scope.allproduct = [{
-      title1: "Chalet",
+        title1: "Chalet",
 
-      image: "img/123.jpg"
-    }, {
-      title1: "Vintage Loft",
-      image: "img/124.jpg"
-    }, {
-      title1: "Saltbox",
-      image: "img/12.jpg"
-    }, {
-      title1: "Gallery",
-      image: "img/12.jpg"
-    }, {
-      title1: "Brick & Board",
-      image: "img/12.jpg"
-    }, {
-      title1: "Storehouse Plank",
-      image: "img/12.jpg"
-    }, {
-      title1: "Eighteen Seventy-Five",
-      image: "img/23.jpg"
+        image: "img/123.jpg"
+      }, {
+        title1: "Vintage Loft",
+        image: "img/124.jpg"
+      }, {
+        title1: "Saltbox",
+        image: "img/12.jpg"
+      }, {
+        title1: "Gallery",
+        image: "img/12.jpg"
+      }, {
+        title1: "Brick & Board",
+        image: "img/12.jpg"
+      }, {
+        title1: "Storehouse Plank",
+        image: "img/12.jpg"
+      }, {
+        title1: "Eighteen Seventy-Five",
+        image: "img/23.jpg"
 
-    }, {
-      title1: "Ponderosa",
-      image: "img/23.jpg"
-    }
+      }, {
+        title1: "Ponderosa",
+        image: "img/23.jpg"
+      }
 
     ]
     //mission
@@ -199,7 +195,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     }, function (response) {
       if (response.value) {
         $scope.mission = response.data.content;
-        console.log(" $scope.mission", $scope.mission);
+        // console.log(" $scope.mission", $scope.mission);
       } else {
 
       }
@@ -211,7 +207,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     }, function (response) {
       if (response.value) {
         $scope.vission = response.data.content;
-        console.log(" $scope.vission", $scope.vission);
+        // console.log(" $scope.vission", $scope.vission);
       } else {
 
       }
@@ -354,13 +350,18 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
         .share(message, '', image, '') // Share via native share sheet
         .then(function (result) {
           // Success!
+          console.log("Success");
+          console.log(result);
+          console.log(image);
         }, function (err) {
           // An error occured. Show a message to the user
+          console.log("error : " + err);
         });
     };
 
+
   })
-  .controller('ContactUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $state) {
+  .controller('ContactUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $state, $timeout, $ionicPlatform, $cordovaInAppBrowser) {
     $scope.formData = {};
 
     //API call to submit contact us data.
@@ -386,6 +387,109 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       // $scope.formSubmitted = true;
     }
 
+    // $scope.openBrowser = function () {
+    //   $cordovaInAppBrowser.open('http://ngcordova.com', '_blank', options)
+
+    //     .then(function (event) {
+    //       // success
+    //       console.log("Opened");
+    //     })
+
+    //     .catch(function (event) {
+    //       // error
+    //       console.log("Not Opened");
+    //     });
+    // }
+
+    //To custome div on map
+    function CenterControl(controlDiv, map) {
+
+      // Set CSS for the control border.
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = '#fff';
+      controlUI.style.border = '2px solid #fff';
+      controlUI.style.borderRadius = '3px';
+      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.marginBottom = '22px';
+      controlUI.style.textAlign = 'center';
+      controlUI.title = 'Click to recenter the map';
+      controlDiv.appendChild(controlUI);
+
+      // Set CSS for the control interior.
+      var controlText = document.createElement('button');
+      controlText.style.color = '#352c6c';
+      controlText.style.fontSize = '14px';
+      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+      controlText.innerHTML = 'View larger map';
+      controlUI.appendChild(controlText);
+      // Setup the click event listeners: simply set the map to Chicago.
+      controlUI.addEventListener('click', function () {
+
+        var options = {
+          location: 'yes',
+          clearcache: 'yes',
+          toolbar: 'no'
+        };
+
+        // document.addEventListener("deviceready", function () {
+
+        $cordovaInAppBrowser.open('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2743690254624!2d77.54144994957649!3d12.954287218720093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e0df066424d%3A0x7c9a63a59d69975b!2sEuro+Flooring+Pvt.+Ltd.!5e0!3m2!1sen!2sin!4v1477655115389', '_blank', options)
+          .then(function (event) {
+            // success
+          })
+          .catch(function (event) {
+            // error
+          });
+
+        // }, false);
+      });
+
+    }
+
+
+    initMap = function () {
+      // Styles a map in night mode.
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+          lat: 12.954431,
+          lng: 77.54236190000006
+        },
+        scrollwheel: false,
+        zoom: 15
+      });
+
+      var marker = new google.maps.Marker({
+        position: {
+         lat: 12.954431,
+          lng: 77.54236190000006
+
+
+        },
+        title: "Euro Flooring",
+        map: map
+
+      });
+      var centerControlDiv = document.createElement('div');
+      var centerControl = new CenterControl(centerControlDiv, map);
+
+      centerControlDiv.index = 1;
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+
+    }
+
+
+    //  $scope.$on('$viewContentLoaded', function () {
+    //         $timeout(function () {
+    //             initMap();
+    //             console.log(loaded);
+    //         }, 500);
+    //     })
+    $ionicPlatform.ready(function () {
+      initMap();
+    })
+
+
   })
 
-  .controller('PlaylistCtrl', function ($scope, $stateParams) { });
+  .controller('PlaylistCtrl', function ($scope, $stateParams) {});
