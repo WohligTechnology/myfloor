@@ -10411,3 +10411,8 @@ p.double-quote:before {
   .searching .ct-name {
     color: #27204f;
     font-size: 16px; }
+
+.thankyou {
+  font-size: 12px;
+  padding: 10px 35px;
+  color: #2e2e7b; }

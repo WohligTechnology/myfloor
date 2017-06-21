@@ -339,7 +339,8 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       }
     });
     $scope.share = function () {
-      var image = $filter("uploadpath")($scope.getoneproduct.swatchImage);
+      var image = $filter("downloadImage")($scope.getoneproduct.swatchImage); 
+      // var image = 'file://'+$filter("uploadpath")($scope.getoneproduct.swatchImage);
       // var image1 = $filter("uploadpath")($scope.getoneproduct.texturerAndSceneImage);
       console.log($scope.getoneproduct.swatchImage, image);
 
@@ -347,7 +348,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       var message = "name: " + $scope.getoneproduct.name + "\n" + "size :" + $scope.getoneproduct.size;
       console.log(image);
       $cordovaSocialSharing
-        .share(message, '', image, '') // Share via native share sheet
+        .share(message,subject,image, '') // Share via native share sheet
         .then(function (result) {
           // Success!
           console.log("Success");
@@ -363,6 +364,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
   })
   .controller('ContactUsCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $state, $timeout, $ionicPlatform, $cordovaInAppBrowser) {
     $scope.formData = {};
+    $scope.thankyouMsg = null;
 
     //API call to submit contact us data.
     $scope.submitForm = function (data) {
@@ -379,6 +381,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
           // });
           $state.reload();
           $scope.formData = {};
+          $scope.thankyouMsg = "Thank You. We will get back to you shortly."
           console.log("response.data", response.data);
           //   toastr.success("We will get back to you shortly.", "We have your query!");
         }
@@ -434,7 +437,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
         // document.addEventListener("deviceready", function () {
 
-        $cordovaInAppBrowser.open('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2743690254624!2d77.54144994957649!3d12.954287218720093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e0df066424d%3A0x7c9a63a59d69975b!2sEuro+Flooring+Pvt.+Ltd.!5e0!3m2!1sen!2sin!4v1477655115389', '_blank', options)
+        $cordovaInAppBrowser.open('https://www.google.co.in/maps/place/Euro+Flooring+Pvt.+Ltd./@12.954431,77.5401732,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae3e0df066424d:0x7c9a63a59d69975b!8m2!3d12.954431!4d77.5423619', '_blank', options)
           .then(function (event) {
             // success
           })
@@ -448,7 +451,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     }
 
 
-    initMap = function () {
+    function initMap() {
       // Styles a map in night mode.
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {
@@ -485,8 +488,12 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     //             console.log(loaded);
     //         }, 500);
     //     })
-    $ionicPlatform.ready(function () {
-      initMap();
+    // $ionicPlatform.ready(function () {
+    //   initMap();
+    //   // google.maps.event.addDomListener(window, "load", initMap);
+    // })
+    angular.element(document).ready(function () {
+        initMap();
     })
 
 
