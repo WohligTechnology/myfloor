@@ -10,7 +10,29 @@
         <img src="img/logo.png" alt="">
       </div>
     </div>
-    <div class="card newproduct-card" ng-repeat="all in getcoll" ui-sref="app.collection-detail({productId:all._id})">
+    <!--//dropdown-->
+<div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Subcategory
+    </div>
+    <!--<select ng-selected="{{defaultvalue == getcoll[0].id}}">
+      <option ng-repeat="all in getcoll" >{{all.name}}</option>
+    </select>-->
+    <!--<select>
+     <option ng-selected= "{{all._id == defaultSelectedVAT}}" ng-repeat="all in getcoll" 
+                      value="{{all._id}}">{{all.name}}     
+              </option>
+               </select>-->
+    <select class="form-control" ng-model="subCategory" ng-change="getCategoryProduct(subCategory)" ng-options="p for p in getone.subcategories">
+        <option selected="true" value="" disabled>{{subCategory}}</option>
+    </select>
+  </label>
+
+</div>
+ <!--//dropdown-->
+    <div class="card newproduct-card" ng-repeat="all in productBySubcat" ui-sref="app.collection-detail({productId:all._id})">
       <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" />
       <div class="cat-div">
         <!-- <h3 class="cat-head">Name :</h3> -->

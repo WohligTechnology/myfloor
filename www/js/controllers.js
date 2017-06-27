@@ -287,40 +287,66 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
   })
   .controller('ProductDetailCtrl', function ($scope, $ionicSlideBoxDelegate, $stateParams, MyServices) {
     $scope.title = $stateParams.title;
-    MyServices.getOne($stateParams.id, function (data) {
-      if (data.value) {
-        $scope.getone = data.data;
-        console.log($scope.getone);
-      }
-    })
-    $scope.getcoll = {};
+    $scope.productBySubcat = [];
+    $scope.getcoll = [];
     $scope.getcollect = {};
     $scope.getcollect.collectionId = $stateParams.id;
     $scope.getcollect.skip = 0;
 
-    MyServices.getCollProduct($scope.getcollect, function (data) {
+    MyServices.getOne($stateParams.id, function (data) {
       if (data.value) {
-        $scope.getcoll = data.data;
-        console.log($scope.getcoll);
+        $scope.getone = data.data;
+        $scope.subCategory = $scope.getone.subcategories[0];
+        $scope.getCollProduct();
+        console.log($scope.getone);
+        console.log("$scope.subCategory",$scope.subCategory);
       }
     })
+
+
+    $scope.getCollProduct = function(){
+      MyServices.getCollProduct($scope.getcollect, function (data) {
+        // if (data.value) {
+        //   $scope.getcoll = data.data;
+        //   console.log($scope.getcoll);
+        // }
+        if (data.value) {
+          if (_.isEmpty(data.data)) {
+            $scope.stop = true;
+          } else {
+            // $scope.getcoll = $scope.getcoll.concat(data.data);
+            if(data.data.length>0){
+              _.each(data.data,function(n){
+                  $scope.getcoll.push(n);
+              })
+              //  = $scope.getcoll.concat(data.data);
+            }
+            console.log($scope.getcoll);
+          }
+          $scope.getCategoryProduct($scope.subCategory);
+        }
+      })
+    }
+
+
     $scope.stop = false;
     $scope.loadMore = function () {
       console.log("inside loadMore");
       $scope.getcollect.skip = $scope.getcollect.skip + 10;
       console.log($scope.getcollect.skip);
-      MyServices.getCollProduct($scope.getcollect, function (data) {
-        if (data.value) {
-          if (_.isEmpty(data.data)) {
-            $scope.stop = true;
-          } else {
-            $scope.getcoll = $scope.getcoll.concat(data.data);
-            console.log($scope.getcoll);
-          }
+      // MyServices.getCollProduct($scope.getcollect, function (data) {
+      //   if (data.value) {
+      //     if (_.isEmpty(data.data)) {
+      //       $scope.stop = true;
+      //     } else {
+      //       $scope.getcoll = $scope.getcoll.concat(data.data);
+      //       console.log($scope.getcoll);
+      //     }
 
-        }
+      //   }
 
-      })
+      // })
+      $scope.getCollProduct();
       $scope.$broadcast('scroll.infiniteScrollComplete');
 
     }
@@ -329,6 +355,38 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       'img/23.jpg',
       'img/123.jpg'
     ];
+//
+// $scope.defaultSelectedVAT = $scope.getcoll[0]._id;
+
+    //To get product by subcategory
+    $scope.getCategoryProduct = function(value){
+        console.log("subCategory",value);
+        if($scope.subCategory != value){
+            $scope.productBySubcat = [];
+            $scope.subCategory = value
+        }
+        // console.log(value,"value",$scope.collection);
+        // $scope.subCatIndex = value;
+        // console.log($scope.collection.subcategories[$scope.subCatIndex]);
+        // var subcatName = $scope.collection.subcategories[$scope.subCatIndex];
+        _.each($scope.getcoll,function(n){
+            var category = _.find($scope.productBySubcat, function (o) {
+                if (n._id === o._id) {
+                    return o;
+                }
+            });
+              if (category === undefined && n.subCategory == $scope.subCategory) {
+                $scope.productBySubcat.push(n);
+            }
+            // else{
+            //     _.pull($scope.productBySubcat, category);
+            // }
+            // if(n.subCategory == subcatName){
+            //    ################## $scope.productBySubcat.push(n);
+            // }
+        })
+    }
+
   })
   .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, $cordovaSocialSharing, MyServices, $stateParams, $filter) {
     $scope.productId = $stateParams.productId;
