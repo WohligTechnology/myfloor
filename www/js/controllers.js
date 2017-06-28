@@ -293,18 +293,20 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     $scope.getcollect.collectionId = $stateParams.id;
     $scope.getcollect.skip = 0;
 
+    $scope.start = false;
+
     MyServices.getOne($stateParams.id, function (data) {
       if (data.value) {
         $scope.getone = data.data;
         $scope.subCategory = $scope.getone.subcategories[0];
         $scope.getCollProduct();
         console.log($scope.getone);
-        console.log("$scope.subCategory",$scope.subCategory);
+        console.log("$scope.subCategory", $scope.subCategory);
       }
     })
 
 
-    $scope.getCollProduct = function(){
+    $scope.getCollProduct = function () {
       MyServices.getCollProduct($scope.getcollect, function (data) {
         // if (data.value) {
         //   $scope.getcoll = data.data;
@@ -315,14 +317,15 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
             $scope.stop = true;
           } else {
             // $scope.getcoll = $scope.getcoll.concat(data.data);
-            if(data.data.length>0){
-              _.each(data.data,function(n){
-                  $scope.getcoll.push(n);
+            if (data.data.length > 0) {
+              _.each(data.data, function (n) {
+                $scope.getcoll.push(n);
               })
               //  = $scope.getcoll.concat(data.data);
             }
             console.log($scope.getcoll);
           }
+          // $scope.getcollect.skip = $scope.getcollect.skip + 10;
           $scope.getCategoryProduct($scope.subCategory);
         }
       })
@@ -331,22 +334,26 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
     $scope.stop = false;
     $scope.loadMore = function () {
-      console.log("inside loadMore");
-      $scope.getcollect.skip = $scope.getcollect.skip + 10;
-      console.log($scope.getcollect.skip);
-      // MyServices.getCollProduct($scope.getcollect, function (data) {
-      //   if (data.value) {
-      //     if (_.isEmpty(data.data)) {
-      //       $scope.stop = true;
-      //     } else {
-      //       $scope.getcoll = $scope.getcoll.concat(data.data);
-      //       console.log($scope.getcoll);
-      //     }
+      if ($scope.start) {
+        console.log("inside loadMore");
+        $scope.getcollect.skip = $scope.getcollect.skip + 10;
+        console.log($scope.getcollect.skip);
+        // MyServices.getCollProduct($scope.getcollect, function (data) {
+        //   if (data.value) {
+        //     if (_.isEmpty(data.data)) {
+        //       $scope.stop = true;
+        //     } else {
+        //       $scope.getcoll = $scope.getcoll.concat(data.data);
+        //       console.log($scope.getcoll);
+        //     }
 
-      //   }
+        //   }
 
-      // })
-      $scope.getCollProduct();
+        // })
+        $scope.getCollProduct();
+
+      }
+      $scope.start = true;
       $scope.$broadcast('scroll.infiniteScrollComplete');
 
     }
@@ -355,37 +362,38 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       'img/23.jpg',
       'img/123.jpg'
     ];
-//
-// $scope.defaultSelectedVAT = $scope.getcoll[0]._id;
+    //
+    // $scope.defaultSelectedVAT = $scope.getcoll[0]._id;
 
     //To get product by subcategory
-    $scope.getCategoryProduct = function(value){
-        console.log("subCategory",value);
-        if($scope.subCategory != value){
-            $scope.productBySubcat = [];
-            $scope.subCategory = value
+    $scope.getCategoryProduct = function (value) {
+      console.log("subCategory", value);
+      if ($scope.subCategory != value) {
+        $scope.productBySubcat = [];
+        $scope.subCategory = value
+      }
+      // console.log(value,"value",$scope.collection);
+      // $scope.subCatIndex = value;
+      // console.log($scope.collection.subcategories[$scope.subCatIndex]);
+      // var subcatName = $scope.collection.subcategories[$scope.subCatIndex];
+      _.each($scope.getcoll, function (n) {
+        var category = _.find($scope.productBySubcat, function (o) {
+          if (n._id === o._id) {
+            return o;
+          }
+        });
+        if (category === undefined && n.subCategory == $scope.subCategory) {
+          $scope.productBySubcat.push(n);
         }
-        // console.log(value,"value",$scope.collection);
-        // $scope.subCatIndex = value;
-        // console.log($scope.collection.subcategories[$scope.subCatIndex]);
-        // var subcatName = $scope.collection.subcategories[$scope.subCatIndex];
-        _.each($scope.getcoll,function(n){
-            var category = _.find($scope.productBySubcat, function (o) {
-                if (n._id === o._id) {
-                    return o;
-                }
-            });
-              if (category === undefined && n.subCategory == $scope.subCategory) {
-                $scope.productBySubcat.push(n);
-            }
-            // else{
-            //     _.pull($scope.productBySubcat, category);
-            // }
-            // if(n.subCategory == subcatName){
-            //    ################## $scope.productBySubcat.push(n);
-            // }
-        })
+        // else{
+        //     _.pull($scope.productBySubcat, category);
+        // }
+        // if(n.subCategory == subcatName){
+        //    ################## $scope.productBySubcat.push(n);
+        // }
+      })
     }
+
 
   })
   .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, $cordovaSocialSharing, MyServices, $stateParams, $filter) {
@@ -397,7 +405,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       }
     });
     $scope.share = function () {
-      var image = $filter("downloadImage")($scope.getoneproduct.swatchImage); 
+      var image = $filter("downloadImage")($scope.getoneproduct.swatchImage);
       // var image = 'file://'+$filter("uploadpath")($scope.getoneproduct.swatchImage);
       // var image1 = $filter("uploadpath")($scope.getoneproduct.texturerAndSceneImage);
       console.log($scope.getoneproduct.swatchImage, image);
@@ -406,7 +414,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       var message = "name: " + $scope.getoneproduct.name + "\n" + "size :" + $scope.getoneproduct.size;
       console.log(image);
       $cordovaSocialSharing
-        .share(message,subject,image, '') // Share via native share sheet
+        .share(message, subject, image, '') // Share via native share sheet
         .then(function (result) {
           // Success!
           console.log("Success");
@@ -522,7 +530,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
       var marker = new google.maps.Marker({
         position: {
-         lat: 12.954431,
+          lat: 12.954431,
           lng: 77.54236190000006
 
 
@@ -551,7 +559,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     //   // google.maps.event.addDomListener(window, "load", initMap);
     // })
     angular.element(document).ready(function () {
-        initMap();
+      initMap();
     })
 
 
