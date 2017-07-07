@@ -15,6 +15,8 @@
   src: url("../fonts/Lato-Regular.ttf");
 }
 
+
+
 $light: #fff !default;
 $stable: #f8f8f8 !default;
 $positive: #2489ea !default;
@@ -38,6 +40,19 @@ sans-serif-light !default; // The path for our ionicons font files, relative to 
 $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 @import "www/lib/scss/main.scss";
 @import "www/lib/ionic/scss/ionic";
+ @import "www/lib/font-awesome/scss/font-awesome.scss";
+
+@font-face {
+    font-family: 'fontawesome';
+    src:url('../fonts/fontawesome-webfont.eot');
+    src:url('../fonts/fontawesome-webfont.eot') format('embedded-opentype'),
+        url('../fonts/fontawesome-webfont.woff') format('woff'),
+        url('../fonts/fontawesome-webfont.ttf') format('truetype'),
+        url('../fonts/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @mixin placeholder {
   $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
   @each $placeholder in $placeholders {
@@ -811,4 +826,153 @@ p.double-quote:before {
     font-size: 12px;
     padding: 10px 35px;
     color: rgb(46, 46, 123);
+}
+
+//signup
+.signup-logo{
+  margin: 20px auto;
+    width: 80%;
+    img{
+      width: 100%;
+    }
+}
+
+.err {
+  &::before {
+    content: "\f100";
+    font-family: "Ionicons";
+    color: $assertive;
+    position: absolute;
+    top: 15px;
+    left: 3px;
+    z-index: 1;
+    font-size: 12px;
+  }
+  &.succ {
+    &::before {
+      content: "\f122";
+      color: $balanced;
+    }
+    >* {
+      color: $balanced !important;
+    }
+  }
+  input {
+    @include placeholder {
+      color: $assertive !important;
+    }
+  }
+  >* {
+    color: $assertive !important;
+  }
+}
+
+.error-msg {
+  color: $assertive;
+  top: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  font-size: 11px;
+  background-color: #f1f1f1;
+  padding: 0px 10px;
+  border-radius: 6px;
+}
+
+.input-label {
+    color: #000;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+
+  .pro-edit {
+  &.text-rite {
+    .item-input input {
+      text-align: right;
+    }
+  }
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .bg-header{
+    background: #27204f;
+  }
+
+  .disblock {
+  display: inline-block!important;
+}
+
+.login{
+  text-align: center;
+  label{
+    display: inline-block;
+  }
+  span{
+        margin: 5px;
+        padding: 5px;
+  }
+}
+
+.enquire{
+  background:red;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 40%;
+    margin: 10px auto;
+    left: 90%;
+    z-index: 100;
+    border-radius: 50%;
+    i{
+      font-size: 25px;
+    /* text-align: center; */
+    padding: 13px;
+    color: white;
+    }
+}
+
+//enquiremodal
+.bg-enquire{
+  background: white;
+  height: 100vh;
+}
+
+.enquirelbl{
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0px !important;
+}
+
+
+.contact-enquire {
+ 
+  label {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    span {
+      color: #352C6D;
+      font-size: 14px;
+    }
+  }
+}
+
+.close-modal{
+  font-size: 30px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 3%;
+    left: 94%;
+}
+
+.relative{
+  position: relative;
 }

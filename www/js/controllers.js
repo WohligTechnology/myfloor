@@ -103,7 +103,67 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     }
   })
 
-  .controller('HomeCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
+  .controller('HomeCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $ionicModal) {
+
+
+    $scope.formData = {};
+    $scope.thankyouMsg = null;
+
+    //API call to submit contact us data.
+    $scope.submitForm = function (data) {
+      console.log(data);
+      MyServices.saveConatct(data, function (response) {
+
+        if (response.value) {
+          //   $ionicModal.fromTemplateUrl('templates/videomodal.html', {
+          //   scope: $scope,
+          //   animation: 'slide-in-up'
+          // }).then(function (modal) {
+          //   $scope.modal = modal;
+
+          // });
+          $state.reload();
+          $scope.formData = {};
+          $scope.thankyouMsg = "Thank You. We will get back to you shortly."
+          console.log("response.data", response.data);
+          //   toastr.success("We will get back to you shortly.", "We have your query!");
+        }
+        $scope.formData = {};
+      })
+      // $scope.formSubmitted = true;
+    }
+
+$ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+   }).then(function(modal) {
+      $scope.modal = modal;
+   });
+	
+   $scope.openModal = function() {
+      $scope.modal.show();
+   };
+	
+   $scope.closeModal = function() {
+      $scope.modal.hide();
+   };
+	
+   //Cleanup the modal when we're done with it!
+   $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+   });
+	
+   // Execute action on hide modal
+   $scope.$on('modal.hidden', function() {
+      // Execute action
+   });
+	
+   // Execute action on remove modal
+   $scope.$on('modal.removed', function() {
+      // Execute action
+   });
+
+
     $scope.homeSlider = {};
     $scope.homeSlider.data = [];
     $scope.homeSlider.currentPage = 0;
@@ -564,5 +624,17 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
 
   })
+.controller('SignupCtrl', function ($scope, $stateParams) {
+  $scope.validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  
+})
 
-  .controller('PlaylistCtrl', function ($scope, $stateParams) {});
+.controller('LoginCtrl', function ($scope, $stateParams) {
+   
+})
+
+  .controller('PlaylistCtrl', function ($scope, $stateParams) {
+    
+
+
+  });

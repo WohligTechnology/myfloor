@@ -1,13 +1,26 @@
 <ion-view view-title="WELCOME">
+  <ion-nav-bar class="bar-stable nav-height bar bar-royal">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+        </button>
+        </ion-nav-buttons>
+        <!--<ion-nav-buttons side="right">
+            <button class="button button-clear ion-android-more-vertical sigupRight disblock" ng-click="popover.show($event)">
+      </button>
+        </ion-nav-buttons>-->
+    </ion-nav-bar>
   <ion-content class="background">
 
 
      <div class="relative" >
+      
       <ion-slides class="homeSubsliders" options="homeSlider.sliderOptions" on-slide-changed="slideChanged(index)" slider="homeSlider.sliderDelegate"
         autoplay="5000">
         <ion-slide-page >
           <div class="homeImage">
+            
   <img src="img/MOBILE-screen-1.jpg" alt="">
+  
   <div class="banner-desc text-center" >
     <div class="banner-logo center-block">
       <!--<img src="img/logo.png" class="full-image" alt="EWL-Logo">-->
@@ -142,6 +155,7 @@
                 </div>
             </div>-->
     <div class="">
+      
       <div class="what-we-do">
         <div class="content ">
           <div class="img-holder">
@@ -171,4 +185,7 @@
 
 
   </ion-content>
+   <div class= "enquire" ng-click="openModal()">
+         <i class="fa fa-envelope" aria-hidden="true" ></i>
+       </div>
 </ion-view>

@@ -115,6 +115,28 @@ angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
         }
       }
     })
+
+.state('app.login', {
+      url: '/login',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/login.html',
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+
+.state('app.signup', {
+      url: '/signup',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/signup.html',
+          controller: 'SignupCtrl'
+        }
+      }
+    })
+
+
     .state('app.media', {
       url: '/media',
       views: {
@@ -135,7 +157,7 @@ angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
   //   }
   // });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app/signup');
 })
 .directive('youtube', function ($sce) {
 	return {

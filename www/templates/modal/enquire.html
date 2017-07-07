@@ -1,0 +1,51 @@
+  <div class="bg-enquire relative">
+      <i class="ion-ios-close-outline close-modal" ng-click="closeModal()"></i>
+<h5 class="enquirelbl">  Enquire </h5>
+   
+          <div class="tabs-margin">
+            <form name="formName">
+              <div class="list contact-enquire">
+                <div ng-class="{'form-invalid': formName.name.$invalid && formName.name.$touched}">
+                  <label class="item item-input item-stacked-label">
+                        <!-- <span class="input-label">Your Name</span> -->
+                        <input type="text" name="name" ng-model="formData.name" placeholder="Your Name" required>
+                      </label>
+                </div>
+                <div ng-class="{'form-invalid': formName.email.$invalid && formName.email.$touched}">
+                  <label class="item item-input item-stacked-label">
+                        <!-- <span class="input-label">Your Email</span> -->
+                        <input type="email" name="email" ng-model="formData.email" placeholder="Your Email" required>
+                      </label>
+                </div>
+                <div ng-class="{'form-invalid': formName.telephone.$invalid && formName.telephone.$touched}">
+                  <label class="item item-input item-stacked-label">
+                         <!--<span class="input-label">Your telephone</span> -->
+              <input type="text" name="telephone" ng-model="formData.telephone" placeholder="Mobile  No." required>
+              </label>
+                </div>
+                <div ng-class="{'form-invalid': formName.message.$invalid && formName.message.$touched}">
+                  <!--<label class="item item-input item-stacked-label">
+                        <!-- <span class="input-label">Your telephone</span> --
+              <input type="text" ng-model="formData.name" placeholder="Your telephone">
+              </label>-->
+                  <label class="item item-input item-stacked-label">
+                        <!-- <span class="input-label">Your Message</span> -->
+                        <!--<div contenteditable="true" class="editable" placeholder="Your Message"  ng-model="formData.message" class="registration-select"></div>-->
+                        <textarea  name="message"ng-model="formData.message" placeholder="Your Message" required> </textarea>
+                      </label>
+                </div>
+              </div>
+              <div class="text-center">
+                <button class="button button-outline button-positive submit-color " ng-disabled="formName.$invalid" ng-click="submitForm(formData)">
+                     Submit Form
+                    </button>
+              </div>
+              <div class="thankyou">
+                <p>{{thankyouMsg}}</p>
+              </div>
+              
+            </form>
+          </div>
+       
+  </div>
+  
