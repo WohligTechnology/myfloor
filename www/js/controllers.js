@@ -456,6 +456,130 @@ $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
 
 
   })
+
+.controller('ProductInnerCtrl', function ($scope, $stateParams, MyServices) {
+   $scope.title = $stateParams.title;
+    $scope.productBySubcat = [];
+    $scope.getcoll = [];
+    $scope.getcollect = {};
+    $scope.getcollect.collectionId = $stateParams.id;
+    $scope.getcollect.skip = 0;
+    $scope.getcollect.subCategory = $stateParams.subCat;
+    $scope.start = false;
+
+    // MyServices.getOne($stateParams.id, function (data) {
+    //   if (data.value) {
+    //     $scope.getone = data.data;
+    //     $scope.subCategory = $scope.subcategories[0];
+    //     $scope.getCollProduct();
+    //     console.log($scope.getone);
+    //     console.log("$scope.subCategory", $scope.subCategory);
+    //   }
+    // });
+
+
+    // $scope.getCollProduct = function () {
+      MyServices.getCollProduct($scope.getcollect, function (data) {
+        // if (data.value) {
+        //   $scope.getcoll = data.data;
+        //   console.log($scope.getcoll);
+        // }
+        if (data.value) {
+          if (_.isEmpty(data.data)) {
+            $scope.stop = true;
+          } else {
+            // $scope.getcoll = $scope.getcoll.concat(data.data);
+            if (data.data.length > 0) {
+              _.each(data.data, function (n) {
+                $scope.getcoll.push(n);
+              })
+              //  = $scope.getcoll.concat(data.data);
+            }
+            console.log($scope.getcoll);
+          }
+          // $scope.getcollect.skip = $scope.getcollect.skip + 10;
+          // $scope.getCategoryProduct($scope.subCategory);
+          $scope.getCategoryProduct($stateParams.subCat);
+          
+        }
+      })
+    // }
+
+
+    $scope.stop = false;
+    $scope.loadMore = function () {
+      if ($scope.start) {
+        console.log("inside loadMore");
+        $scope.getcollect.skip = $scope.getcollect.skip + 10;
+        console.log($scope.getcollect.skip);
+        // MyServices.getCollProduct($scope.getcollect, function (data) {
+        //   if (data.value) {
+        //     if (_.isEmpty(data.data)) {
+        //       $scope.stop = true;
+        //     } else {
+        //       $scope.getcoll = $scope.getcoll.concat(data.data);
+        //       console.log($scope.getcoll);
+        //     }
+
+        //   }
+
+        // })
+        $scope.getCollProduct();
+
+      }
+      $scope.start = true;
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+
+    }
+    $scope.slider = [
+      'img/15.jpg',
+      'img/23.jpg',
+      'img/123.jpg'
+    ];
+    //
+    // $scope.defaultSelectedVAT = $scope.getcoll[0]._id;
+
+    //To get product by subcategory
+    $scope.getCategoryProduct = function (value) {
+      console.log("subCategory", value);
+      if ($scope.subCategory != value) {
+        $scope.productBySubcat = [];
+        $scope.subCategory = value
+      }
+      // console.log(value,"value",$scope.collection);
+      // $scope.subCatIndex = value;
+      // console.log($scope.collection.subcategories[$scope.subCatIndex]);
+      // var subcatName = $scope.collection.subcategories[$scope.subCatIndex];
+
+
+      // _.each($scope.getcoll, function (n) {
+      //   console.log(n,'-----');
+      //   var category = _.find($scope.productBySubcat, function (o) {
+      //     if (n._id === o._id) {
+      //       return o;
+      //     }
+      //   });
+      //   if (category === undefined && n.subCategory == $scope.subCategory) {
+      //     $scope.productBySubcat.push(n);
+      //   }
+
+
+        
+        // else{
+        //     _.pull($scope.productBySubcat, category);
+        // }
+        // if(n.subCategory == subcatName){
+        //    ################## $scope.productBySubcat.push(n);
+        // }
+      // })
+      $scope.productBySubcat=_.filter($scope.getcoll, ['subCategory', $stateParams.subCat]);
+      console.log($scope.productBySubcat);
+      
+    }
+
+    
+})
+
   .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, $cordovaSocialSharing, MyServices, $stateParams, $filter) {
     $scope.productId = $stateParams.productId;
     MyServices.getOneProductDetail($scope.productId, function (data) {
@@ -625,6 +749,23 @@ $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
 
   })
 .controller('SignupCtrl', function ($scope, $stateParams) {
+  $scope.signup = {}
+$scope.formData = {};
+        $scope.formData = function() {
+            
+            console.log("djfgjk", $scope.formData);
+
+            if (!$.jStorage.get('profile')) {
+
+                MyServices.signup($scope.formData, function(data) {
+
+                    console.log(data);
+                    $scope.formData = data.data;
+                    $.jStorage.set('profile', data.data);
+                    console.log($scope.formData)
+                    if (data.value == true) {
+                    }
+
   $scope.validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   
 })

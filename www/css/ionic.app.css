@@ -12659,8 +12659,8 @@ p.double-quote:before {
   .homeSubsliders .swiper-wrapper {
     position: static; }
   .homeSubsliders .swiper-slide img {
-    width: 100%;
     height: auto;
+    max-height: initial;
     vertical-align: bottom; }
 
 .banner-name {
@@ -12727,10 +12727,8 @@ p.double-quote:before {
   .at-center img {
     width: 100%; }
 
-.homeImage {
+.homeImage img {
   width: 100%; }
-  .homeImage img {
-    width: 100%; }
 
 .share:before {
   font-size: 24px !important; }
@@ -12874,3 +12872,12 @@ p.double-quote:before {
 
 .relative {
   position: relative; }
+
+.subCategories-bg {
+  margin-top: 20px;
+  padding: 10px;
+  background: lightgray; }
+
+.subCategories-inner {
+  margin: 0px auto;
+  background: lightgray; }

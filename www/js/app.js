@@ -126,6 +126,17 @@ angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
       }
     })
 
+.state('app.productinner', {
+      url: '/productinner/:title/:id/:subCat',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/productinner.html',
+          controller: 'ProductInnerCtrl'
+        }
+      }
+    })
+
+
 .state('app.signup', {
       url: '/signup',
       views: {

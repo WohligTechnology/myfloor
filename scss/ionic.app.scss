@@ -704,10 +704,10 @@ p.double-quote:before {
     position: static;
   }
   .swiper-slide img {
-    width: 100%;
+    // width: 100%;
     height: auto;
     // max-width: auto;
-    // max-height: auto;
+    max-height: initial;
     vertical-align: bottom;
   }
 }
@@ -790,7 +790,7 @@ p.double-quote:before {
 }
 
 .homeImage {
-  width: 100%;
+  //  height: 100vh;
   // height: 100vh;
   img {
     // height: 100%;
@@ -975,4 +975,16 @@ p.double-quote:before {
 
 .relative{
   position: relative;
+}
+
+//productDetails
+.subCategories-bg{
+margin-top: 20px;
+padding: 10px;
+background: lightgray;
+}
+
+.subCategories-inner{
+margin: 0px auto;
+background: lightgray;
 }
