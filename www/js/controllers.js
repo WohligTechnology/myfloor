@@ -1,7 +1,15 @@
 var initMap = function () {};
 angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox', 'ngCordova'])
-  .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {})
-  .controller('ProductCategoryCtrl', function ($scope, $ionicModal, $timeout) {})
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout,$state) {
+    $scope.logout = function(){
+  // alert("hi");
+  $.jStorage.flush();
+  $state.go('app.login')
+}
+  })
+  .controller('ProductCategoryCtrl', function ($scope, $ionicModal, $timeout) {
+    
+  })
   .controller('MediaCtrl', function ($scope, $ionicModal, $timeout, MyServices, $filter) {
     $scope.getdown = {};
     $scope.getdown.skip = 0;
@@ -103,10 +111,10 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     }
   })
 
-  .controller('HomeCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $ionicModal) {
+  .controller('HomeCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $ionicModal, $state) {
 
 
-    $scope.formData = {};
+   $scope.formData = {};
     $scope.thankyouMsg = null;
 
     //API call to submit contact us data.
@@ -748,30 +756,73 @@ $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
 
 
   })
-.controller('SignupCtrl', function ($scope, $stateParams) {
-  $scope.signup = {}
+.controller('SignupCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
+
+if ($.jStorage.get('profile')){
+  $state.go('app.home');
+}
+
 $scope.formData = {};
-        $scope.formData = function() {
-            
-            console.log("djfgjk", $scope.formData);
-
-            if (!$.jStorage.get('profile')) {
-
-                MyServices.signup($scope.formData, function(data) {
-
-                    console.log(data);
-                    $scope.formData = data.data;
-                    $.jStorage.set('profile', data.data);
-                    console.log($scope.formData)
-                    if (data.value == true) {
-                    }
-
   $scope.validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  
+
+        $scope.signupForm = function(value) {
+       console.log("value",value);
+       // if (!$.jStorage.get('profile')) {
+
+            MyServices.signup(value, function(data) {
+
+                console.log(data);
+                $scope.formData = data.data;
+                 $.jStorage.set('profile', data.data);
+                console.log($scope.formData)
+                if (data.value == true) {
+                  $state.go('app.home');
+                }else {
+        $ionicPopup.alert({
+                        cssClass: 'productspopup',
+                        title: "Sign Up Incorrect",
+                        
+                    });
+                }
+            })
+        
+        //}
+        }             
 })
 
-.controller('LoginCtrl', function ($scope, $stateParams) {
-   
+.controller('LoginCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
+  if ($.jStorage.get('profile')){
+  $state.go('app.home');
+}
+   $scope.formData = {};
+  
+        $scope.login = function(value) {
+       console.log("value",value);
+        // if (!$.jStorage.get('profile')) {
+
+            MyServices.login(value, function(data) {
+
+               
+                if (data.value == true) {
+                  $state.go('app.home');
+                   console.log(data);
+                $scope.formData = data.data;
+                $.jStorage.set('profile', data.data);
+                console.log($scope.formData)
+                $scope.formData = {};
+              }else {
+        $ionicPopup.alert({
+                        cssClass: 'productspopup',
+                        title: "Login Incorrect",
+                        
+                    });
+                }
+                 
+            })
+        
+        // }
+        
+        }             
 })
 
   .controller('PlaylistCtrl', function ($scope, $stateParams) {

@@ -20,7 +20,7 @@
                 <div ng-class="{'form-invalid': formName.telephone.$invalid && formName.telephone.$touched}">
                   <label class="item item-input item-stacked-label">
                          <!--<span class="input-label">Your telephone</span> -->
-              <input type="text" name="telephone" ng-model="formData.telephone" placeholder="Mobile  No." required>
+              <input type="number" name="telephone" ng-model="formData.telephone" placeholder="Mobile  No." required limit-to = "10">
               </label>
                 </div>
                 <div ng-class="{'form-invalid': formName.message.$invalid && formName.message.$touched}">

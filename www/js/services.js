@@ -1,4 +1,5 @@
-var adminurl = "http://floor.uandvcreativess.com/api/";
+ var adminurl = "http://floor.uandvcreativess.com/api/";
+// var adminurl = "http://wohlig.io:81/api/";
 
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile?file=";
@@ -115,6 +116,23 @@ angular.module('starter.services', [])
           data: formData
         }).success(callback);
       },
+        signup: function(data, callback) {
+                console.log(data);
+                $http({
+                    url: adminurl + 'AppUser/registerAppuser',
+                    method: 'POST',
+                    data: data
+                }).success(callback);
+            },
+     
+     login: function(data, callback) {
+                console.log(data);
+                $http({
+                    url: adminurl + 'AppUser/userLogin',
+                    method: 'POST',
+                    data: data
+                }).success(callback);
+            },
 
 
     };

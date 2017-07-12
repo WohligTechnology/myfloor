@@ -891,7 +891,7 @@ p.double-quote:before {
   .pro-edit {
   &.text-rite {
     .item-input input {
-      text-align: right;
+      text-align: left;
     }
   }
   }
@@ -914,7 +914,7 @@ p.double-quote:before {
     display: inline-block;
   }
   span{
-        margin: 5px;
+      font-size: 16px;
         padding: 5px;
   }
 }
@@ -946,7 +946,7 @@ p.double-quote:before {
 
 .enquirelbl{
     text-align: center;
-    padding: 40px 20px 20px 20px;
+    padding: 50px 20px 20px 20px;
     font-size: 28px;
     font-weight: 600;
     margin: 0px !important;
@@ -969,7 +969,7 @@ p.double-quote:before {
   font-size: 30px;
     position: absolute;
     transform: translate(-50%,-50%);
-    top: 3%;
+    top: 5%;
     left: 94%;
 }
 
@@ -987,4 +987,24 @@ background: lightgray;
 .subCategories-inner{
 margin: 0px auto;
 background: lightgray;
+}
+
+.productspopup {
+    .popup-sub-title {
+        margin: 5px 0 0;
+        padding: 0;
+        font-weight: normal;
+        font-size: 15px;
+    }
+
+    h3 {
+        img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+    }
+}
+
+.m20{
+  margin: 20px;
 }

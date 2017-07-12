@@ -118,6 +118,7 @@ angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
 
 .state('app.login', {
       url: '/login',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/login.html',
@@ -139,6 +140,8 @@ angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
 
 .state('app.signup', {
       url: '/signup',
+      cache: false,
+
       views: {
         'menuContent': {
           templateUrl: 'templates/signup.html',
@@ -218,4 +221,17 @@ angular.module('starter', ['ionic', 'starter.controllers','tabSlideBox'])
             return "img/logo.png";
         }
     };
-});
+})
+
+
+.directive("limitTo", [function() {
+    return {
+        restrict: "A",
+        link: function(scope, elem, attrs) {
+            var limit = parseInt(attrs.limitTo);
+            angular.element(elem).on("keypress", function(e) {
+                if (this.value.length == limit) e.preventDefault();
+            });
+        }
+    }
+}]);
