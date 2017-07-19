@@ -6,11 +6,11 @@
       </div>
       <h3>{{getone.name}}</h3>
       <p ng-bind-html="getone.details"></p>-->
-      <!--<div class="englogo" ng-if="getone.name == 'Engineered'">
+    <!--<div class="englogo" ng-if="getone.name == 'Engineered'">
         <img src="img/logo.png" alt="">
       </div>-->
     <!--</div>  -->
-        <div class="card newproduct-card" ng-repeat="all in productBySubcat" ui-sref="app.collection-detail({productId:all._id})">
+    <div class="card newproduct-card" ng-repeat="all in productBySubcat" ui-sref="app.collection-detail({productId:all._id})">
       <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" />
       <div class="cat-div">
         <!-- <h3 class="cat-head">Name :</h3> -->
@@ -25,8 +25,8 @@
         <h3 class="cat">Ac3</h3>
       </div> -->
     </div>
-    <!--<ion-infinite-scroll ng-if="!stop" on-infinite="loadMore()" distance="5%" >-->
-                 <!--</ion-infinite-scroll>-->
+    <ion-infinite-scroll ng-if="!stop" on-infinite="loadMore()" distance="5%">
+    </ion-infinite-scroll>
 
     <!-- <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">
       <ion-slide ng-repeat="item in slider track by $index">
@@ -100,5 +100,5 @@
         </p>
       </div>
     </div> -->
-    </ion-content>
+  </ion-content>
 </ion-view>

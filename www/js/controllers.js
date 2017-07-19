@@ -1,14 +1,14 @@
 var initMap = function () {};
 angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox', 'ngCordova'])
-  .controller('AppCtrl', function ($scope, $ionicModal, $timeout,$state) {
-    $scope.logout = function(){
-  // alert("hi");
-  $.jStorage.flush();
-  $state.go('app.login')
-}
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $state) {
+    $scope.logout = function () {
+      // alert("hi");
+      $.jStorage.flush();
+      $state.go('app.login')
+    }
   })
   .controller('ProductCategoryCtrl', function ($scope, $ionicModal, $timeout) {
-    
+
   })
   .controller('MediaCtrl', function ($scope, $ionicModal, $timeout, MyServices, $filter) {
     $scope.getdown = {};
@@ -114,7 +114,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
   .controller('HomeCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $ionicModal, $state) {
 
 
-   $scope.formData = {};
+    $scope.formData = {};
     $scope.thankyouMsg = null;
 
     //API call to submit contact us data.
@@ -141,35 +141,35 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       // $scope.formSubmitted = true;
     }
 
-$ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
+    $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
       scope: $scope,
       animation: 'slide-in-up'
-   }).then(function(modal) {
+    }).then(function (modal) {
       $scope.modal = modal;
-   });
-	
-   $scope.openModal = function() {
+    });
+
+    $scope.openModal = function () {
       $scope.modal.show();
-   };
-	
-   $scope.closeModal = function() {
+    };
+
+    $scope.closeModal = function () {
       $scope.modal.hide();
-   };
-	
-   //Cleanup the modal when we're done with it!
-   $scope.$on('$destroy', function() {
+    };
+
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function () {
       $scope.modal.remove();
-   });
-	
-   // Execute action on hide modal
-   $scope.$on('modal.hidden', function() {
+    });
+
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function () {
       // Execute action
-   });
-	
-   // Execute action on remove modal
-   $scope.$on('modal.removed', function() {
+    });
+
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function () {
       // Execute action
-   });
+    });
 
 
     $scope.homeSlider = {};
@@ -465,8 +465,8 @@ $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
 
   })
 
-.controller('ProductInnerCtrl', function ($scope, $stateParams, MyServices) {
-   $scope.title = $stateParams.title;
+  .controller('ProductInnerCtrl', function ($scope, $stateParams, MyServices) {
+    $scope.title = $stateParams.title;
     $scope.productBySubcat = [];
     $scope.getcoll = [];
     $scope.getcollect = {};
@@ -486,7 +486,7 @@ $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
     // });
 
 
-    // $scope.getCollProduct = function () {
+    $scope.getCollProduct = function () {
       MyServices.getCollProduct($scope.getcollect, function (data) {
         // if (data.value) {
         //   $scope.getcoll = data.data;
@@ -508,10 +508,10 @@ $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
           // $scope.getcollect.skip = $scope.getcollect.skip + 10;
           // $scope.getCategoryProduct($scope.subCategory);
           $scope.getCategoryProduct($stateParams.subCat);
-          
+
         }
       })
-    // }
+    }
 
 
     $scope.stop = false;
@@ -546,10 +546,11 @@ $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
     ];
     //
     // $scope.defaultSelectedVAT = $scope.getcoll[0]._id;
+    $scope.getCollProduct();
 
     //To get product by subcategory
     $scope.getCategoryProduct = function (value) {
-      console.log("subCategory", value);
+      console.log("subCategory", value, $scope.getcoll);
       if ($scope.subCategory != value) {
         $scope.productBySubcat = [];
         $scope.subCategory = value
@@ -572,21 +573,21 @@ $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
       //   }
 
 
-        
-        // else{
-        //     _.pull($scope.productBySubcat, category);
-        // }
-        // if(n.subCategory == subcatName){
-        //    ################## $scope.productBySubcat.push(n);
-        // }
+
+      // else{
+      //     _.pull($scope.productBySubcat, category);
+      // }
+      // if(n.subCategory == subcatName){
+      //    ################## $scope.productBySubcat.push(n);
+      // }
       // })
-      $scope.productBySubcat=_.filter($scope.getcoll, ['subCategory', $stateParams.subCat]);
+      $scope.productBySubcat = _.filter($scope.getcoll, ['subCategory', $stateParams.subCat]);
       console.log($scope.productBySubcat);
-      
+
     }
 
-    
-})
+
+  })
 
   .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, $cordovaSocialSharing, MyServices, $stateParams, $filter) {
     $scope.productId = $stateParams.productId;
@@ -756,77 +757,77 @@ $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
 
 
   })
-.controller('SignupCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
+  .controller('SignupCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
 
-if ($.jStorage.get('profile')){
-  $state.go('app.home');
-}
+    if ($.jStorage.get('profile')) {
+      $state.go('app.home');
+    }
 
-$scope.formData = {};
-  $scope.validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    $scope.formData = {};
+    $scope.validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-        $scope.signupForm = function(value) {
-       console.log("value",value);
-       // if (!$.jStorage.get('profile')) {
+    $scope.signupForm = function (value) {
+      console.log("value", value);
+      // if (!$.jStorage.get('profile')) {
 
-            MyServices.signup(value, function(data) {
+      MyServices.signup(value, function (data) {
 
-                console.log(data);
-                $scope.formData = data.data;
-                 $.jStorage.set('profile', data.data);
-                console.log($scope.formData)
-                if (data.value == true) {
-                  $state.go('app.home');
-                }else {
-        $ionicPopup.alert({
-                        cssClass: 'productspopup',
-                        title: "Sign Up Incorrect",
-                        
-                    });
-                }
-            })
-        
-        //}
-        }             
-})
+        console.log(data);
+        $scope.formData = data.data;
+        $.jStorage.set('profile', data.data);
+        console.log($scope.formData)
+        if (data.value == true) {
+          $state.go('app.home');
+        } else {
+          $ionicPopup.alert({
+            cssClass: 'productspopup',
+            title: "Sign Up Incorrect",
 
-.controller('LoginCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
-  if ($.jStorage.get('profile')){
-  $state.go('app.home');
-}
-   $scope.formData = {};
-  
-        $scope.login = function(value) {
-       console.log("value",value);
-        // if (!$.jStorage.get('profile')) {
+          });
+        }
+      })
 
-            MyServices.login(value, function(data) {
+      //}
+    }
+  })
 
-               
-                if (data.value == true) {
-                  $state.go('app.home');
-                   console.log(data);
-                $scope.formData = data.data;
-                $.jStorage.set('profile', data.data);
-                console.log($scope.formData)
-                $scope.formData = {};
-              }else {
-        $ionicPopup.alert({
-                        cssClass: 'productspopup',
-                        title: "Login Incorrect",
-                        
-                    });
-                }
-                 
-            })
-        
-        // }
-        
-        }             
-})
+  .controller('LoginCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
+    if ($.jStorage.get('profile')) {
+      $state.go('app.home');
+    }
+    $scope.formData = {};
+
+    $scope.login = function (value) {
+      console.log("value", value);
+      // if (!$.jStorage.get('profile')) {
+
+      MyServices.login(value, function (data) {
+
+
+        if (data.value == true) {
+          $state.go('app.home');
+          console.log(data);
+          $scope.formData = data.data;
+          $.jStorage.set('profile', data.data);
+          console.log($scope.formData)
+          $scope.formData = {};
+        } else {
+          $ionicPopup.alert({
+            cssClass: 'productspopup',
+            title: "Login Incorrect",
+
+          });
+        }
+
+      })
+
+      // }
+
+    }
+  })
 
   .controller('PlaylistCtrl', function ($scope, $stateParams) {
-    
+
 
 
   });
