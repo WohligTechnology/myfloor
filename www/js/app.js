@@ -29,7 +29,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
           window.history.back();
         }
       } else {
-        if ($state.current.name == "app.login") {
+        if ($state.current.name == "login") {
           navigator.app.exitApp();
         } else {
           window.history.back();
@@ -131,15 +131,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
         }
       })
 
-      .state('app.login', {
+      .state('login', {
         url: '/login',
-        cache: false,
-        views: {
-          'menuContent': {
+        cache: false,  
             templateUrl: 'templates/login.html',
-            controller: 'LoginCtrl'
-          }
-        }
+            controller: 'LoginCtrl'        
       })
 
       .state('app.productinner', {
@@ -153,16 +149,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
       })
 
 
-      .state('app.signup', {
+      .state('signup', {
         url: '/signup',
         cache: false,
-
-        views: {
-          'menuContent': {
             templateUrl: 'templates/signup.html',
             controller: 'SignupCtrl'
-          }
-        }
       })
 
 
@@ -186,7 +177,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
     //   }
     // });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/login');
+    $urlRouterProvider.otherwise('/login');
   })
   .directive('youtube', function ($sce) {
     return {

@@ -4,7 +4,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     $scope.logout = function () {
       // alert("hi");
       $.jStorage.flush();
-      $state.go('app.login')
+      $state.go('login')
     }
   })
   .controller('ProductCategoryCtrl', function ($scope, $ionicModal, $timeout) {
