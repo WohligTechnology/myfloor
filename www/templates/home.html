@@ -81,7 +81,32 @@
       </div>-->
     </div> 
 
+ <div class="">
+      
+      <div class="what-we-do">
+        <div class="content ">
+          <div class="img-holder">
+            <div class="title">
+              <h1 class="head1">OUR</h1>
+              <h1 class="head2">PRODUCT</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <label for="" class="new-product">OUR PRODUCT
+                <hr></label> -->
+      <div class="all-product" ng-repeat="all in getcollection" ui-sref="app.product-detail({title:all.name,id:all._id})">
+        <img ng-src="{{all.image|uploadpath}}" alt="" class="full-image" />
+        <div class="title ">
+          <div class="title-text">
+            <h2 class="color-light title1">{{all.name}}</h2>
+            <!-- <hr class="line"> -->
+          </div>
 
+        </div>
+
+      </div>
+    </div>
     <!-- <ion-slides class="homeSubsliders" options="homeSlider.sliderOptions" on-slide-changed="slideChanged(index)">
       <ion-slide-page ng-repeat="lb in landingBanner track by $index">
         <img ng-src="{{(lb.image|uploadpath)}}" class="full-image">
@@ -154,32 +179,7 @@
                     </div>
                 </div>
             </div>-->
-    <div class="">
-      
-      <div class="what-we-do">
-        <div class="content ">
-          <div class="img-holder">
-            <div class="title">
-              <h1 class="head1">OUR</h1>
-              <h1 class="head2">PRODUCT</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- <label for="" class="new-product">OUR PRODUCT
-                <hr></label> -->
-      <div class="all-product" ng-repeat="all in getcollection" ui-sref="app.product-detail({title:all.name,id:all._id})">
-        <img ng-src="{{all.image|uploadpath}}" alt="" class="full-image" />
-        <div class="title ">
-          <div class="title-text">
-            <h2 class="color-light title1">{{all.name}}</h2>
-            <!-- <hr class="line"> -->
-          </div>
-
-        </div>
-
-      </div>
-    </div>
+   
 
     </div>
 
