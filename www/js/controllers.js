@@ -499,6 +499,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
             // $scope.getcoll = $scope.getcoll.concat(data.data);
             if (data.data.length > 0) {
               _.each(data.data, function (n) {
+                n.status=false;
                 $scope.getcoll.push(n);
               })
               //  = $scope.getcoll.concat(data.data);
@@ -825,7 +826,11 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
     }
   })
+ .controller('WishListCtrl', function ($scope, $stateParams) {
 
+
+
+  })
   .controller('PlaylistCtrl', function ($scope, $stateParams) {
 
 

@@ -1,0 +1,18 @@
+<ion-view view-title="WISH LIST">
+  <ion-content class="background">
+   
+    <div class="card newproduct-card" ng-repeat="all in productBySubcat" >
+      <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" ui-sref="app.collection-detail({productId:all._id})"/>
+      <div class="cat-div">
+        <i class="ion ion-ios-heart likefilld" ng-click="all.status = !all.status" ng-class="{'ion-ios-heart' : all.status,'ion-ios-heart-outline': !all.status }"></i>
+
+        <h3 class="cat">{{all.name}}</h3>
+      </div>
+  
+    </div>
+    <ion-infinite-scroll ng-if="!stop" on-infinite="loadMore()" distance="5%">
+    </ion-infinite-scroll>
+
+   
+  </ion-content>
+</ion-view>

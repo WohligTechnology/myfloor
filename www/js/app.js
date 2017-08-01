@@ -94,6 +94,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
           }
         }
       })
+         .state('app.wishlist', {
+        url: '/wishlist',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/wishlist.html',
+            controller: 'WishListCtrl'
+          }
+        }
+      })
       .state('app.product-detail', {
         url: '/product-detail/:title/:id',
         views: {
