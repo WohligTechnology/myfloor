@@ -359,7 +359,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     $scope.getcoll = [];
     $scope.getcollect = {};
     $scope.getcollect.collectionId = $stateParams.id;
-    $scope.getcollect.skip = 0;
+    // $scope.getcollect.skip = 0;
 
     $scope.start = false;
 
@@ -404,7 +404,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     $scope.loadMore = function () {
       if ($scope.start) {
         console.log("inside loadMore");
-        $scope.getcollect.skip = $scope.getcollect.skip + 10;
+        // $scope.getcollect.skip = $scope.getcollect.skip + 10;
         console.log($scope.getcollect.skip);
         // MyServices.getCollProduct($scope.getcollect, function (data) {
         //   if (data.value) {
@@ -519,8 +519,8 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     $scope.loadMore = function () {
       if ($scope.start) {
         console.log("inside loadMore");
-        $scope.getcollect.skip = $scope.getcollect.skip + 10;
-        console.log($scope.getcollect.skip);
+        // $scope.getcollect.skip = $scope.getcollect.skip + 10;
+        // console.log($scope.getcollect.skip);
         // MyServices.getCollProduct($scope.getcollect, function (data) {
         //   if (data.value) {
         //     if (_.isEmpty(data.data)) {

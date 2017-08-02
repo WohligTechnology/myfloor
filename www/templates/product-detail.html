@@ -12,10 +12,19 @@
     </div>
     <!--//dropdown-->
 <div class="list">
-
-  <label class="item item-input subCategories-bg"  ng-repeat="p in getone.subcategories" ui-sref="app.productinner({title:getone.name,id:getcollect.collectionId,subCat:p})">
+ <!--<label class="item item-input subCategories-bg"  ng-repeat="p in getone.subcategories"  ng-click="toggleGroup(kpi)" >-->
+  <label class="item item-input subCategories-bg"  ng-repeat="p in getone.subcategories"   ng-click="toggleGroup(kpi)" >
     <label class= "subCategories-inner"for="" >{{p}}</label>
-   
+     <div class="card newproduct-card" ng-repeat="all in productBySubcat" ng-show="isGroupShown(kpi)">
+     
+       <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" ui-sref="app.collection-detail({productId:all._id})"/>
+      <div class="cat-div">
+        <i class="ion ion-ios-heart likefilld" ng-click="all.status = !all.status" ng-class="{'ion-ios-heart' : all.status,'ion-ios-heart-outline': !all.status }"></i>
+
+        <h3 class="cat">{{all.name}}</h3>
+      </div>
+
+    </div>
     <!--<div class="input-label">-->
       <!--Subcategory-->
     <!--</div>-->
@@ -27,30 +36,33 @@
                       value="{{all._id}}">{{all.name}}     
               </option>
                </select>-->
-    <label class="form-control" ng-model="subCategory" >
+    <!--<label class="form-control" ng-model="subCategory" >-->
         <!--<option selected="true" value="" disabled>{{subCategory}}</option>-->
     </label>
   </label>
 
 </div>
  <!--//dropdown-->
-    <!--<div class="card newproduct-card" ng-repeat="all in productBySubcat" ui-sref="app.collection-detail({productId:all._id})">
-      <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" />
-      <div class="cat-div">-->
+    <div class="card newproduct-card" ng-repeat="all in productBySubcat" >
+     
+       <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" ui-sref="app.collection-detail({productId:all._id})"/>
+      <div class="cat-div">
         <!-- <h3 class="cat-head">Name :</h3> -->
-        <!--<h3 class="cat">{{all.name}}</h3>
-      </div>-->
-      <!-- <div class="cat-div">
+        <i class="ion ion-ios-heart likefilld" ng-click="all.status = !all.status" ng-class="{'ion-ios-heart' : all.status,'ion-ios-heart-outline': !all.status }"></i>
+
+        <h3 class="cat">{{all.name}}</h3>
+      </div>
+       <!--<div class="cat-div">
         <h3 class="cat-head">Dim :</h3>
         <h3 class="cat">HDF 8mm x 1215mm x 195mm</h3>
-      </div>
-      <div class="cat-div">
+      </div>-->
+      <!--<div class="cat-div">
         <h3 class="cat-head">Grade :</h3>
         <h3 class="cat">Ac3</h3>
       </div> -->
-    <!--</div>-->
-    <ion-infinite-scroll ng-if="!stop" on-infinite="loadMore()" distance="5%" >
-                 </ion-infinite-scroll>
+    </div>
+    <!--<ion-infinite-scroll ng-if="!stop" on-infinite="loadMore()" distance="5%" >
+                 </ion-infinite-scroll>-->
 
     <!-- <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider">
       <ion-slide ng-repeat="item in slider track by $index">

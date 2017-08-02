@@ -1,5 +1,5 @@
- var adminurl = "http://floor.uandvcreativess.com/api/";
-// var adminurl = "http://wohlig.io:81/api/";
+//  var adminurl = "http://floor.uandvcreativess.com/api/";
+var adminurl = "http://192.168.1.112:1337/api/";
 
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile?file=";
@@ -33,7 +33,7 @@ angular.module('starter.services', [])
       getCollProduct: function (data, callback) {
 
         $http({
-          url: adminurl + 'Product/getCollProduct',
+          url: adminurl + 'Product/getCollProductApp',
           method: 'POST',
           data: data
         }).success(callback);
@@ -77,6 +77,13 @@ angular.module('starter.services', [])
           data: formData
         }).success(callback);
       },
+      addOrRemoveWishList: function (formData, callback) {
+        $http({
+          url: adminurl + 'AppUser/addOrRemoveWishList',
+          method: 'POST',
+          data: formData
+        }).success(callback);
+      },
 
       //Get about us data
       getAboutUs: function (formData, callback) {
@@ -116,23 +123,23 @@ angular.module('starter.services', [])
           data: formData
         }).success(callback);
       },
-        signup: function(data, callback) {
-                console.log(data);
-                $http({
-                    url: adminurl + 'AppUser/registerAppuser',
-                    method: 'POST',
-                    data: data
-                }).success(callback);
-            },
-     
-     login: function(data, callback) {
-                console.log(data);
-                $http({
-                    url: adminurl + 'AppUser/userLogin',
-                    method: 'POST',
-                    data: data
-                }).success(callback);
-            },
+      signup: function (data, callback) {
+        console.log(data);
+        $http({
+          url: adminurl + 'AppUser/registerAppuser',
+          method: 'POST',
+          data: data
+        }).success(callback);
+      },
+
+      login: function (data, callback) {
+        console.log(data);
+        $http({
+          url: adminurl + 'AppUser/userLogin',
+          method: 'POST',
+          data: data
+        }).success(callback);
+      },
 
 
     };
