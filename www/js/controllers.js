@@ -374,6 +374,31 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     })
 
 
+    $scope.addOrRemoveWishList = function (productId) {
+      console.log("productId",productId);
+      $scope.addwish = {};
+      $scope.addwish.user = $.jStorage.get('profile')._id;
+      $scope.addwish.product = productId;
+      MyServices.addOrRemoveWishList($scope.addwish, function (data) {
+        if (data.value) {
+          console.log(data.data);
+          $scope.userid = {};
+          $scope.userid._id = $.jStorage.get('profile')._id;
+          MyServices.getWishList($scope.userid, function (data) {
+            if (data.value) {
+              console.log(data.data);
+            }
+          })
+          // $scope.getone = data.data;
+          // $scope.subCategory = $scope.getone.subcategories[0];
+          // $scope.getCollProduct();
+          // console.log($scope.getone);
+          // console.log("$scope.subCategory", $scope.subCategory);
+        }
+      })
+    }
+
+
     $scope.getCollProduct = function () {
       MyServices.getCollProduct($scope.getcollect, function (data) {
 
@@ -382,10 +407,27 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
         //   console.log($scope.getcoll);
         // }
         if (data.value) {
-          _.each(data.data, function (n) {
-                n.status=false;
+          $scope.getcoll = data.data;
+          $scope.userid = {};
+          $scope.userid._id = $.jStorage.get('profile')._id;
+          MyServices.getWishList($scope.userid, function (data) {
+            if (data.value) {
+              console.log("", data.data);
+              $scope.wishlist = data.data.wishList;
+              _.each($scope.getcoll, function (n) {
+                _.each($scope.wishlist, function (n1) {
+                  if (n._id == n1.product._id) {
+                    n.status = true;
+                  } else {
+                    n.status = false;
+                  }
+                })
               })
-          $scope.getcoll=_.groupBy(data.data, 'subCategory');
+              $scope.getcoll = _.groupBy($scope.getcoll, 'subCategory');
+            }
+
+          })
+
           // if (_.isEmpty(data.data)) {
           //   $scope.stop = true;
           // } else {
@@ -405,16 +447,16 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       })
     }
 
-  $scope.toggleGroup = function(group) {
-    if ($scope.isGroupShown(group)) {
-      $scope.shownGroup = null;
-    } else {
-      $scope.shownGroup = group;
-    }
-  };
-  $scope.isGroupShown = function(group) {
-    return $scope.shownGroup === group;
-  };
+    $scope.toggleGroup = function (group) {
+      if ($scope.isGroupShown(group)) {
+        $scope.shownGroup = null;
+      } else {
+        $scope.shownGroup = group;
+      }
+    };
+    $scope.isGroupShown = function (group) {
+      return $scope.shownGroup === group;
+    };
     $scope.stop = false;
     $scope.loadMore = function () {
       if ($scope.start) {
@@ -514,7 +556,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
             // $scope.getcoll = $scope.getcoll.concat(data.data);
             if (data.data.length > 0) {
               _.each(data.data, function (n) {
-                n.status=false;
+                n.status = false;
                 $scope.getcoll.push(n);
               })
               //  = $scope.getcoll.concat(data.data);
@@ -841,7 +883,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
     }
   })
- .controller('WishListCtrl', function ($scope, $stateParams) {
+  .controller('WishListCtrl', function ($scope, $stateParams) {
 
 
 

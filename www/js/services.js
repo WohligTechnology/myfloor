@@ -1,5 +1,5 @@
 //  var adminurl = "http://floor.uandvcreativess.com/api/";
-var adminurl = "http://192.168.2.58:1337/api/";
+var adminurl = "http://192.168.1.123:1337/api/";
 
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile?file=";
@@ -84,7 +84,13 @@ angular.module('starter.services', [])
           data: formData
         }).success(callback);
       },
-
+      getWishList: function (formData, callback) {
+        $http({
+          url: adminurl + 'AppUser/getWishList',
+          method: 'POST',
+          data: formData
+        }).success(callback);
+      },
       //Get about us data
       getAboutUs: function (formData, callback) {
         $http({
