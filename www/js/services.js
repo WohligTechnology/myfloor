@@ -1,5 +1,5 @@
 //  var adminurl = "http://floor.uandvcreativess.com/api/";
-var adminurl = "http://192.168.1.112:1337/api/";
+var adminurl = "http://192.168.2.58:1337/api/";
 
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile?file=";

@@ -376,30 +376,45 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
     $scope.getCollProduct = function () {
       MyServices.getCollProduct($scope.getcollect, function (data) {
+
         // if (data.value) {
         //   $scope.getcoll = data.data;
         //   console.log($scope.getcoll);
         // }
         if (data.value) {
-          if (_.isEmpty(data.data)) {
-            $scope.stop = true;
-          } else {
-            // $scope.getcoll = $scope.getcoll.concat(data.data);
-            if (data.data.length > 0) {
-              _.each(data.data, function (n) {
-                $scope.getcoll.push(n);
+          _.each(data.data, function (n) {
+                n.status=false;
               })
-              //  = $scope.getcoll.concat(data.data);
-            }
-            console.log($scope.getcoll);
-          }
+          $scope.getcoll=_.groupBy(data.data, 'subCategory');
+          // if (_.isEmpty(data.data)) {
+          //   $scope.stop = true;
+          // } else {
+          //   // $scope.getcoll = $scope.getcoll.concat(data.data);
+          //   if (data.data.length > 0) {
+          //     _.each(data.data, function (n) {
+          //       $scope.getcoll.push(n);
+          //     })
+          //     //  = $scope.getcoll.concat(data.data);
+          //   }
+          //   console.log($scope.getcoll);
+          // }
+
           // $scope.getcollect.skip = $scope.getcollect.skip + 10;
           $scope.getCategoryProduct($scope.subCategory);
         }
       })
     }
 
-
+  $scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
+  };
     $scope.stop = false;
     $scope.loadMore = function () {
       if ($scope.start) {
