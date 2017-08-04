@@ -77,6 +77,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
         }
       })
       .state('app.home', {
+        cache:false,
         url: '/home',
         views: {
           'menuContent': {

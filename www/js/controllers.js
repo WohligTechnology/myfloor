@@ -116,7 +116,6 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
     $scope.formData = {};
     $scope.thankyouMsg = null;
-
     //API call to submit contact us data.
     $scope.submitForm = function (data) {
       console.log(data);
@@ -843,7 +842,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     }
   })
 
-  .controller('LoginCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
+  .controller('LoginCtrl', function ($scope,$stateParams, MyServices, $ionicPopup, $state) {
     if ($.jStorage.get('profile')) {
       $state.go('app.home');
     }
@@ -857,7 +856,8 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
 
         if (data.value == true) {
-          $state.go('app.home');
+          
+          $state.go('app.home');             
           console.log(data);
           $scope.formData = data.data;
           $.jStorage.set('profile', data.data);
@@ -877,7 +877,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
     }
   })
-  .controller('WishListCtrl', function ($scope, $stateParams, MyServices) {
+  .controller('WishListCtrl', function ($scope, $stateParams,$cordovaSocialSharing, MyServices, $filter) {
     $scope.getWishList = function () {
       $scope.userid = {};
       $scope.userid._id = $.jStorage.get('profile')._id;
