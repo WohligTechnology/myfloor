@@ -13,7 +13,7 @@
     <!--//dropdown-->
 <div class="list">
  <!--<label class="item item-input subCategories-bg"  ng-repeat="p in getone.subcategories"  ng-click="toggleGroup(kpi)" >-->
-   <div ng-repeat="p in getcoll" >  
+   <div ng-repeat="p in getcoll track by $index" ng-init="parentIndex =$index">  
   <label class="item item-input subCategories-bg"    ng-click="toggleGroup(p)"
                     ng-class="{active: isGroupShown(p)}" >
     <label class= "subCategories-inner"for="" >{{p[0].subCategory}}</label>
@@ -33,7 +33,7 @@
         <!--<option selected="true" value="" disabled>{{subCategory}}</option>-->
     </label>
   </label>
-       <div class="card newproduct-card" ng-repeat="all in p" ng-if="isGroupShown(p)">
+       <div class="card newproduct-card" ng-repeat="all in p track by $index" ng-init="innerIndex =$index" ng-if="isGroupShown(p)">
      
        <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" ui-sref="app.collection-detail({productId:all._id})"/>
       <div class="cat-div">
@@ -46,25 +46,7 @@
     </div>
 
 </div>
- <!--//dropdown-->
-    <div class="card newproduct-card" ng-repeat="all in productBySubcat" >
-     
-       <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" ui-sref="app.collection-detail({productId:all._id})"/>
-      <div class="cat-div">
-        <!-- <h3 class="cat-head">Name :</h3> -->
-        <i class="ion ion-ios-heart likefilld" ng-click="all.status = !all.status" ng-class="{'ion-ios-heart' : all.status,'ion-ios-heart-outline': !all.status }"></i>
 
-        <h3 class="cat">{{all.name}}</h3>
-      </div>
-       <!--<div class="cat-div">
-        <h3 class="cat-head">Dim :</h3>
-        <h3 class="cat">HDF 8mm x 1215mm x 195mm</h3>
-      </div>-->
-      <!--<div class="cat-div">
-        <h3 class="cat-head">Grade :</h3>
-        <h3 class="cat">Ac3</h3>
-      </div> -->
-    </div>
     <!--<ion-infinite-scroll ng-if="!stop" on-infinite="loadMore()" distance="5%" >
                  </ion-infinite-scroll>-->
 

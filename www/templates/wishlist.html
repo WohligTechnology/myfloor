@@ -1,18 +1,19 @@
 <ion-view view-title="WISH LIST">
+
   <ion-content class="background">
-   
-    <div class="card newproduct-card" ng-repeat="all in productBySubcat" >
-      <img ng-src="{{all.productImage|uploadpath}}" alt="" class=" full-image" ui-sref="app.collection-detail({productId:all._id})"/>
+
+    <div class="card newproduct-card" ng-repeat="all in wishlist">
+      <img ng-src="{{all.product.productImage|uploadpath}}" alt="" class=" full-image" ui-sref="app.collection-detail({productId:all.product._id})"
+      />
       <div class="cat-div">
-        <i class="ion ion-ios-heart likefilld" ng-click="all.status = !all.status" ng-class="{'ion-ios-heart' : all.status,'ion-ios-heart-outline': !all.status }"></i>
-
-        <h3 class="cat">{{all.name}}</h3>
+        <i class="ion ion-ios-heart likefilld" ng-click="all.status = !all.status;addOrRemoveWishList(all.product._id)" ng-class="{'ion-ios-heart' : all.status,'ion-ios-heart-outline': !all.status }"></i>
+        <i class="ion shareicon ion-android-share-alt " ng-click="shareWishlist(all.product)"></i>
+        <h3 class="cat">{{all.product.name}}</h3>
       </div>
-  
-    </div>
-    <ion-infinite-scroll ng-if="!stop" on-infinite="loadMore()" distance="5%">
-    </ion-infinite-scroll>
 
-   
+    </div>
+
+
+
   </ion-content>
 </ion-view>

@@ -94,7 +94,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
           }
         }
       })
-         .state('app.wishlist', {
+      .state('app.wishlist', {
+        cache: false,
         url: '/wishlist',
         views: {
           'menuContent': {
@@ -104,6 +105,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
         }
       })
       .state('app.product-detail', {
+        cache: false,
         url: '/product-detail/:title/:id',
         views: {
           'menuContent': {
@@ -142,9 +144,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
 
       .state('login', {
         url: '/login',
-        cache: false,  
-            templateUrl: 'templates/login.html',
-            controller: 'LoginCtrl'        
+        cache: false,
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
       })
 
       .state('app.productinner', {
@@ -161,8 +163,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
       .state('signup', {
         url: '/signup',
         cache: false,
-            templateUrl: 'templates/signup.html',
-            controller: 'SignupCtrl'
+        templateUrl: 'templates/signup.html',
+        controller: 'SignupCtrl'
       })
 
 

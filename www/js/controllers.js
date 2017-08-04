@@ -375,7 +375,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
 
     $scope.addOrRemoveWishList = function (productId) {
-      console.log("productId",productId);
+      console.log("productId", productId);
       $scope.addwish = {};
       $scope.addwish.user = $.jStorage.get('profile')._id;
       $scope.addwish.product = productId;
@@ -389,11 +389,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
               console.log(data.data);
             }
           })
-          // $scope.getone = data.data;
-          // $scope.subCategory = $scope.getone.subcategories[0];
-          // $scope.getCollProduct();
-          // console.log($scope.getone);
-          // console.log("$scope.subCategory", $scope.subCategory);
+
         }
       })
     }
@@ -412,14 +408,12 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
           $scope.userid._id = $.jStorage.get('profile')._id;
           MyServices.getWishList($scope.userid, function (data) {
             if (data.value) {
-              console.log("", data.data);
               $scope.wishlist = data.data.wishList;
               _.each($scope.getcoll, function (n) {
+                n.status = false;
                 _.each($scope.wishlist, function (n1) {
                   if (n._id == n1.product._id) {
                     n.status = true;
-                  } else {
-                    n.status = false;
                   }
                 })
               })
@@ -883,7 +877,52 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
     }
   })
-  .controller('WishListCtrl', function ($scope, $stateParams) {
+  .controller('WishListCtrl', function ($scope, $stateParams, MyServices) {
+    $scope.getWishList = function () {
+      $scope.userid = {};
+      $scope.userid._id = $.jStorage.get('profile')._id;
+      MyServices.getWishList($scope.userid, function (data) {
+        if (data.value) {
+          console.log(data.data);
+          $scope.wishlist = data.data.wishList;
+          _.each($scope.wishlist, function (n) {
+            n.status = true;
+          })
+        }
+      })
+    }
+    $scope.getWishList();
+    $scope.addOrRemoveWishList = function (productId) {
+      console.log("productId", productId);
+      $scope.addwish = {};
+      $scope.addwish.user = $.jStorage.get('profile')._id;
+      $scope.addwish.product = productId;
+      MyServices.addOrRemoveWishList($scope.addwish, function (data) {
+        if (data.value) {
+          console.log(data.data);
+          $scope.getWishList();
+        }
+      })
+    }
+    $scope.shareWishlist = function (wishlist) {
+   var image = $filter("downloadImage")(wishlist.productImage);
+
+
+      var subject = "Category:" +wishlist.subCategory;
+      var message = "name: " + wishlist.name;
+      $cordovaSocialSharing
+        .share(message, subject, image, '') // Share via native share sheet
+        .then(function (result) {
+          // Success!
+          console.log("Success");
+          console.log(result);
+          console.log(image);
+        }, function (err) {
+          // An error occured. Show a message to the user
+          console.log("error : " + err);
+        });
+    }
+
 
 
 
