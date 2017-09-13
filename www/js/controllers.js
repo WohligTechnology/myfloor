@@ -640,7 +640,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
   })
 
-  .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, $cordovaSocialSharing, MyServices, $stateParams, $filter) {
+  .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, $cordovaSocialSharing, MyServices, $stateParams, $timeout, $ionicLoading, $filter) {
     $scope.productId = $stateParams.productId;
     MyServices.getOneProductDetail($scope.productId, function (data) {
       if (data.value) {
@@ -649,25 +649,42 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       }
     });
     $scope.share = function () {
-      var image = $filter("downloadImage")($scope.getoneproduct.swatchImage);
-      // var image = 'file://'+$filter("uploadpath")($scope.getoneproduct.swatchImage);
-      // var image1 = $filter("uploadpath")($scope.getoneproduct.texturerAndSceneImage);
-      console.log($scope.getoneproduct.swatchImage, image);
-
-      var subject = $scope.getoneproduct.name;
-      var message = "name: " + $scope.getoneproduct.name + "\n" + "size :" + $scope.getoneproduct.size;
-      console.log(image);
-      $cordovaSocialSharing
+       $ionicLoading.show({
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  
+  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+  $timeout(function () {
+    
+    $cordovaSocialSharing
         .share(message, subject, image, '') // Share via native share sheet
         .then(function (result) {
+          $ionicLoading.hide();
           // Success!
           console.log("Success");
+         
           console.log(result);
           console.log(image);
         }, function (err) {
           // An error occured. Show a message to the user
           console.log("error : " + err);
         });
+         
+          // window.plugins.socialsharing.shareWithOptions(image, result, err)
+  }, 1000);
+      var image = $filter("downloadImage")($scope.getoneproduct.texturerAndSceneImage);
+      // var image = 'file://'+$filter("uploadpath")($scope.getoneproduct.swatchImage);
+      // var image1 = $filter("uploadpath")($scope.getoneproduct.texturerAndSceneImage);
+      console.log($scope.getoneproduct.texturerAndSceneImage, image);
+
+      var subject = $scope.getoneproduct.name;
+      var message = "name: " + $scope.getoneproduct.name + "\n" + "size :" + $scope.getoneproduct.size;
+      console.log(image);
+      
     };
 
 
