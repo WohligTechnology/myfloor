@@ -1,4 +1,4 @@
-<ion-view view-title="Login">
+<ion-view view-title="Email">
     <ion-nav-bar class="bar-stable nav-height bar bar-royal">
         <!--<ion-nav-buttons side="left">
             <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
@@ -10,7 +10,7 @@
         </ion-nav-buttons>-->
     </ion-nav-bar>
     <ion-content>
-        <form name="formName" ng-submit="login(formData)">
+        <form name="formName" ng-submit="GenerateOtp(formData)">
         <div class = "signup-logo">   
             <img src="img/logo.png" alt="">
         </div>
@@ -20,25 +20,13 @@
             <input type="email" name="email" ng-model="formData.email" required>
             <span class="error-msg" ng-show="formName.email.$invalid && formName.email.$touched">Please enter valid Email Address</span>
           </label>
-         
-
-            <label class="item item-input" ng-class="{'err': formName.password.$invalid && formName.password.$touched}" >
-            <span class="input-label">Password</span>
-            <input type="password" no-paste name="password"   ng-model="formData.password" required limit-to = "15" >
-            <span class="error-msg" ng-show="formName.password.$invalid && formName.password.$touched">Please enter valid Password</span>
-            </label>
-
-            
 
             <div class="text-center m20 padding-horizontal" >
       <button class="button button-royal button-block" ng-disabled="formName.$invalid"
-        type="submit">Login</button>
+        type="submit">Send</button>
     </div>
     </div>
-    <div class="forgotPwd" ui-sref="email">Forgot Password?</div>
-    <div class="login">
-<label>Signup with a different account?</label><span ui-sref='signup'>Click Here.</span>
-    </div>
+  
     
     </form>
     </ion-content>

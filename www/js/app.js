@@ -25,7 +25,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
       if ($.jStorage.get('profile')) {
         if ($state.current.name == "app.home") {
           navigator.app.exitApp(); //<-- remove this line to disable the exit
+          console.log("showstate",$state.current.name)
         } else {
+          console.log("showstate",$state.current.name)
           window.history.back();
         }
       } else {
@@ -150,6 +152,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
         controller: 'LoginCtrl'
       })
 
+      .state('newpassword', {
+        url: '/newpassword',
+        cache: false,
+        templateUrl: 'templates/newpassword.html',
+        controller: 'NewPasswordCtrl'
+      })
+
       .state('app.productinner', {
         url: '/productinner/:title/:id/:subCat',
         views: {
@@ -166,6 +175,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'tabSlideBox'])
         cache: false,
         templateUrl: 'templates/signup.html',
         controller: 'SignupCtrl'
+      })
+
+      .state('email', {
+        url: '/email',
+        cache: false,
+        templateUrl: 'templates/email.html',
+        controller: 'EmailCtrl'
+      })
+
+      .state('otp', {
+        url: '/otp',
+        cache: false,
+        templateUrl: 'templates/otp.html',
+        controller: 'OtpCtrl'
       })
 
 

@@ -1,5 +1,5 @@
  var adminurl = "http://floor.uandvcreativess.com/api/";
-// var adminurl = "http://192.168.1.123:1337/api/";
+// var adminurl = "http://192.168.1.103:1337/api/";
 
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile?file=";
@@ -9,6 +9,7 @@ var imgpath = imgurl + "readFile?file=";
 angular.module('starter.services', [])
   .factory('MyServices', function ($http) {
     return {
+      
 
       //  getProjectReport: function(callback) {
       //   return $http({
@@ -147,6 +148,32 @@ angular.module('starter.services', [])
         }).success(callback);
       },
 
+      GenerateOtp: function (data, callback) {
+        console.log(data);
+        $http({
+          url: adminurl + 'AppUser/forgotPassword',
+          method: 'POST',
+          data: data
+        }).success(callback);
+      },
+
+      ValidateOtp: function (data, callback) {
+        console.log(data);
+        $http({
+          url: adminurl + 'AppUser/validateOTP',
+          method: 'POST',
+          data: data
+        }).success(callback);
+      },
+      
+      ResetPassword: function (data, callback) {
+        console.log(data);
+        $http({
+          url: adminurl + 'AppUser/resetPassword',
+          method: 'POST',
+          data: data
+        }).success(callback);
+      },
 
     };
   });

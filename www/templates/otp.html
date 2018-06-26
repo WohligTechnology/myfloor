@@ -1,0 +1,24 @@
+<ion-view>
+    <ion-content class="">
+        <div class = "signup-logo">   
+            <img src="img/logo.png" alt="">
+        </div>
+        <form name="formName">
+        <div class="pro-edit text-rite">
+            <label class="item item-input" ng-class="{'err': formName.otp.$invalid && formName.otp.$touched}">
+                <span class="input-label">Enter OTP</span>            
+                <input type="number" name="otp" ng-model="Otp.otp" required limit-to = "4">
+                <span class="error-msg" ng-show="formName.otp.$invalid && formName.otp.$touched">Please enter valid OTP</span>
+              </label>
+          <div class="text-center m20 padding-horizontal" >
+          <button class="button button-royal button-block" ng-click="validateOtp()" ng-disabled="formName.$invalid"
+            >Submit</button>
+        </div>
+        <div class="text-center pr15 fr-pw">
+            <a href="" class="color-dark" ng-if="resend"  ng-click="resendOtp()">Resend OTP</a>
+          </div>
+        </div>
+        </form>
+    </ion-content>
+  </ion-view>
+  

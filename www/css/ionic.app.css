@@ -12813,7 +12813,7 @@ p.double-quote:before {
 
 .input-label {
   color: #000;
-  font-size: 14px;
+  font-size: 14px !important;
   position: relative;
   z-index: 1;
   display: block; }
@@ -12837,6 +12837,11 @@ p.double-quote:before {
   .login span {
     font-size: 16px;
     padding: 5px; }
+
+.forgotPwd {
+  text-align: center;
+  padding: 0px 0px 10px 0px;
+  color: #27204f; }
 
 .enquire {
   background: red;
@@ -12913,3 +12918,11 @@ p.double-quote:before {
   color: black;
   float: right;
   font-size: 26px; }
+
+.popUp .popup-body {
+  text-align: center !important; }
+
+.popUp .popup .button.button-assertive {
+  border-color: transparent;
+  background-color: #27204f !important;
+  color: #fff; }

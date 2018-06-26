@@ -111,9 +111,15 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     }
   })
 
-  .controller('HomeCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $ionicModal, $state) {
+  .controller('HomeCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $ionicModal, $state, $ionicLoading) {
 
-
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
     $scope.formData = {};
     $scope.thankyouMsg = null;
     //API call to submit contact us data.
@@ -133,6 +139,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
           $scope.formData = {};
           $scope.thankyouMsg = "Thank You. We will get back to you shortly."
           console.log("response.data", response.data);
+
           //   toastr.success("We will get back to you shortly.", "We have your query!");
         }
         $scope.formData = {};
@@ -179,6 +186,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       if (data.value) {
         $scope.homeSlider.data = data.data.HomeSlider;
         $scope.landingBanner = data.data.LandingBanner;
+        $ionicLoading.hide()
         // console.log($scope.homeSlider, $scope.landingBanner);
       } else {
 
@@ -217,6 +225,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     MyServices.getAllCollection({}, function (data) {
       if (data.value) {
         $scope.getcollection = data.data;
+        $ionicLoading.hide()
         // console.log($scope.homeSlider, $scope.landingBanner);
       } else {
 
@@ -342,17 +351,36 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     });
 
   })
-  .controller('ProductCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
+  .controller('ProductCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $ionicLoading) {
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
     MyServices.getAllCollection({}, function (data) {
       if (data.value) {
         $scope.getcollection = data.data;
+        $ionicLoading.hide()
         // console.log($scope.homeSlider, $scope.landingBanner);
       } else {
 
       }
     })
   })
-  .controller('ProductDetailCtrl', function ($scope, $ionicSlideBoxDelegate, $stateParams, MyServices) {
+  .controller('ProductDetailCtrl', function ($scope, $timeout, $ionicSlideBoxDelegate, $stateParams, MyServices, $ionicLoading) {
+   
+    
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
+
+
     $scope.title = $stateParams.title;
     $scope.productBySubcat = [];
     $scope.getcoll = [];
@@ -363,12 +391,20 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     $scope.start = false;
 
     MyServices.getOne($stateParams.id, function (data) {
+      $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
+      });
       if (data.value) {
         $scope.getone = data.data;
         $scope.subCategory = $scope.getone.subcategories[0];
         $scope.getCollProduct();
         console.log($scope.getone);
         console.log("$scope.subCategory", $scope.subCategory);
+        $ionicLoading.hide()
       }
     })
 
@@ -379,6 +415,13 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       $scope.addwish.user = $.jStorage.get('profile')._id;
       $scope.addwish.product = productId;
       MyServices.addOrRemoveWishList($scope.addwish, function (data) {
+        $ionicLoading.show({
+          content: 'Loading',
+          animation: 'fade-in',
+          showBackdrop: true,
+          maxWidth: 200,
+          showDelay: 0
+        });
         if (data.value) {
           console.log(data.data);
           $scope.userid = {};
@@ -386,6 +429,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
           MyServices.getWishList($scope.userid, function (data) {
             if (data.value) {
               console.log(data.data);
+              $ionicLoading.hide()
             }
           })
 
@@ -396,7 +440,13 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
     $scope.getCollProduct = function () {
       MyServices.getCollProduct($scope.getcollect, function (data) {
-
+        $ionicLoading.show({
+          content: 'Loading',
+          animation: 'fade-in',
+          showBackdrop: true,
+          maxWidth: 200,
+          showDelay: 0
+        });
         // if (data.value) {
         //   $scope.getcoll = data.data;
         //   console.log($scope.getcoll);
@@ -408,6 +458,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
           MyServices.getWishList($scope.userid, function (data) {
             if (data.value) {
               $scope.wishlist = data.data.wishList;
+              $ionicLoading.hide()
               _.each($scope.getcoll, function (n) {
                 n.status = false;
                 _.each($scope.wishlist, function (n1) {
@@ -441,12 +492,26 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     }
 
     $scope.toggleGroup = function (group) {
+      $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
+      });
       if ($scope.isGroupShown(group)) {
         $scope.shownGroup = null;
       } else {
         $scope.shownGroup = group;
       }
+      $timeout(function () {
+        $ionicLoading.hide()
+        },2000)
     };
+
+   
+
+  
     $scope.isGroupShown = function (group) {
       return $scope.shownGroup === group;
     };
@@ -641,11 +706,19 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
   })
 
   .controller('CollectionDetailCtrl', function ($scope, $ionicSlideBoxDelegate, $cordovaSocialSharing, MyServices, $stateParams, $timeout, $ionicLoading, $filter) {
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
     $scope.productId = $stateParams.productId;
     MyServices.getOneProductDetail($scope.productId, function (data) {
       if (data.value) {
         $scope.getoneproduct = data.data;
         console.log($scope.getoneproduct);
+        $ionicLoading.hide()
       }
     });
     $scope.share = function () {
@@ -944,8 +1017,184 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
 
   })
+
+  .controller('EmailCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
+    $scope.closeModals = function () {
+      $scope.modals.hide();
+    };
+
+    $scope.GenerateOtp= function(value){
+      console.log("email",value)
+      MyServices.GenerateOtp(value, function (data) {
+        $.jStorage.set('profile', value)
+        console.log("Message", data)
+        if (data.value) {
+          var alertPopup = $ionicPopup.alert({
+            cssClass: 'popUp',
+            buttons: [{
+              text: 'Ok',
+              type: 'button-assertive'
+            }],
+            template: 'OTP sent to your Email-Id'
+          });
+    
+          alertPopup.then(function (res) {
+            // $scope.closeModals();
+            $state.go('otp');
+          });
+          // $scope.getAllDownload = data.data;
+          // console.log($scope.homeSlider, $scope.landingBanner);
+        } else {
+          var alertPopup = $ionicPopup.alert({
+            cssClass: 'popUp',
+            buttons: [{
+              text: 'Ok',
+              type: 'button-royal'
+            }],
+            template: 'User Not Found'
+          });
+    
+          alertPopup.then(function (res) {
+            
+          });
+        }
+      });
+
+    }
+    
+   })
+
+   .controller('OtpCtrl', function ($scope, $stateParams, MyServices, $state, $timeout, $ionicPopup) {
+    $scope.resend = true;
+    $scope.Otp={}
+$scope.emailId = $.jStorage.get('profile')
+$scope.Otp.email = $scope.emailId.email
+console.log("OTPemailid",$scope.Otp)
+console.log("$scope.emailId", $scope.emailId)
+$scope.resendOtp= function(value){
+    MyServices.GenerateOtp($scope.emailId, function (data) {
+      $scope.resend = true;
+      var alertPopup = $ionicPopup.alert({
+        cssClass: 'popUp',
+        buttons: [{
+          text: 'Ok',
+          type: 'button-royal'
+        }],
+        template: 'OTP is sent to your Email-id'
+      });
+
+      alertPopup.then(function (res) {
+        
+      });
+      console.log("Message", data)
+      $scope.resend=false;
+      if (data.value) {
+        $timeout(function () {
+          $scope.resend = true;
+        }, 10000);
+        // $scope.getAllDownload = data.data;
+        // console.log($scope.homeSlider, $scope.landingBanner);
+      } else {
+        
+      }
+    });
+  }
+
+  $scope.validateOtp=function(){
+    MyServices.ValidateOtp($scope.Otp, function (data) {
+      console.log("Message", $scope.Otp)
+      if (data.value) {
+      console.log("Otp",data.data.message)
+      if(data.data.message=='otp expired'){
+        var alertPopup = $ionicPopup.alert({
+          cssClass: 'popUp',
+          buttons: [{
+            text: 'Ok',
+            type: 'button-royal'
+          }],
+          template: 'Your OTP is Expired.'
+        });
+  
+        alertPopup.then(function (res) {
+          
+        });
+      }else if (data.data.message == 'invalid otp'){
+      var alertPopup = $ionicPopup.alert({
+        cssClass: 'popUp',
+        buttons: [{
+          text: 'Ok',
+          type: 'button-royal'
+        }],
+        template: 'Please Enter a Valid OTP.'
+      });
+
+      alertPopup.then(function (res) {
+        
+      });                        
+      } else {
+        // var alertPopup = $ionicPopup.alert({
+        //   cssClass: 'popUp',
+        //   buttons: [{
+        //     text: 'Ok',
+        //     type: 'button-royal'
+        //   }],
+        //   template: 'Valid Ot'
+        // });
+  
+        // alertPopup.then(function (res) {
+        //   $state.go('newpassword');
+        // }); 
+        $state.go('newpassword')
+      }
+    }else{
+
+    }
+    });
+  }
+  })
+
+  .controller('NewPasswordCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
+    $scope.resetPassword={}
+    $scope.emailId = $.jStorage.get('profile')
+    $scope.resetPassword.email = $scope.emailId.email
+    $scope.ResetPassword=function(value){
+    console.log("newold", value)
+    if (value.newPassword==value.confirmPassword){
+      $scope.resetPassword.newPassword = value.newPassword
+      MyServices.ResetPassword($scope.resetPassword, function (data) {
+        console.log("resetPassword",data)
+        // $.jStorage.flush();
+        var alertPopup = $ionicPopup.alert({
+          cssClass: 'popUp',
+          buttons: [{
+            text: 'Ok',
+            type: 'button-royal'
+          }],
+          template: 'Password Updated Successfully.'
+        });
+  
+        alertPopup.then(function (res) {
+          $state.go('login');
+        });
+      })
+    }else{
+      var alertPopup = $ionicPopup.alert({
+        cssClass: 'popUp',
+        buttons: [{
+          text: 'Ok',
+          type: 'button-royal'
+        }],
+        template: 'Password does not match.'
+      });
+
+      alertPopup.then(function (res) {
+        
+      }); 
+    }
+
+    }
+   })
+
   .controller('PlaylistCtrl', function ($scope, $stateParams) {
-
-
 
   });

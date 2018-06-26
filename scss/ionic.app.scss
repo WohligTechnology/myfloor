@@ -894,7 +894,7 @@ p.double-quote:before {
 
 .input-label {
     color: #000;
-    font-size: 14px;
+    font-size: 14px!important;
     position: relative;
     z-index: 1;
     display: block;
@@ -929,6 +929,12 @@ p.double-quote:before {
       font-size: 16px;
         padding: 5px;
   }
+}
+
+.forgotPwd{
+  text-align: center;
+  padding: 0px 0px 10px 0px;
+  color: #27204f;
 }
 
 .enquire{
@@ -1029,4 +1035,17 @@ margin: 0px auto;
   color: black;
   float: right;
   font-size: 26px;
+}
+
+.popUp{
+  .popup-body{
+    text-align: center!important;
+  }
+  .popup{
+    .button.button-assertive {
+      border-color: transparent;
+      background-color: $royal!important;
+      color: #fff;
+  }
+  }
 }
