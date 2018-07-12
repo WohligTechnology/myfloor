@@ -369,9 +369,9 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       }
     })
   })
-  .controller('ProductDetailCtrl', function ($scope, $timeout, $ionicSlideBoxDelegate, $stateParams, MyServices, $ionicLoading) {
-   
-    
+  .controller('ProductDetailCtrl', function ($scope, $timeout, $ionicPopup, $ionicSlideBoxDelegate, $stateParams, MyServices, $ionicLoading) {
+
+
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
@@ -409,7 +409,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     })
 
 
-    $scope.addOrRemoveWishList = function (productId) {
+    $scope.addOrRemoveWishList = function (productId, status) {
       console.log("productId", productId);
       $scope.addwish = {};
       $scope.addwish.user = $.jStorage.get('profile')._id;
@@ -426,6 +426,19 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
           console.log(data.data);
           $scope.userid = {};
           $scope.userid._id = $.jStorage.get('profile')._id;
+          if (status) {
+            var myPopup = $ionicPopup.show({
+              title: 'Wishlist',
+              template: 'Product added into wishlist',
+              scope: $scope,
+              cssClass: 'wishlistPopup',
+              buttons: []
+            });
+            myPopup.then(function (res) {});
+            $timeout(function () {
+              myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 3000);
+          }
           MyServices.getWishList($scope.userid, function (data) {
             if (data.value) {
               console.log(data.data);
@@ -506,12 +519,12 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       }
       $timeout(function () {
         $ionicLoading.hide()
-        },2000)
+      }, 2000)
     };
 
-   
 
-  
+
+
     $scope.isGroupShown = function (group) {
       return $scope.shownGroup === group;
     };
@@ -722,33 +735,33 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       }
     });
     $scope.share = function () {
-       $ionicLoading.show({
-    content: 'Loading',
-    animation: 'fade-in',
-    showBackdrop: true,
-    maxWidth: 200,
-    showDelay: 0
-  });
-  
-  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
-  $timeout(function () {
-    
-    $cordovaSocialSharing
-        .share(message, subject, image, '') // Share via native share sheet
-        .then(function (result) {
-          $ionicLoading.hide();
-          // Success!
-          console.log("Success");
-         
-          console.log(result);
-          console.log(image);
-        }, function (err) {
-          // An error occured. Show a message to the user
-          console.log("error : " + err);
-        });
-         
-          // window.plugins.socialsharing.shareWithOptions(image, result, err)
-  }, 1000);
+      $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
+      });
+
+      // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+      $timeout(function () {
+
+        $cordovaSocialSharing
+          .share(message, subject, image, '') // Share via native share sheet
+          .then(function (result) {
+            $ionicLoading.hide();
+            // Success!
+            console.log("Success");
+
+            console.log(result);
+            console.log(image);
+          }, function (err) {
+            // An error occured. Show a message to the user
+            console.log("error : " + err);
+          });
+
+        // window.plugins.socialsharing.shareWithOptions(image, result, err)
+      }, 1000);
       var image = $filter("downloadImage")($scope.getoneproduct.texturerAndSceneImage);
       // var image = 'file://'+$filter("uploadpath")($scope.getoneproduct.swatchImage);
       // var image1 = $filter("uploadpath")($scope.getoneproduct.texturerAndSceneImage);
@@ -757,7 +770,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       var subject = $scope.getoneproduct.name;
       var message = "name: " + $scope.getoneproduct.name + "\n" + "size :" + $scope.getoneproduct.size;
       console.log(image);
-      
+
     };
 
 
@@ -932,7 +945,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
     }
   })
 
-  .controller('LoginCtrl', function ($scope,$stateParams, MyServices, $ionicPopup, $state) {
+  .controller('LoginCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
     if ($.jStorage.get('profile')) {
       $state.go('app.home');
     }
@@ -946,8 +959,8 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
 
         if (data.value == true) {
-          
-          $state.go('app.home');             
+
+          $state.go('app.home');
           console.log(data);
           $scope.formData = data.data;
           $.jStorage.set('profile', data.data);
@@ -967,7 +980,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
 
     }
   })
-  .controller('WishListCtrl', function ($scope, $stateParams,$cordovaSocialSharing, MyServices, $filter) {
+  .controller('WishListCtrl', function ($scope, $stateParams, $cordovaSocialSharing, MyServices, $filter) {
     $scope.getWishList = function () {
       $scope.userid = {};
       $scope.userid._id = $.jStorage.get('profile')._id;
@@ -982,7 +995,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       })
     }
     $scope.getWishList();
-    $scope.addOrRemoveWishList = function (productId) {
+    $scope.addOrRemoveWishList = function (productId, status) {
       console.log("productId", productId);
       $scope.addwish = {};
       $scope.addwish.user = $.jStorage.get('profile')._id;
@@ -990,15 +1003,28 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       MyServices.addOrRemoveWishList($scope.addwish, function (data) {
         if (data.value) {
           console.log(data.data);
+          if (status) {
+            var myPopup = $ionicPopup.show({
+              title: 'Wishlist',
+              template: 'Product added into wishlist',
+              scope: $scope,
+              cssClass: 'wishlistPopup',
+              buttons: []
+            });
+            myPopup.then(function (res) {});
+            $timeout(function () {
+              myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 3000);
+          }
           $scope.getWishList();
         }
       })
     }
     $scope.shareWishlist = function (wishlist) {
-   var image = $filter("downloadImage")(wishlist.productImage);
+      var image = $filter("downloadImage")(wishlist.productImage);
 
 
-      var subject = "Category:" +wishlist.subCategory;
+      var subject = "Category:" + wishlist.subCategory;
       var message = "name: " + wishlist.name;
       $cordovaSocialSharing
         .share(message, subject, image, '') // Share via native share sheet
@@ -1023,8 +1049,8 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
       $scope.modals.hide();
     };
 
-    $scope.GenerateOtp= function(value){
-      console.log("email",value)
+    $scope.GenerateOtp = function (value) {
+      console.log("email", value)
       MyServices.GenerateOtp(value, function (data) {
         $.jStorage.set('profile', value)
         console.log("Message", data)
@@ -1037,7 +1063,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
             }],
             template: 'OTP sent to your Email-Id'
           });
-    
+
           alertPopup.then(function (res) {
             // $scope.closeModals();
             $state.go('otp');
@@ -1053,147 +1079,147 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
             }],
             template: 'User Not Found'
           });
-    
+
           alertPopup.then(function (res) {
-            
+
           });
         }
       });
 
     }
-    
-   })
 
-   .controller('OtpCtrl', function ($scope, $stateParams, MyServices, $state, $timeout, $ionicPopup) {
+  })
+
+  .controller('OtpCtrl', function ($scope, $stateParams, MyServices, $state, $timeout, $ionicPopup) {
     $scope.resend = true;
-    $scope.Otp={}
-$scope.emailId = $.jStorage.get('profile')
-$scope.Otp.email = $scope.emailId.email
-console.log("OTPemailid",$scope.Otp)
-console.log("$scope.emailId", $scope.emailId)
-$scope.resendOtp= function(value){
-    MyServices.GenerateOtp($scope.emailId, function (data) {
-      $scope.resend = true;
-      var alertPopup = $ionicPopup.alert({
-        cssClass: 'popUp',
-        buttons: [{
-          text: 'Ok',
-          type: 'button-royal'
-        }],
-        template: 'OTP is sent to your Email-id'
-      });
-
-      alertPopup.then(function (res) {
-        
-      });
-      console.log("Message", data)
-      $scope.resend=false;
-      if (data.value) {
-        $timeout(function () {
-          $scope.resend = true;
-        }, 10000);
-        // $scope.getAllDownload = data.data;
-        // console.log($scope.homeSlider, $scope.landingBanner);
-      } else {
-        
-      }
-    });
-  }
-
-  $scope.validateOtp=function(){
-    MyServices.ValidateOtp($scope.Otp, function (data) {
-      console.log("Message", $scope.Otp)
-      if (data.value) {
-      console.log("Otp",data.data.message)
-      if(data.data.message=='otp expired'){
+    $scope.Otp = {}
+    $scope.emailId = $.jStorage.get('profile')
+    $scope.Otp.email = $scope.emailId.email
+    console.log("OTPemailid", $scope.Otp)
+    console.log("$scope.emailId", $scope.emailId)
+    $scope.resendOtp = function (value) {
+      MyServices.GenerateOtp($scope.emailId, function (data) {
+        $scope.resend = true;
         var alertPopup = $ionicPopup.alert({
           cssClass: 'popUp',
           buttons: [{
             text: 'Ok',
             type: 'button-royal'
           }],
-          template: 'Your OTP is Expired.'
+          template: 'OTP is sent to your Email-id'
         });
-  
+
         alertPopup.then(function (res) {
-          
+
         });
-      }else if (data.data.message == 'invalid otp'){
-      var alertPopup = $ionicPopup.alert({
-        cssClass: 'popUp',
-        buttons: [{
-          text: 'Ok',
-          type: 'button-royal'
-        }],
-        template: 'Please Enter a Valid OTP.'
+        console.log("Message", data)
+        $scope.resend = false;
+        if (data.value) {
+          $timeout(function () {
+            $scope.resend = true;
+          }, 10000);
+          // $scope.getAllDownload = data.data;
+          // console.log($scope.homeSlider, $scope.landingBanner);
+        } else {
+
+        }
       });
-
-      alertPopup.then(function (res) {
-        
-      });                        
-      } else {
-        // var alertPopup = $ionicPopup.alert({
-        //   cssClass: 'popUp',
-        //   buttons: [{
-        //     text: 'Ok',
-        //     type: 'button-royal'
-        //   }],
-        //   template: 'Valid Ot'
-        // });
-  
-        // alertPopup.then(function (res) {
-        //   $state.go('newpassword');
-        // }); 
-        $state.go('newpassword')
-      }
-    }else{
-
     }
-    });
-  }
+
+    $scope.validateOtp = function () {
+      MyServices.ValidateOtp($scope.Otp, function (data) {
+        console.log("Message", $scope.Otp)
+        if (data.value) {
+          console.log("Otp", data.data.message)
+          if (data.data.message == 'otp expired') {
+            var alertPopup = $ionicPopup.alert({
+              cssClass: 'popUp',
+              buttons: [{
+                text: 'Ok',
+                type: 'button-royal'
+              }],
+              template: 'Your OTP is Expired.'
+            });
+
+            alertPopup.then(function (res) {
+
+            });
+          } else if (data.data.message == 'invalid otp') {
+            var alertPopup = $ionicPopup.alert({
+              cssClass: 'popUp',
+              buttons: [{
+                text: 'Ok',
+                type: 'button-royal'
+              }],
+              template: 'Please Enter a Valid OTP.'
+            });
+
+            alertPopup.then(function (res) {
+
+            });     
+          } else {
+            // var alertPopup = $ionicPopup.alert({
+            //   cssClass: 'popUp',
+            //   buttons: [{
+            //     text: 'Ok',
+            //     type: 'button-royal'
+            //   }],
+            //   template: 'Valid Ot'
+            // });
+
+            // alertPopup.then(function (res) {
+            //   $state.go('newpassword');
+            // }); 
+            $state.go('newpassword')
+          }
+        } else {
+
+        }
+      });
+    }
   })
 
   .controller('NewPasswordCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $state) {
-    $scope.resetPassword={}
+    $scope.resetPassword = {}
     $scope.emailId = $.jStorage.get('profile')
     $scope.resetPassword.email = $scope.emailId.email
-    $scope.ResetPassword=function(value){
-    console.log("newold", value)
-    if (value.newPassword==value.confirmPassword){
-      $scope.resetPassword.newPassword = value.newPassword
-      MyServices.ResetPassword($scope.resetPassword, function (data) {
-        console.log("resetPassword",data)
-        // $.jStorage.flush();
+    $scope.ResetPassword = function (value) {
+      console.log("newold", value)
+      if (value.newPassword == value.confirmPassword) {
+        $scope.resetPassword.newPassword = value.newPassword
+        MyServices.ResetPassword($scope.resetPassword, function (data) {
+          console.log("resetPassword", data)
+          $.jStorage.flush();
+          var alertPopup = $ionicPopup.alert({
+            cssClass: 'popUp',
+            buttons: [{
+              text: 'Ok',
+              type: 'button-royal'
+            }],
+            template: 'Password Updated Successfully.'
+          });
+
+          alertPopup.then(function (res) {
+            $state.go('login');
+          });
+        })
+      } else {
         var alertPopup = $ionicPopup.alert({
           cssClass: 'popUp',
           buttons: [{
             text: 'Ok',
             type: 'button-royal'
           }],
-          template: 'Password Updated Successfully.'
+          template: 'Password does not match.'
         });
-  
+
         alertPopup.then(function (res) {
-          $state.go('login');
+
         });
-      })
-    }else{
-      var alertPopup = $ionicPopup.alert({
-        cssClass: 'popUp',
-        buttons: [{
-          text: 'Ok',
-          type: 'button-royal'
-        }],
-        template: 'Password does not match.'
-      });
-
-      alertPopup.then(function (res) {
-        
-      }); 
-    }
+      }
 
     }
-   })
+  })
 
   .controller('PlaylistCtrl', function ($scope, $stateParams) {
 

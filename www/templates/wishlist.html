@@ -6,7 +6,8 @@
       <img ng-src="{{all.product.productImage|uploadpath}}" alt="" class=" full-image" ui-sref="app.collection-detail({productId:all.product._id})"
       />
       <div class="cat-div">
-        <i class="ion ion-ios-heart likefilld" ng-click="all.status = !all.status;addOrRemoveWishList(all.product._id)" ng-class="{'ion-ios-heart' : all.status,'ion-ios-heart-outline': !all.status }"></i>
+        <i class="ion ion-ios-heart likefilld" ng-click="all.status = !all.status;addOrRemoveWishList(all.product._id,all.status)"
+          ng-class="{'ion-ios-heart' : all.status,'ion-ios-heart-outline': !all.status }"></i>
         <i class="ion shareicon ion-android-share-alt " ng-click="shareWishlist(all.product)"></i>
         <h3 class="cat">{{all.product.name}}</h3>
       </div>

@@ -15,8 +15,6 @@
   src: url("../fonts/Lato-Regular.ttf");
 }
 
-
-
 $light: #fff !default;
 $stable: #f8f8f8 !default;
 $positive: #352C6D !default;
@@ -40,17 +38,13 @@ sans-serif-light !default; // The path for our ionicons font files, relative to 
 $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 @import "www/lib/scss/main.scss";
 @import "www/lib/ionic/scss/ionic";
- @import "www/lib/font-awesome/scss/font-awesome.scss";
-
+@import "www/lib/font-awesome/scss/font-awesome.scss";
 @font-face {
-    font-family: 'fontawesome';
-    src:url('../fonts/fontawesome-webfont.eot');
-    src:url('../fonts/fontawesome-webfont.eot') format('embedded-opentype'),
-        url('../fonts/fontawesome-webfont.woff') format('woff'),
-        url('../fonts/fontawesome-webfont.ttf') format('truetype'),
-        url('../fonts/fontawesome-webfont.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'fontawesome';
+  src: url('../fonts/fontawesome-webfont.eot');
+  src: url('../fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff') format('woff'), url('../fonts/fontawesome-webfont.ttf') format('truetype'), url('../fonts/fontawesome-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @mixin placeholder {
@@ -140,16 +134,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 }
 
 .product-button {
-  color: white!important;
-  border-color: white!important;
-  line-height: 1!important;
+  color: white !important;
+  border-color: white !important;
+  line-height: 1 !important;
   height: 25px;
   width: 110px;
   padding: 7px !important;
-  min-width: 0px!important;
-  min-height: 0px!important;
+  min-width: 0px !important;
+  min-height: 0px !important;
   border-radius: 0 !important;
-  font-size: 11px!important;
+  font-size: 11px !important;
   margin: 20px 10px 10px 0 !important;
 }
 
@@ -238,24 +232,24 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 }
 
 .submit-color {
-  color: #352C6D!important;
-  border-color: #352C6D!important;
+  color: #352C6D !important;
+  border-color: #352C6D !important;
   margin-top: 20px !important;
   min-height: 30px !important;
-  line-height: 0px!important;
+  line-height: 0px !important;
   .button.button-positive.button-outline.activated,
   .button.button-positive.button-outline.active {
-    background-color: #352C6D!important;
-    box-shadow: none!important;
-    color: #fff!important;
+    background-color: #352C6D !important;
+    box-shadow: none !important;
+    color: #fff !important;
   }
 }
 
 .button.button-positive.button-outline.activated,
 .button.button-positive.button-outline.active {
-  background-color: #352C6D!important;
-  box-shadow: none!important;
-  color: #fff!important;
+  background-color: #352C6D !important;
+  box-shadow: none !important;
+  color: #fff !important;
 }
 
 .border-detail {
@@ -415,59 +409,60 @@ p.double-quote:before {
 }
 
 .bar.bar-royal {
-    border-color: #191432;
-    background-color: #27204f!important;
-    background-image: linear-gradient(0deg, #191432, #191432 50%, transparent 50%);
-    color: #fff;
+  border-color: #191432;
+  background-color: #27204f !important;
+  background-image: linear-gradient(0deg, #191432, #191432 50%, transparent 50%);
+  color: #fff;
 }
 
 .button.button-royal {
-    border-color: transparent;
-    background-color: #27204f!important;
-    color: #fff;
+  border-color: transparent;
+  background-color: #27204f !important;
+  color: #fff;
 }
+
 .scroll-hide {
   // overflow-x: hidden!important;
   background-color: #352C6D;
-   ::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 0 !important;
   }
-   ::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
   }
-   ::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   }
   a {
-    font-size: 9px!important;
+    font-size: 9px !important;
     border-radius: 20px;
-    border-bottom: 1px solid white!important;
+    border-bottom: 1px solid white !important;
     margin: 8px 5px !important;
     border: 1px solid white;
     background-color: #352C6D;
     padding: 5px 10px;
-    color: white!important;
+    color: white !important;
   }
 }
 
 .tabbed-slidebox .tsb-icons a.active {
-  font-size: 9px!important;
-  background-color: white!important;
-  color: #352C6D!important;
+  font-size: 9px !important;
+  background-color: white !important;
+  color: #352C6D !important;
 }
 
 .tabbed-slidebox .tsb-icons:after {
-  border-color: transparent transparent transparent transparent!important;
+  border-color: transparent transparent transparent transparent !important;
 }
 
 .tabbed-slidebox .slider-slide {
-  background-color: #F3F3F3!important;
+  background-color: #F3F3F3 !important;
 }
 
 .tabbed-slidebox .tsb-ic-wrp {
-  background-color: #352C6D!important;
+  background-color: #352C6D !important;
 }
 
 .prodcut-detail {
@@ -500,8 +495,7 @@ p.double-quote:before {
   .ion-complex,
   .item-content {
     background: none !important;
-    border: none;
-    // color: white; // color:  #352c6c;
+    border: none; // color: white; // color:  #352c6c;
     padding: 15px 20px !important;
   }
 }
@@ -603,7 +597,7 @@ p.double-quote:before {
 .get-started {
   background-color: #676588;
   color: #fff;
-  border-radius: 32px!important;
+  border-radius: 32px !important;
   font-size: 12px;
   padding: 9px 15px;
   border: none;
@@ -660,14 +654,14 @@ p.double-quote:before {
 }
 
 .btmbar {
-  position: absolute!important;
+  position: absolute !important;
   bottom: 0;
   width: 100%;
   z-index: 9;
 }
 
 .hastabs {
-  top: 174px!important;
+  top: 174px !important;
 }
 
 .texturetab {
@@ -676,11 +670,11 @@ p.double-quote:before {
     top: auto;
   }
   .tab-item {
-    background: #352C6D!important;
-    color: white!important;
+    background: #352C6D !important;
+    color: white !important;
   }
   .tab-item.tab-item-active {
-    font-size: 20px!important;
+    font-size: 20px !important;
   }
 }
 
@@ -700,7 +694,7 @@ p.double-quote:before {
 }
 
 .btmtexture {
-  bottom: 70px!important;
+  bottom: 70px !important;
 }
 
 .mabt-5 {
@@ -717,8 +711,7 @@ p.double-quote:before {
   }
   .swiper-slide img {
     // width: 100%;
-    height: auto;
-    // max-width: auto;
+    height: auto; // max-width: auto;
     max-height: initial;
     vertical-align: bottom;
   }
@@ -744,8 +737,8 @@ p.double-quote:before {
 }
 
 .downtabstop {
-  top: 49px!important;
-  bottom: 0!important;
+  top: 49px !important;
+  bottom: 0 !important;
 }
 
 .downimg {
@@ -812,7 +805,7 @@ p.double-quote:before {
 
 .share {
   &:before {
-    font-size: 24px!important;
+    font-size: 24px !important;
   }
 }
 
@@ -834,19 +827,19 @@ p.double-quote:before {
   }
 }
 
-.thankyou{
-    font-size: 12px;
-    padding: 10px 35px;
-    color: rgb(46, 46, 123);
+.thankyou {
+  font-size: 12px;
+  padding: 10px 35px;
+  color: rgb(46, 46, 123);
 }
 
 //signup
-.signup-logo{
+.signup-logo {
   margin: 20px auto;
-    width: 80%;
-    img{
-      width: 100%;
-    }
+  width: 80%;
+  img {
+    width: 100%;
+  }
 }
 
 .err {
@@ -893,86 +886,84 @@ p.double-quote:before {
 }
 
 .input-label {
-    color: #000;
-    font-size: 14px!important;
-    position: relative;
-    z-index: 1;
-    display: block;
-  }
+  color: #000;
+  font-size: 14px !important;
+  position: relative;
+  z-index: 1;
+  display: block;
+}
 
-  .pro-edit {
+.pro-edit {
   &.text-rite {
     .item-input input {
       text-align: left;
     }
   }
-  }
-
-  .text-right {
-    text-align: right;
-  }
-
-  .bg-header{
-    background: #27204f;
-  }
-
-  .disblock {
-  display: inline-block!important;
 }
 
-.login{
+.text-right {
+  text-align: right;
+}
+
+.bg-header {
+  background: #27204f;
+}
+
+.disblock {
+  display: inline-block !important;
+}
+
+.login {
   text-align: center;
-  label{
+  label {
     display: inline-block;
   }
-  span{
-      font-size: 16px;
-        padding: 5px;
+  span {
+    font-size: 16px;
+    padding: 5px;
   }
 }
 
-.forgotPwd{
+.forgotPwd {
   text-align: center;
   padding: 0px 0px 10px 0px;
   color: #27204f;
 }
 
-.enquire{
-  background:red;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 40%;
-    margin: 10px auto;
-    left: 90%;
-    z-index: 100;
-    border-radius: 50%;
-    i{
-      font-size: 25px;
+.enquire {
+  background: red;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 40%;
+  margin: 10px auto;
+  left: 90%;
+  z-index: 100;
+  border-radius: 50%;
+  i {
+    font-size: 25px;
     /* text-align: center; */
     padding: 13px;
     color: white;
-    }
+  }
 }
 
 //enquiremodal
-.bg-enquire{
+.bg-enquire {
   background: white;
   height: 100vh;
 }
 
-.enquirelbl{
-    text-align: center;
-    padding: 50px 20px 20px 20px;
-    font-size: 28px;
-    font-weight: 600;
-    margin: 0px !important;
+.enquirelbl {
+  text-align: center;
+  padding: 50px 20px 20px 20px;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0px !important;
 }
 
-
 .contact-enquire {
- 
   label {
     border: none;
     border-bottom: 1px solid #ddd;
@@ -983,69 +974,89 @@ p.double-quote:before {
   }
 }
 
-.close-modal{
+.close-modal {
   font-size: 30px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 5%;
-    left: 94%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 5%;
+  left: 94%;
 }
 
-.relative{
+.relative {
   position: relative;
 }
 
 //productDetails
-.subCategories-bg{
-margin-top: 20px;
-padding: 10px;
-background: lightgray;
+.subCategories-bg {
+  margin-top: 20px;
+  padding: 10px;
+  background: lightgray;
 }
 
-.subCategories-inner{
-margin: 0px auto;
-// background: lightgray;
+.subCategories-inner {
+  margin: 0px auto; // background: lightgray;
 }
 
 .productspopup {
-    .popup-sub-title {
-        margin: 5px 0 0;
-        padding: 0;
-        font-weight: normal;
-        font-size: 15px;
+  .popup-sub-title {
+    margin: 5px 0 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 15px;
+  }
+  h3 {
+    img {
+      max-width: 50px;
+      max-height: 50px;
     }
-
-    h3 {
-        img {
-            max-width: 50px;
-            max-height: 50px;
-        }
-    }
+  }
 }
 
-.m20{
+.m20 {
   margin: 20px;
 }
-.likefilld{
-      color: #352c6c;
-      float: left;
-    font-size: 26px;
+
+.likefilld {
+  color: red;
+  float: left;
+  font-size: 26px;
 }
-.shareicon{
+
+.shareicon {
   color: black;
   float: right;
   font-size: 26px;
 }
 
-.popUp{
-  .popup-body{
-    text-align: center!important;
+.popUp {
+  .popup-body {
+    text-align: center !important;
   }
-  .popup{
+  .popup {
     .button.button-assertive {
       border-color: transparent;
-      background-color: $royal!important;
+      background-color: $royal !important;
       color: #fff;
+    }
   }
+}
+
+.wishlistPopup {
+  .popup {
+    //styling for popup width, width: 300px;
+  }
+  .popup-title {
+    //styling for title
+  }
+  .popup-head {
+    background: #352c6c;
+    h3 {
+      font-size: 18px;
+      color: white;
+    }
+  }
+  .popup-body {
+    font-size: 16px;
+    padding: 15px;
   }
 }

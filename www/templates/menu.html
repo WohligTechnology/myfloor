@@ -8,6 +8,10 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-ios-heart" ui-sref="app.wishlist">
+        </button>
+      </ion-nav-buttons>
     </ion-nav-bar>
 
     <ion-nav-view name="menuContent">
@@ -32,7 +36,7 @@
         <ion-item class="" ui-sref-active="actives" ui-sref-active="actives" menu-close href="#/app/media">
           <i class="icon ln-file-image menu-icon"></i> Media
         </ion-item>
-            <ion-item class="" ui-sref-active="actives" ui-sref-active="actives" menu-close href="#/app/wishlist">
+        <ion-item class="" ui-sref-active="actives" ui-sref-active="actives" menu-close href="#/app/wishlist">
           <i class="icon ion-ios-list-outline menu-icon"></i> Wishlist
         </ion-item>
         <ion-item class="" ui-sref-active="actives" menu-close href="#/app/contact-us">
@@ -41,7 +45,7 @@
         <ion-item class="" ui-sref-active="actives" menu-close href="#/app/about-us">
           <i class="icon ln-user menu-icon"></i> About Us
         </ion-item>
- <ion-item class="" menu-close  ng-click='logout()' ui-sref-active="actives" menu-close href="#/app/login">
+        <ion-item class="" menu-close ng-click='logout()' ui-sref-active="actives" menu-close href="#/app/login">
           <i class="icon ion-android-exit menu-icon"></i> Logout
         </ion-item>
       </ion-list>
