@@ -428,7 +428,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'tabSlideBox
           $scope.userid._id = $.jStorage.get('profile')._id;
           if (status) {
             var myPopup = $ionicPopup.show({
-              title: 'Wishlist',
+              title: '',
               template: 'Product added into wishlist',
               scope: $scope,
               cssClass: 'wishlistPopup',

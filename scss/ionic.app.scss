@@ -1050,10 +1050,10 @@ p.double-quote:before {
   }
   .popup-head {
     background: #352c6c;
-    h3 {
-      font-size: 18px;
-      color: white;
-    }
+    padding: 5px; // h3 {
+    //   font-size: 18px;
+    //   color: white;
+    // }
   }
   .popup-body {
     font-size: 16px;
